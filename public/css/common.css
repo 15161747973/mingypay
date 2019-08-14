@@ -1,0 +1,52 @@
+*{margin: 0;padding: 0;font-size: 0.3rem;}
+address,cite,dfn,em,var,i {font-style: normal}
+ul,ol,li{list-style: none;}
+a{text-decoration: none;}
+table { border-collapse: collapse; border-spacing: 0; }
+.clearfix:after{ content:""; height:0; visibility:hidden; display:block; clear:both;}
+.clearfix{ zoom:1;}
+.clear {clear:both}
+.fl{float: left;}
+.fr{float: right;}
+.hide{display: none;}
+.block{display: block;}
+textarea{resize: none;}
+.color_f7{background: #F7F7F7;}
+input,textarea,button,select{border:none;outline:none;font-family:'Microsoft Yahei';}
+
+h1,h2,h3,h4,h5,h6{font-weight: normal;}
+.text-left{
+	text-align: left;
+}
+.text-right{
+	text-align: right;
+}
+.text-text{
+    text-align: center;
+}
+
+/*重置bootstrap部分样式属性*/
+p{
+	padding: 0;
+	margin: 0;
+}
+h1,h2,h3,h4,h5,h6{
+	padding: 0;
+	margin: 0;
+}
+label,ul,.col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9{
+	padding: 0;
+	margin: 0;
+}
+.container-fluid {
+    padding-right: 0.2rem;
+    padding-left: 0.2rem;
+    margin-right: auto;
+    margin-left: auto;
+}
+ .container{
+    padding-right: 0.3rem;
+    padding-left: 0.3rem;
+    margin-right: auto;
+    margin-left: auto;
+}

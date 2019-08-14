@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>添加优惠券</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="../../layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../layuiadmin/style/admin.css" media="all">
+</head>
+<style>
+    .copyLinkBox {
+        display: flex;
+        background-color: #9c78fc;
+        margin: 0 10px;
+        border-radius: 5px;
+        height: 60px;
+        line-height: 60px
+    }
+
+    .copyLinkBox p {
+        color: #FFFFFF;
+        margin-left: 20px
+    }
+
+    .promoteLink {
+        font-size: 16px;
+        padding: 0 0 5px 10px;
+    }
+</style>
+<body>
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12 layui-card">
+            <div class="layui-card-header">推广信息</div>
+            <form class="layui-form" lay-filter="add_form" style="padding-top: 15px;width: 60%;">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">商品分类</label>
+                    <div class="layui-input-block">
+                        <select lay-verify="required" name="categorys_id" id="my_classify_select" lay-filter="classify">
+                            <option value="">选择分类</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">商品名称</label>
+                    <div class="layui-input-block">
+                        <select lay-verify="required" name="pro_id" id="my_goods_select" lay-filter="googds_classfily">
+                            <option value="">选择商品</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">折扣面额</label>
+                    <div class="layui-input-block">
+                        <input lay-verify="required" type="number" onmousewheel="return false;" name="price" autocomplete="off" placeholder="请输入优惠券金额" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline" style="padding-bottom: 15px">
+                    <label class="layui-form-label">结束时间</label>
+                    <div class="layui-input-inline">
+                        <input lay-verify="required" type="text" name="end_time" autocomplete="off" class="layui-input" id="end_date" placeholder="选择结束时间">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">生成数量</label>
+                    <div class="layui-input-block" style="display: flex">
+                        <input lay-verify="required" style="width: 80%;" type="number" onmousewheel="return false;" name="num" autocomplete="off" placeholder="请输入生成数量" class="layui-input">
+                        <span style="padding-top: 8px;padding-left: 10px;font-size: 16px">(最多1000张)</span>
+                    </div>
+                </div>
+                <div class="layui-form-item layui-form-text">
+                    <label class="layui-form-label">备注信息</label>
+                    <div class="layui-input-block">
+                        <textarea name="remark" class="layui-textarea"></textarea>
+                        <input type="checkbox" name="" title="生成导入券到文本" lay-skin="primary" checked>
+                    </div>
+                </div>
+                <button lay-filter="save_btn" lay-submit style="margin-left: 500px;" class="layui-btn">保存</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+</body>
+<script src="../../layuiadmin/layui/layui.js?t=1"></script>
+<script>
+    layui.use(['table','laydate'], function () {
+        var laydate = layui.laydate
+            , form = layui.form
+            , $ = layui.$;
+
+        //获取分类
+        get_kami_classfily();
+        function get_kami_classfily() {
+            $.ajax({
+                url: parent.baseUrl + "/Categorys/userCate",//接口地址
+                dataType: 'json',
+                type: "POST",  //类型
+                data: {
+                    token: localStorage.getItem("token")
+                },
+                success: function (res) {
+                    console.log(res);
+                    if (res.code === "200") {
+                        if (res.data != null) {
+                            let datas = res.data;
+                            //渲染select->option的值
+                            for (var i = 0;i < datas.length;i++){
+                                $('#my_classify_select').append('<option value="' + datas[i].id + '">' + datas[i].categorys_name + '</option>');
+                            }
+                            form.render('select');
+                        }
+                    } else {
+                        layer.msg(res.msg)
+                    }
+                }
+            });
+        }
+
+        //监听select
+        form.on('select(classify)', function (data) {
+            //查询分类下面所有商品
+            get_classfily_goods(data.value);
+        });
+
+        //获取分类下的商品
+        function get_classfily_goods(ids) {
+            $.ajax({
+                url: parent.baseUrl + "/Categorys/catePro",//接口地址
+                dataType: 'json',
+                type: "POST",  //类型
+                data: {
+                    id: ids,
+                    token: localStorage.getItem("token")
+                },
+                success: function (res) {
+                    console.log(res);
+                    if (res.code === "200") {
+                        if (res.data != null) {
+                            let datas = res.data;
+                            let option = '<option value="">请选择商品</option>';
+                            //渲染select->option的值
+                            for (var i = 0; i < datas.length; i++) {
+                                if (datas[i].product_name === null) {
+                                    datas[i].product_name = "没有商品";
+                                }
+                                option += "<option value='" + datas[i].pro_id + "'>" + datas[i].product_name + "</option>";
+                            }
+                            $("#my_goods_select").html(option);
+                            form.render('select');
+                        }
+                    } else {
+                        layer.msg(res.msg)
+                    }
+                }
+            });
+        }
+
+        /* 自定义验证规则 */
+        form.verify({
+            required: function (value) {
+                if (value === "" ) {
+                    return '此项必填！';
+                }
+            },
+        });
+
+
+        //时间日期选择
+        laydate.render({
+            elem: '#end_date'
+            ,type: 'datetime'
+        });
+
+        //监听表单提交
+        form.on('submit(save_btn)',function (d) {
+            var filed = d.field;
+            filed['token'] = localStorage.getItem('token');
+            $.post( parent.baseUrl + "/coupon/addCoupon",filed,function(res){
+                console.log(res);
+                if( res.code === "200" ){
+                    layer.msg(res.msg,{icon: 1});
+                    setTimeout(function () {
+                        parent.to_manage_coupon();
+                    },800);
+                }else{
+                    layer.msg(res.msg,{icon: 2});
+                }
+            },'json');
+            return false;
+        })
+    });
+</script>
+</html>
+

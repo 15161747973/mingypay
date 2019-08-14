@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>安全码设定</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="../../layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../layuiadmin/style/admin.css" media="all">
+    <link rel="stylesheet" href="../../layuiadmin/style/login.css" media="all">
+</head>
+<style>
+    .hand{cursor: pointer;
+        display: inline-block;
+    }
+</style>
+<body>
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-header hand" style="padding-left: 30px" onclick="returns()"><i class="layui-icon" style="left: 13px;top: 19px;">&#xe603;</i>安全中心</div>
+                <form class="layui-form">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">安全验证</label>
+                        <div class="layui-input-block">
+                            <input type="radio" name="is_open_safe" value="0" title="关闭" checked>
+                            <input type="radio" name="is_open_safe" value="1" title="开启">
+                        </div>
+                    </div>
+
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">安全码</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="safe_code" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">确认安全码</label>
+                        <div class="layui-input-block">
+                            <input type="text" name="re_safe_code" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div style="text-align: center;padding-bottom: 20px">
+                        <button type="button" class="layui-btn buttonStyle" lay-submit lay-filter="submit_btn" style="width: 200px;">提交</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+<script src="../../layuiadmin/layui/layui.js"></script>
+<script>
+    layui.use(['table','laydate'], function () {
+        var form = layui.form,
+            $ = layui.$;
+        form.on('submit(submit_btn)',function (data){
+            let filed = data.field;
+            filed["token"] = localStorage.getItem("token");
+            $.post( parent.baseUrl + "/users/setSafeCode",filed,function(res){
+                console.log(res);
+                if( res.code === "200" ){
+                    layer.msg(res.msg,{icon: 1});
+                    setTimeout(function () {
+                        window.returns();
+                    },800)
+                }else{
+                    layer.msg(res.msg,{icon: 2});
+                }
+            },'json');
+            //一定要阻止表单跳转
+            return false;
+        });
+        //返回上级页面
+        window.returns = function returns() {
+            window.history.go(-1)
+        }
+    });
+
+
+</script>
+</html>

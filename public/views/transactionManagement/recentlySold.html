@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>最近卖出</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="../../layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../layuiadmin/style/admin.css" media="all">
+</head>
+
+<body>
+<div class="layui-fluid">
+    <div class="layui-col-space15">
+        <div class="layui-card">
+            <div class="layui-card-header">最近卖出</div>
+            <form class="layui-form" lay-filter="latelySale" style="margin-top: 15px">
+                <div class="layui-inline layui-form" style="margin-left: 15px" lay-filter="first_select">
+                    <select name="categorys_id" id="kami_classfily" lay-filter="kami_classfily">
+                        <option value="">全部分类</option>
+                    </select>
+                </div>
+                <div class="layui-inline layui-form" style="margin-left: 30px;" lay-filter="second_select">
+                    <select name="pro_id" id="selected_goods">
+                        <option value="">全部商品</option>
+                    </select>
+                </div>
+                <div class="layui-inline">
+                    <div style="margin-left: 30px;width: 300px">
+                        <input type="text" name="mobile" autocomplete="off" class="layui-input" placeholder="请输入卡号或卡密">
+                    </div>
+                </div>
+                <div class="layui-inline">
+                    <div style="margin-left: 30px;width: 300px">
+                        <input type="text" name="order_num" autocomplete="off" class="layui-input" placeholder="请输入订单号">
+                    </div>
+                </div>
+                <button class="layui-btn buttonStyle" lay-submit lay-filter="search_btn" style="width: 100px;margin-left: 20px" type="button">查找</button>
+            </form>
+            <div class="layui-card-body">
+                <table class="layui-hide" id="recently_sold"></table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+<script src="../../layuiadmin/layui/layui.js"></script>
+<script>
+    layui.config({
+        base: '../../layuiadmin/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index', 'form', 'table'], function () {
+        var $ = layui.$
+            , table = layui.table
+            , form = layui.form;
+
+        table.render({
+            elem: '#recently_sold'
+            , url: parent.baseUrl + '/order/nearSell'
+            , method: 'POST'
+            , limit: 10
+            , where: {
+                token: localStorage.getItem("token")
+            }
+            , parseData: function (res) { //res 即为原始返回的数据
+                return {
+                    "code": res.code, //解析接口状态
+                    "msg": res.msg, //解析提示文本
+                    "count": res.data.count, //解析数据长度
+                    "data": res.data.res //解析数据列表
+                };
+            }
+            , cols: [[
+                  {field: 'categorys_id', title: '分类id', sort: true,hide: true}
+                , {field: 'order_num', title: '订单编号', sort: true}
+                , {field: 'pay_time', title: '卖出时间', sort: true}
+                , {field: 'pro_name', title: '商品名称', sort: true}
+                , {field: 'pro_num', title: '数量', sort: true}
+                , {field: 'price', title: '金额', sort: true}
+                , {field: 'user_price', title: '分成', sort: true}
+                , {field: 'pay_type', title: '支付方式', sort: true,templet:function (data) {
+                        let statu = data.pay_type;
+                        if( statu === 1 ){
+                            return "支付宝"
+                        }else if( statu === 2 ){
+                            return "银行卡"
+                        }
+                    }}
+                , {field: 'mobile', title: '购买者信息', sort: true}
+                , {field: 'khamwiInfo', title: '卡密信息', sort: true,templet: function(d){
+                        if( d.card_num === null ){
+                            d.card_num = '';
+                        }
+                        if( d.card_pwd === null ){
+                            d.card_pwd = '';
+                        }
+                        return '<span>'+ '卡号:'+ d.card_num + ' | ' +'卡密:'+ d.card_pwd +'</span>'
+                    }
+                }
+            ]]
+            , done: function (res) {//成功回调
+                console.log(res);
+            }
+            , page: { //支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档//自定义分页
+                layout: ['limit', 'count', 'prev', 'page', 'next', 'skip'] //自定义分页布局
+                , groups: 5 //只显示 1 个连续页码
+                , prev:"上一页"
+                , next:"下一页"
+            }
+        });
+
+        //查询用户下所有分类
+        get_kami_classfily();
+
+        //监听select
+        form.on('select(kami_classfily)', function (data) {
+            //查询分类下面所有商品
+            get_classfily_goods(data.value);
+        });
+
+        function get_classfily_goods(ids) {
+            $.ajax({
+                url: parent.baseUrl + "/Categorys/catePro",//接口地址
+                dataType: 'json',
+                type: "POST",  //类型
+                data: {
+                    id: ids,
+                    token: localStorage.getItem("token")
+                },
+                success: function (res) {
+                    console.log(res);
+                    if (res.code === "200") {
+                        if (res.data != null) {
+                            let datas = res.data;
+                            let option = '';
+                            //渲染select->option的值
+                            for( var i = 0;i < datas.length;i++ ){
+                                option +="<option value='"+datas[i].pro_id+"'>"+datas[i].product_name+"</option>";
+                            }
+                            $("#selected_goods").html(option);
+                            form.render(null,'second_select');
+                        }
+                    } else {
+                        layer.msg(res.msg)
+                    }
+                }
+            });
+        }
+        function get_kami_classfily() {
+            $.ajax({
+                url: parent.baseUrl + "/Categorys/userCate",//接口地址
+                dataType: 'json',
+                type: "POST",  //类型
+                data: {
+                    token: localStorage.getItem("token")
+                },
+                success: function (res) {
+                    console.log(res);
+                    if (res.code === "200") {
+                        if (res.data != null) {
+                            let datas = res.data;
+                            //渲染select->option的值
+                            for (var i = 0;i < datas.length;i++){
+                                $('#kami_classfily').append('<option value="' + datas[i].id + '">' + datas[i].categorys_name + '</option>');
+                            }
+                            form.render(null,'first_select');
+                        }
+                    } else {
+                        layer.msg(res.msg)
+                    }
+                }
+            });
+        }
+
+        /* 监听提交 */
+        form.on('submit(search_btn)', function (data) {
+            let filed = data.field;
+            console.log(filed);
+            table.reload('recently_sold', {
+                 url: parent.baseUrl + '/order/nearSell'
+                ,where: {//设定异步数据接口的额外参数
+                     pro_id: filed.pro_id
+                    ,order_num: filed.order_num
+                    ,mobile: filed.mobile
+                    ,categorys_id: filed.categorys_id
+                }
+            });
+            //阻止表单提交
+            return false;
+        });
+    });
+</script>
+</html>

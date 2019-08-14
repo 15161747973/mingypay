@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>欢迎注册</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+    <script src="js/jquery-3.3.1.js"></script>
+    <link rel="stylesheet" href="css/swiper.min.css"/>
+    <link rel="stylesheet" type="text/css" href="css/layer.css"/>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/animate.css">
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            /*height: 1000px;*/
+            min-width: 1065px;
+            -moz-user-select: none; /*火狐*/ /*禁止用户在页面选择文字*/
+            -webkit-user-select: none; /*webkit浏览器*/
+            -ms-user-select: none; /*IE10*/
+            -khtml-user-select: none; /*早期浏览器*/
+        }
+
+        @media screen and (max-width: 1000px) {
+            .titleOrder {
+                background-color: red
+            }
+        }
+
+        .mukuai img {
+            width: 100%;
+        }
+
+        .navbar ul li a:after {
+            content: "";
+            width: 0;
+            height: 1px;
+            position: absolute;
+            top: 75%;
+            left: 50%;
+            transition: all .5s;
+            border-bottom: 2px solid #FFFFFF;
+        }
+
+        .navbar li a:hover:after {
+            left: 25%;
+            width: 50%;
+            text-align: center;
+        }
+
+        .collapse {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 90%;
+            height: 70px;
+        }
+
+        .my-navbar a {
+            background: transparent !important;
+            color: #fff !important;
+            font-size: 1.2em;
+        }
+
+        .my-navbar a:hover {
+            background: transparent;
+            outline: 0
+        }
+
+        .navbar-nav > li > a {
+            padding-top: 15px;
+            padding-bottom: 15px;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .nav-left {
+            width: 300px;
+            margin-right: 400px;
+        }
+
+        .my-navbar2 a {
+            background: transparent !important;
+            color: #333 !important;
+            font-size: 1.2em;
+        }
+
+        .my-navbar2 a:hover {
+            background: transparent;
+            outline: 0
+        }
+
+        .navbar2 ul li a:after {
+            content: "";
+            width: 0;
+            height: 1px;
+            position: absolute;
+            top: 75%;
+            left: 50%;
+            transition: all .5s;
+            border-bottom: 2px solid #000000;
+        }
+
+        .navbar2 li a:hover:after {
+            left: 25%;
+            width: 50%;
+            text-align: center;
+        }
+
+        .foot h4 {
+            font-weight: 100;
+            font-family: "Microsoft YaHei", Arial;
+            line-height: 1.34;
+            color: #000000;
+        }
+
+        .foot p {
+            color: #666;
+            font-size: 15px;
+            line-height: 35px;
+        }
+
+        .loginBoxs {
+            margin-top: 9px;
+            display: flex;
+            color: #FFFFFF;
+            font-size: 18px;
+            width: 156px;
+            justify-content: space-between;
+            /*margin-left:5px;*/
+        }
+
+        .bgImages {
+            background-image: url("image/bgImage.png");
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            width: 100%;
+            height: 937px;
+            text-align: center;
+            padding-top: 130px;
+        }
+
+        .loginBox {
+            width: 600px;
+            border-radius: 15px;
+            margin: 0px auto;
+            background-color: #FFFFFF;
+            padding-bottom: 10px
+        }
+
+        .WelcomeTo {
+            text-align: center;
+            font-size: 25px;
+            color: #000000;
+            padding-top: 30px
+        }
+
+        .userNameBox {
+            display: flex;
+            margin-top: 20px;
+            margin-left: 80px
+        }
+
+        .userNameBox > p {
+            font-size: 18px;
+            color: #333333;
+            margin-top: 10px;
+            width: 100px;
+            text-align: right
+        }
+
+        .userNameBox > input {
+            border: none;
+            outline: none;
+            font-size: 16px;
+            color: #333333;
+            margin-left: 40px;
+            width: 300px;
+        }
+
+        .userNameBoxs {
+            display: flex;
+            margin-top: 20px;
+            margin-left: 80px
+        }
+
+        .messageCode {
+            font-size: 18px;
+            color: #333333;
+            margin-top: 12px;
+            width: 121px
+        }
+
+        .userNameBoxs > input {
+            border: none;
+            outline: none;
+            font-size: 16px;
+            color: #333333;
+            margin-left: 15px;
+            width: 150px
+        }
+
+        .line {
+            border-top: 1px solid #eeeeee;
+            width: 70%;
+            margin-top: 0
+        }
+
+        .lines {
+            border-top: 1px solid #eeeeee;
+            width: 70%;
+            margin-top: 0px
+        }
+
+        .loginBtn {
+            background: linear-gradient(to right, #3864f9, #708ffa);
+            color: #FFFFFF;
+            font-size: 18px;
+            text-align: center;
+            width: 30%;
+            margin: 0 auto;
+            padding: 8px 0;
+            border-radius: 10px;
+            margin-top: 30px
+        }
+
+        .sendCode {
+            background: linear-gradient(to right, #3864f9, #708ffa);
+            font-size: 14px;
+            color: #FFFFFF;
+            border-radius: 30px;
+            margin-top: 13px;
+            padding: 5px 10px
+        }
+
+        .bottomBtn {
+            text-align: center;
+            font-size: 16px;
+            margin-top: 20px;
+        }
+
+        .skipBox {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 101;
+            background-color: #FFFFFF;
+            padding-bottom: 30px;
+            border-radius: 0 0 15px 15px;
+            display: none
+        }
+
+        .titleColor {
+            background-color: #d3dcfd;
+            width: 1060px;
+            height: 45px
+        }
+
+        .bgColor {
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #000000;
+            opacity: 0.5;
+            z-index: 100;
+            display: none
+        }
+
+        .titleText {
+            font-size: 26px;
+            color: #3360f8;
+            text-align: center;
+            margin-top: 35px
+        }
+
+        .littleBox {
+            padding: 0 50px;
+            font-size: 15px;
+            line-height: 25px
+        }
+
+        .statementBox {
+            display: flex;
+            justify-content: space-around;
+            font-size: 17px;
+            margin-top: 20px
+        }
+
+        .aList {
+            color: #3864f9
+        }
+
+        .aList:hover {
+            color: red
+        }
+
+        .consentBtn {
+            background-color: #305df8;
+            color: #FFFFFF;
+            text-align: center;
+            width: 150px;
+            border-radius: 10px;
+            padding: 15px 0;
+            margin: 20px auto
+        }
+
+        .userNameBox {
+            width: 100%;
+        }
+
+        .loginBtns {
+            border-radius: 20px;
+            width: 60%;
+            text-align: center;
+            margin-left: 10px;
+            background: linear-gradient(to right, #ff6a3c, #ff2953);
+            padding: 6px 0;
+        }
+
+        .userBox {
+            position: relative
+        }
+
+        .errorMsg {
+            position: absolute;
+            top: 42px;
+            left: 35%;
+            color: red;
+            display: none
+        }
+
+        #yzCcode {
+            width: 150px;
+        }
+    </style>
+</head>
+
+<body>
+<div style="position: absolute;z-index: 1113;width: 100%">
+    <nav class="navbar navbar-top my-navbar" role="navigation">
+        <div class="collapse container">
+            <div class="nav-left"><img src="image/logo.png" alt=""/></div>
+            <div class="nav-right navbar-collapse" id="example-navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="index.html">网站首页</a>
+                    </li>
+                    <li>
+                        <a href="Serve.html">公司简介</a>
+                    </li>
+                    <li>
+                        <a href="Case.html">联系我们</a>
+                    </li>
+                    <li>
+                        <a href="viewpoint.html">订单查询</a>
+                    </li>
+                </ul>
+                <div class="loginBoxs">
+                    <p class="loginBtns" onclick="toLogin()">登录</p>
+                    <!--                        <p class="registerBtns" onclick="toRegister()">注册</p>-->
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+<div class="bgImages">
+    <div class="loginBox">
+        <p class="WelcomeTo">欢迎注册</p>
+        <div style="text-align: center">
+            <div class="userBox">
+                <div class="userNameBox">
+                    <p>用户名：</p>
+                    <input id="userName" type="text" placeholder="请输入用户名" autocomplete="on">
+                </div>
+                <hr class="line">
+                <p id="errorShow" class="errorMsg">请输入6~18位字符</p>
+            </div>
+            <div class="userBox">
+                <div class="userNameBox">
+                    <p>手机号码：</p>
+                    <input id="phoneNunber" type="text" placeholder="请输入手机号">
+                </div>
+                <hr class="line">
+                <p id="errorShows" class="errorMsg">手机号码不正确</p>
+            </div>
+            <div class="userBox">
+                <div class="userNameBox">
+                    <p>邮箱：</p>
+                    <input id="emaill" type="text" placeholder="请输入邮箱">
+                </div>
+                <hr class="line">
+                <p id="errormsgs" class="errorMsg">邮箱格式不正确</p>
+            </div>
+            <div class="userBox">
+                <div class="userNameBox">
+                    <p>QQ号：</p>
+                    <input id="qq" type="number" placeholder="请输入QQ号">
+                </div>
+                <hr class="line">
+                <p id="qqMsgError" class="errorMsg">QQ号不能为空</p>
+            </div>
+            <div class="userBox">
+                <div class="userNameBoxs">
+                    <p class="messageCode">验证码：</p>
+                    <input id="yzCcode" type="text" placeholder="请输入验证码" class="input-val">
+                    <div>
+                        <canvas id="canvas" width="100" height="43"></canvas>
+                    </div>
+                </div>
+                <hr class="lines">
+                <p id="yzError" class="errorMsg">密码不能少于6位</p>
+            </div>
+            <div class="userBox">
+                <div class="userNameBoxs">
+                    <p class="messageCode">短信验证码：</p>
+                    <input id="noteCcode" type="text" placeholder="请输入短信验证码">
+                    <div>
+                        <p class="sendCode" id="send_code">发送验证码</p>
+                    </div>
+                </div>
+                <hr class="lines">
+            </div>
+            <div class="userBox">
+                <div class="userNameBox">
+                    <p>设置密码：</p>
+                    <input id="firstPassword" type="password" placeholder="请输入密码">
+                </div>
+                <hr class="line">
+                <p id="yzMsgError" class="errorMsg">密码不能少于6位</p>
+            </div>
+            <div class="userBox">
+                <div class="userNameBox">
+                    <p>确认密码：</p>
+                    <input id="secondPassword" type="password" placeholder="请确认密码">
+                </div>
+                <hr class="line">
+            </div>
+        </div>
+        <p class="loginBtn" onclick="refister()">确认</p>
+        <div class="bottomBtn">
+            <span>已有账号？</span><span onclick="toLogin()" style="color: #3864f9;">去登录</span>
+        </div>
+    </div>
+</div>
+<p class="bgColor" id="shieldingLayer"></p>
+<div class="skipBox" id="popups">
+    <div class="titleColor"></div>
+    <p class="titleText">平台注册协议</p>
+    <div class="littleBox">
+        <p>【审慎阅读】您在申请注册流程中点击同意前，应当认真阅读以下协议。请您务必审慎阅读、充分理解协议中相关条款内容，其中包括：</p>
+        <p>1、与您约定免除或限制责任的条款；</p>
+        <p>2、与您约定法律适用和管辖的条款；</p>
+        <p>3、其他以粗体下划线标识的重要条款。</p>
+        <p>如您对协议有任何疑问，可向平台客服咨询。</p>
+        <p>
+            【特别提示】当您按照注册页面提示填写信息、阅读并同意协议且完成全部注册程序后，即表示您已充分阅读、理解并接受协议的全部内容。如您因平台服务与明宇发卡发生争议的，适用《明宇发卡平台服务协议》处理。如您在使用平台服务过程中与其他用户发生争议的，依您与其他用户达成的协议处理。</p>
+        <p>阅读协议的过程中，如果您不同意相关协议或其中任何条款约定，您应立即停止注册程序。</p>
+    </div>
+    <div class="statementBox">
+        <p><a class="aList" href="protocol.html">《明宇自动发卡平台协议》</a></p>
+        <p><a class="aList" href="statement.html">《法律声明及隐私权政策》</a></p>
+        <p><a class="aList" href="BanOnGoods.html">《平台禁售商品目录》</a></p>
+    </div>
+    <p class="consentBtn" id="consentBtn">同意协议</p>
+</div>
+
+
+</body>
+
+<script src="js/swiper.min.js"></script>
+<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/important.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="layer/layer.js"></script>
+<script src="js/baseUrl.js"></script>
+<script type="text/javascript">
+    //上方导航栏底部横线
+    var is_skip = 1;
+    setInterval(function () {
+        var a = parseInt($(document).scrollTop());
+        /*$("#a").text(a)*/
+        if (a >= 600) {
+            $(".navbar2").css("top", "0px").css("opacity", "1");
+        } else {
+            $(".navbar2").css("top", "-50px").css("opacity", "0");
+        }
+    });
+    //页面跳转
+    $("#ImmediatelyQuery").click(function () {
+        window.location.href = 'complaintInformation.html'
+    });
+
+    //跳转登录页面
+    function toLogin() {
+        window.location.href = 'login.html'
+    }
+
+    //跳转注册页面
+    function toRegister() {
+        window.location.href = 'register.html'
+    }
+
+    function toForgetPassword() {
+        window.location.href = 'forgetPassword.html'
+    }
+
+    //跳转注册页面
+    function toRegister() {
+        window.location.href = 'register.html'
+    }
+
+    function toLogin() {
+        window.location.href = 'login.html'
+    }
+
+    //默认显示弹出层
+    $("#shieldingLayer").show(500);
+    $("#popups").show(500);
+    //点击背景弹窗消失
+    $("#consentBtn").click(function () {
+        $("#shieldingLayer").hide();
+        $("#popups").hide();
+    });
+    //用户名input失去焦点事件
+    $("#userName").blur(function () {
+        if ($("#userName").val().length < 6 || $("#userName").val().length > 18) {
+            $("#errorShow").show();
+        } else if ($("#userName").val().length > 6 || $("#userName").val().length < 18) {
+            $("#errorShow").hide();
+        }
+    });
+    //手机号input失去焦点事件
+    $("#phoneNunber").blur(function () {
+        var phoneNum = /^1[3|4|5|8|7][0-9]{9}$/;
+        if (!phoneNum.test($("#phoneNunber").val())) {
+            $("#errorShows").show();
+        } else if (phoneNum.test($("#phoneNunber").val())) {
+            $("#errorShows").hide();
+        }
+    });
+    //邮箱input失去焦点事件
+    $("#emaill").blur(function () {
+        var emails = /^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/;
+        if (!emails.test($("#emaill").val())) {
+            $("#errormsgs").show();
+        } else if (emails.test($("#emaill").val())) {
+            $("#errormsgs").hide();
+        }
+    });
+    //QQinput失去焦点事件
+    $("#qq").blur(function () {
+        if ($("#qq").val().length <= 0) {
+            $("#qqMsgError").show();
+        } else {
+            $("#qqMsgError").hide();
+        }
+    });
+    //密码input失去焦点事件
+    $("#firstPassword").blur(function () {
+        if ($("#firstPassword").val().length < 6 || $("#firstPassword").val().length > 18) {
+            $("#yzMsgError").show();
+        } else if ($("#userName").val().length > 6 || $("#userName").val().length < 18) {
+            $("#yzMsgError").hide();
+        }
+    });
+
+
+    //图片验证码js
+    $(function () {
+        var show_num = [];
+        draw(show_num);
+
+        $("#canvas").on('click', function () {
+            draw(show_num);
+        });
+
+        $("#yzCcode").blur(function () {
+            var val = $(".input-val").val().toLowerCase();
+            var num = show_num.join("");
+            if ( val == '' ) {
+                is_skip = 1;
+                // layer.msg('请输入验证码！');
+            } else if ( val == num ) {
+                is_skip = 2;
+                // layer.alert('注册成功！去登录');
+                // $(".input-val").val('');
+                // draw(show_num);
+            } else {
+                is_skip = 3;
+                // layer.msg('验证码错误！请重新输入！');
+                $(".input-val").val('');
+                draw(show_num);
+                return false
+            }
+        });
+
+    });
+    function draw(show_num) {
+        var canvas_width = $('#canvas').width();
+        var canvas_height = $('#canvas').height();
+        var canvas = document.getElementById("canvas");//获取到canvas的对象，演员
+        var context = canvas.getContext("2d");//获取到canvas画图的环境，演员表演的舞台
+        canvas.width = canvas_width;
+        canvas.height = canvas_height;
+        var sCode = "A,B,C,E,F,G,H,J,K,L,M,N,P,Q,R,S,T,W,X,Y,Z,1,2,3,4,5,6,7,8,9,0";
+        var aCode = sCode.split(",");
+        var aLength = aCode.length;//获取到数组的长度
+
+        for (var i = 0; i <= 3; i++) {
+            var j = Math.floor(Math.random() * aLength);//获取到随机的索引值
+            var deg = Math.random() * 30 * Math.PI / 180;//产生0~30之间的随机弧度
+            var txt = aCode[j];//得到随机的一个内容
+            show_num[i] = txt.toLowerCase();
+            var x = 10 + i * 20;//文字在canvas上的x坐标
+            var y = 20 + Math.random() * 8;//文字在canvas上的y坐标
+            context.font = "bold 23px 微软雅黑";
+
+            context.translate(x, y);
+            context.rotate(deg);
+
+            context.fillStyle = randomColor();
+            context.fillText(txt, 0, 0);
+
+            context.rotate(-deg);
+            context.translate(-x, -y);
+        }
+        for (var i = 0; i <= 5; i++) { //验证码上显示线条
+            context.strokeStyle = randomColor();
+            context.beginPath();
+            context.moveTo(Math.random() * canvas_width, Math.random() * canvas_height);
+            context.lineTo(Math.random() * canvas_width, Math.random() * canvas_height);
+            context.stroke();
+        }
+        for (var i = 0; i <= 30; i++) { //验证码上显示小点
+            context.strokeStyle = randomColor();
+            context.beginPath();
+            var x = Math.random() * canvas_width;
+            var y = Math.random() * canvas_height;
+            context.moveTo(x, y);
+            context.lineTo(x + 1, y + 1);
+            context.stroke();
+        }
+    }
+
+    function randomColor() {//得到随机的颜色值
+        var r = Math.floor(Math.random() * 256);
+        var g = Math.floor(Math.random() * 256);
+        var b = Math.floor(Math.random() * 256);
+        return "rgb(" + r + "," + g + "," + b + ")";
+    }
+
+    let sms_code;
+
+    //短信验证接口
+    $("#send_code").click(function () {
+        var phoneNunber1 = $("#phoneNunber").val();
+        var reg = /^1[3456789]\d{9}$/g;
+        var judge = reg.test(phoneNunber1);
+        if(judge === false) {
+            layer.msg("请输入真实的手机号");
+            return false;
+        }
+        if ( is_skip === 1 ){
+            layer.msg("请输入验证码");
+            return false;
+        }
+        if( is_skip === 3 ){
+            layer.msg("验证码错误！请重新输入！");
+            return false;
+        }
+            var countdown = 60;
+            settime($(this));
+            function settime(obj) {
+                if (countdown == 0) {
+                    $(obj).removeAttr("disabled");
+                    $(obj).text("获取验证码");
+                    $(obj).css({"pointer-events": "", "color": "#fff"});
+                    countdown = 60;
+                    return;
+                } else {
+                    $(obj).attr("disabled", true);
+                    $(obj).text(countdown + 's' + '后重发');
+                    $(obj).css({"pointer-events": "none", "color": "#ccc"});
+                    countdown--;
+                }
+                setTimeout(function () {
+                    settime(obj)
+                }, 1000)
+            }
+        $.ajax({
+            url: baseUrl + "/sms/SendSms",
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                mobile: phoneNunber1,
+                type: 1,
+                event: "register",
+            },
+            success: function (ret) {
+                console.log(ret);
+                if ( ret.code === "200" ) {
+                    sms_code = ret.data;
+                    layer.msg('' + ret.msg + '');
+                } else {
+                    layer.msg(ret.msg);
+                }
+            }
+        });
+    });
+
+    //注册接口
+    function refister() {
+        var userName1 = $("#userName").val();
+        var phoneNunber1 = $("#phoneNunber").val();
+        var emaill1 = $("#emaill").val();
+        var qq1 = $("#qq").val();
+        var firstPassword1 = $("#firstPassword").val();
+        var secondPassword1 = $("#secondPassword").val();
+        var noteCcode1 = $("#noteCcode").val();
+        console.log(sms_code)
+        if ( firstPassword1 !== secondPassword1 ) {
+            layer.msg("两次密码不一致");
+            return false
+        }
+
+        if( noteCcode1 != sms_code ){
+            layer.msg("验证码错误");
+            return false;
+        }
+
+        if( emaill1 === '' ){
+            layer.msg("请输入邮箱");
+            return false;
+        }
+
+        $.ajax({
+            url: baseUrl + "/users/register",
+            type: 'POST',
+            dataType: 'json',
+            data: {
+                username: userName1,
+                password: firstPassword1,
+                repeatpass: secondPassword1,
+                email: emaill1,
+                qq: qq1,
+                mobile: phoneNunber1,
+                code: sms_code
+            },
+            success: function (ret) {
+                console.log(ret);
+                if ( ret.code === "200" ) {
+                    layer.msg('' + ret.msg + '');
+                    if( ret.data != null ){
+                        setTimeout(function () {
+                            window.location.href = 'login.html'
+                        },1500);
+                    }
+                } else {
+                    layer.msg(ret.msg);
+                }
+            }
+        });
+    }
+
+</script>
+
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>投诉管理</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="../../layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../layuiadmin/style/admin.css" media="all">
+</head>
+<style>
+    .Complaints_communication{
+        border-radius: 5px;
+        background-color: red;
+        padding: 5px 10px;
+        color: #FFFFFF;
+    }
+</style>
+<body>
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-header" style="font-size: 18px;font-weight: 600">投诉列表 (您被投诉总冻结金额：<span style="color: red" id="freeze_money"></span>元)</div>
+                <div class="layui-card-body">
+                    <table class="layui-hide" id="test-table-simple"></table>
+                    <script type="text/html" id="complaint_management">
+                        <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+                        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/html" id="operation">
+    <a href="../operation/submit_documents.html" target="_blank" class="Complaints_communication">投诉沟通</a>
+</script>
+
+
+</body>
+<script src="../../layuiadmin/layui/layui.js"></script>
+<script>
+    layui.config({
+        base: '../../layuiadmin/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index', 'table'], function(){
+        var table = layui.table
+            , $ = layui.$;
+
+        table.render({
+              elem: '#complaint_management'
+            , url: parent.baseUrl + '/ComplainOrder/agentComplainOrder'
+            , method: 'POST'
+            , limit: 10
+            , id: 'heavy_load'
+            , where: {
+                order_type: 0,
+                token: localStorage.getItem("token")
+            }
+            , parseData: function (res) { //res 即为原始返回的数据
+                return {
+                    "code": res.code, //解析接口状态
+                    "msg": res.msg, //解析提示文本
+                    "count": res.data.count, //解析数据长度
+                    "data": res.data.res, //解析数据列表
+                    "freeze_money": res.data.freeze_money //解析数据列表
+                };
+            }
+            ,cols: [[
+                {field:'order_num',title: '订单号'}
+                ,{field:'product_name',title: '商品名'}
+                ,{field:'pay_price', title: '订单金额'}
+                ,{field:'create_time', title: '投诉时间', templet : "<div>{{layui.util.toDateString(d.create_time * 1000,'yyyy-MM-dd HH:mm:ss')}}</div>"}
+                ,{field:'qq', title: '用户QQ'}
+                ,{field:'mobile', title: '用户手机'}
+                ,{field:'cause', title: '投诉理由', templet: function (data) {
+                        let statu_plus = data.cause;
+                        if (statu_plus === 1) {
+                            return '<span>无效卡密</span>'
+                        } else if (statu_plus === 2) {
+                            return '<span>虚假商品</span>'
+                        }else if (statu_plus === 3) {
+                            return '<span>非法商品</span>'
+                        }else if (statu_plus === 4) {
+                            return '<span>侵权商品</span>'
+                        }else if (statu_plus === 5) {
+                            return '<span>不能购买</span>'
+                        }else if (statu_plus === 6) {
+                            return '<span>恐怖色情</span>'
+                        }else if (statu_plus === 7) {
+                            return '<span>其他投诉</span>'
+                        }
+                    }}
+                ,{field:'deal_status', title: '投诉状态', templet: function (data) {
+                        let statu_plus = data.deal_status;
+                        if (statu_plus === 0) {
+                            return '<span>处理中</span>'
+                        } else if (statu_plus === 1) {
+                            return '<span>处理完毕</span>'
+                        }
+                    }}
+                ,{field:'wealth', width:137, title: '投诉沟通',toolbar: '#operation'},
+                // {field:'asd',title:'操作', toolbar: '#test-table-toolbar-barDemo', width:150}
+            ]]
+            , done: function (res) {//成功回调
+                console.log(res);
+                $('#freeze_money').text(res.freeze_money)
+            }
+            , page: { //支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档//自定义分页
+                layout: ['limit', 'count', 'prev', 'page', 'next', 'skip'] //自定义分页布局
+                , groups: 5 //只显示 1 个连续页码
+                , prev:"上一页"
+                , next:"下一页"
+            }
+        });
+    });
+</script>
+</html>

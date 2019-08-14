@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>购买页面</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="../../layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../layuiadmin/style/admin.css" media="all">
+</head>
+<style>
+    .imageBox {
+        border: 1px solid #999999;
+        padding: 6px;
+    }
+</style>
+<body>
+<div class="layui-fluid">
+    <div class="layui-col-space15">
+        <div class="layui-col-md12 layui-card">
+            <div class="layui-card-header" style="font-size: 18px;font-weight: 600">商品主题</div>
+            <div class="layui-card-header">选择主题</div>
+            <form class="layui-form" lay-filter="component-form-element" style="text-align: center">
+                <div class="layui-col-md3">
+                    <div class="imageBox layui-inline">
+                        <img src="../../layuiadmin/image/jianjie.jpeg" height="220" width="320"/>
+                    </div>
+                    <div>
+                        <input type="radio" name="role" value="0" lay-filter="myCheckBox" title="经理" checked>
+                    </div>
+                </div>
+                <div class="layui-col-md3">
+                    <div class="imageBox layui-inline">
+                        <img src="../../layuiadmin/image/jianjie.jpeg" height="220" width="320"/>
+                    </div>
+                    <div>
+                        <input type="radio" name="role" value="1" lay-filter="myCheckBox" title="经理">
+                    </div>
+                </div>
+                <div class="layui-col-md3">
+                    <div class="imageBox layui-inline">
+                        <img src="../../layuiadmin/image/jianjie.jpeg" height="220" width="320"/>
+                    </div>
+                    <div>
+                        <input type="radio" name="role" value="2" lay-filter="myCheckBox" title="经理">
+                    </div>
+                </div>
+                <div class="layui-col-md3">
+                    <div class="imageBox layui-inline">
+                        <img src="../../layuiadmin/image/jianjie.jpeg" height="220" width="320"/>
+                    </div>
+                    <div>
+                        <input type="radio" name="role" value="3" lay-filter="myCheckBox" title="经理">
+                    </div>
+                </div>
+                <div class="layui-col-md3">
+                    <div class="imageBox layui-inline">
+                        <img src="../../layuiadmin/image/jianjie.jpeg" height="220" width="320"/>
+                    </div>
+                    <div>
+                        <input type="radio" name="role" value="4" lay-filter="myCheckBox" title="经理">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+<script src="../../layuiadmin/layui/layui.js"></script>
+<script>
+    layui.config({
+        base: '../../layuiadmin/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index', 'form'], function () {
+        var $ = layui.$
+            , form = layui.form;
+
+        form.on('radio(myCheckBox)', function (data) {
+            localStorage.setItem("status", data.value);
+            console.log(localStorage.getItem('status'));
+            //一定要阻止表单跳转
+            return false;
+        });
+    });
+</script>
+</html>

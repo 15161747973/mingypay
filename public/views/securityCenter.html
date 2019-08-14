@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>安全中心</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="../layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../layuiadmin/style/admin.css" media="all">
+</head>
+
+<style>
+    .setBox{
+        display: flex;
+        justify-content: space-around;
+        border-bottom: 1px solid #f6f6f6;
+        padding: 15px;
+    }
+    .setText{color: #ff0000;margin-top: 6px}
+</style>
+
+<body>
+    <div class="layui-fluid">
+        <div class="layui-card">
+            <div class="layui-card-header">安全中心</div>
+            <div class="setBox">
+                <p style="margin-top: 6px">安全密码</p>
+                <p class="setText" id="is_setting">未设置</p>
+                <button type="button" onclick="go_to_set_password()" class="layui-btn buttonStyle" id="click_setting_btn" style="height: 30px;line-height: 30px;width: 150px">点击设定</button>
+            </div>
+            <div class="setBox">
+                <p style="margin-top: 6px">邮箱认证</p>
+                <p class="setText" id="is_set_email">未设置</p>
+                <button type="button" onclick="go_to_certified_mail()" class="layui-btn buttonStyle" style="height: 30px;line-height: 30px;width: 150px" id="click_setting_email">前往认证邮箱</button>
+            </div>
+            <div class="setBox">
+                <p style="margin-top: 6px">手机号码</p>
+                <p class="setText" id="is_set_phone" style="color: green">已绑定</p>
+                <button type="button" onclick="go_to_modify_phone_number()" class="layui-btn buttonStyle" style="height: 30px;line-height: 30px;width: 150px" id="click_setting_phone">前往修改手机号</button>
+            </div>
+<!--            <div class="setBox">-->
+<!--                <p style="margin-top: 6px">身份认证</p>-->
+<!--                <p class="setText">未设置</p>-->
+<!--                <button type="button" class="layui-btn buttonStyle" style="height: 30px;line-height: 30px">前往身份认证</button>-->
+<!--            </div>-->
+            <div class="setBox">
+                <p style="margin-top: 6px">IP白名单</p>
+                <p class="setText" id="is_set_ip">未设置</p>
+                <button type="button" onclick="go_to_IP_white_list()" class="layui-btn buttonStyle" style="height: 30px;line-height: 30px;width: 150px" id="click_setting_ip">前往设置白名单</button>
+            </div>
+        </div>
+    </div>
+</body>
+
+<script src="../layuiadmin/layui/layui.js"></script>
+<script>
+    let is_open;//是否开启安全码
+    let is_set_emall;//是否设置邮箱
+    let is_set_ip;//是否设置IP报名单
+
+    layui.config({
+        base: '../layuiadmin/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index', 'form'],function () {
+        var $ = layui.$,
+            layer = layui.layer;
+        get_user_info();//调用获取用户所有信息方法
+        //查询用户所有信息
+        function get_user_info() {
+            $.ajax({
+                url: parent.baseUrl + "/users/shopInfo",//接口地址
+                dataType: 'json',
+                type: "POST",  //类型
+                data: {
+                    token: localStorage.getItem("token")
+                },
+                success: function (res) {
+                    console.log(res);
+                    if (res.code === "200") {
+                        if (res.data != null) {
+                            let datas = res.data;
+                            is_open = datas.is_open_safe;
+                            is_set_emall = datas.is_verify_email;
+                            is_set_ip = datas.is_check_ip;
+                            if( is_open === 1 ){//判断是否设置了
+                                $("#is_setting").text("已设置");
+                                $("#is_setting").css("color","green");
+                                $("#click_setting_btn").text("点击修改安全码");
+                            }
+                            if( is_set_emall === 1 ){
+                                $("#is_set_email").text("已设置");
+                                $("#is_set_email").css("color","green");
+                                $("#click_setting_email").text("点击修改邮箱");
+                            }
+                            if( is_set_ip === 1 ){
+                                $("#is_set_ip").text("已设置");
+                                $("#is_set_ip").css("color","green");
+                                $("#click_setting_ip").text("点击修改白名单");
+                            }
+                        }
+                    } else {
+                        layer.msg(res.msg)
+                    }
+                }
+            });
+        }
+        //跳转设置/修改安全码页面
+        window.go_to_set_password = function () {
+            if( is_open === 0 ){
+                window.location.href = 'Security_center_setting/security_code.html'//跳转设置安全码
+            }else if( is_open === 1 ){
+                window.location.href = 'Security_center_setting/edit_security_code.html'//跳转修改安全码
+            }
+        };
+        //跳转设置/修改邮箱页面
+        window.go_to_certified_mail = function () {
+            if( is_set_emall === 0 ){
+                window.location.href = 'Security_center_setting/certified_mail.html'//跳转设置安全码
+            }else if( is_set_emall === 1 ){
+                window.location.href = 'Security_center_setting/edit_certified_mail.html'//跳转修改安全码
+            }
+        };
+        //跳转修改手机号页面
+        window.go_to_modify_phone_number = function () {
+            window.location.href = 'Security_center_setting/modify_phone_number.html'
+        };
+        //跳转修改ip白名单页面
+        window.go_to_IP_white_list = function () {
+            window.location.href = 'Security_center_setting/IP_white_list.html'
+        };
+    });
+</script>
+</html>

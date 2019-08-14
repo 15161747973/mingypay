@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>商品购买链接</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="../../css/layer.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../../css/animate.css">
+</head>
+
+<style>
+    .short_link{
+        padding: 20px;
+    }
+    .short_link .bulb_box img{
+        float: left;width: 25px;
+    }
+    .short_link .bulb_box p{
+        font-size: 14px;display: inline-block;margin-top: 5px;margin-left: 10px;
+    }
+    .short_link .bulb_box p span{
+        font-size: 15px;
+    }
+    .short_link .bulb_box + a{
+        text-decoration: none;color: #6967ce;display: block
+    }
+    .short_link .bulb_box + a + p{
+        border-radius: 5px;background-color: #019fe1;display: inline-block;color: #FFFFFF;padding: 6px 25px;cursor: pointer;margin-top: 15px;
+     }
+    .line{
+        width: 100%;border-top: 1px solid #e5e5e5;
+    }
+    .long_connection_box .long_connection img{
+        float: left;width: 25px;
+    }
+    .long_connection_box .long_connection p{
+        font-size: 14px;display: inline-block;margin-top: 5px;margin-left: 10px;
+    }
+    .long_connection_box .long_connection + a{
+        text-decoration: none;color: #6967ce;display: block
+    }
+    .long_connection_box .long_connection + a + p{
+        border-radius: 5px;background-color: #019fe1;display: inline-block;color: #FFFFFF;padding: 6px 25px;cursor: pointer;margin-top: 15px;
+    }
+    .close_btn{background-color: #6b6f80;cursor: pointer;border-radius: 5px;padding: 6px 30px;color: #FFFFFF;float: right}
+</style>
+
+<body>
+    <div class="short_link">
+        <div>
+            <div class="bulb_box">
+                <img src="../../image/bulb.png">
+                <p>短链接<span>(推荐)</span></p>
+            </div>
+            <a href="" target="_blank" id="go_to_pay_page"></a>
+            <p>复制连接</p>
+        </div>
+        <hr class="line">
+        <div class="long_connection_box">
+            <div class="long_connection">
+                <img src="../../image/bulb.png">
+                <p>商品链接(严禁使用此链接群发,违者关闭交易)</p>
+            </div>
+            <a id="long_connection" href="http://test.mingypay.com/mingypay/public/mingypay/Purchase_page/goumai_page_main.html" target="_blank" style=""></a>
+            <p>复制连接</p>
+        </div>
+        <p class="close_btn" onclick="parent.close_skip()">关闭</p>
+    </div>
+</body>
+
+<script src="../../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../js/important.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../layer/layer.js"></script>
+<script src="../../js/baseUrl.js"></script>
+<script type="text/javascript">
+    $("#go_to_pay_page").attr("href","../../Purchase_page/goumai_page_main.html?parameter=" + parent.product_id);
+    console.log($("#go_to_pay_page"));
+
+    get_short_link();//获取短链接
+    function get_short_link() {
+        $.ajax({
+            url: baseUrl + "/users/shorturl1",//接口地址
+            dataType: 'json',
+            type: "POST",  //类型
+            data: {
+                url: baseUrls + '/Purchase_page/goumai_page_main.html?parameter=' + parent.product_id,
+                token: localStorage.getItem("token")
+            },
+            success: function (res) {
+                console.log(res);
+                if (res.code === "200") {
+                    if (res.data != null) {
+                        $("#go_to_pay_page").text(res.data.url_short);
+                    }
+                } else {
+                    layer.msg(res.msg)
+                }
+            }
+        });
+    }
+
+    //随机获取数字和字母
+    // var chars = ['0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
+    // function generateMixed(n) {
+    //     var res = "";
+    //     for(var i = 0; i < n ; i ++) {
+    //         var id = Math.ceil(Math.random()*35);
+    //         res += chars[id];
+    //     }
+    //     return res;
+    // }
+    // console.log(generateMixed(12));
+</script>
+
+</html>

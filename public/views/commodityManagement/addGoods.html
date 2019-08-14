@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>添加商品</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="../../layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../layuiadmin/style/admin.css" media="all">
+</head>
+<style>
+    .notice{margin-left: 115px;margin-top: -2px;color: #ce67c3}
+</style>
+<body>
+
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-card-header">添加商品</div>
+        <div class="layui-card-body" style="padding: 15px;">
+            <form class="layui-form" lay-filter="component-form-group" id="clear_form" enctype="multipart/form-data">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">禁售列表</label>
+                    <div class="layui-input-block">
+                        <button class="buttonStyle layui-btn" onclick="Ban_selling_list()" type="button">查看禁售列表名单</button>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">商品分类</label>
+                    <div class="layui-input-block">
+                        <select name="categorys_id" id="googds_classfily" lay-filter="googds_classfily"></select>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">商品排序</label>
+                    <div class="layui-input-block">
+                        <input type="number" name="product_score" value="0" autocomplete="off" class="layui-input">
+                    </div>
+                    <p class="notice">*数字越大越靠前</p>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">商品名称</label>
+                    <div class="layui-input-block">
+                        <input lay-verify="goods_name" type="text" name="product_name" autocomplete="off" class="layui-input">
+                    </div>
+                    <p class="notice">*好的名字有利于销售哦！</p>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">销售价格</label>
+                    <div class="layui-input-block">
+                        <input type="number" lay-verify="sell_price" name="sell_price" autocomplete="off" placeholder="单位（元）" class="layui-input">
+                    </div>
+                    <p class="notice">*商品对外出售的价格即零售价格！（单价需大于1元）</p>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">批发价</label>
+                    <div class="layui-input-block">
+                        <input type="checkbox" name="wholesale" value="1" lay-filter="mySwitch" lay-skin="switch" lay-text="使用|不使用">
+                    </div>
+                    <div id="tests">
+                        <div style="margin-left: 108px;margin-top: 15px" id="inputBox">
+                            <div class="layui-input-inline" style="width: 200px;">
+                                <p>买家购买满多少件</p>
+                                <input type="text" name="wholesale_man" placeholder="请输入件数" autocomplete="off" class="layui-input">
+                            </div>
+                            <div class="layui-form-mid" style="margin-top: 20px;">-</div>
+                            <div class="layui-input-inline" style="width: 200px;">
+                                <p>单价（元）</p>
+                                <input type="text" name="wholesale_price" placeholder="优惠单价" autocomplete="off" class="layui-input">
+                            </div>
+                            <p class="layui-btn" id="closeBtn" style="margin-top: 24px"><i class="layui-icon">&#x1006;</i></p>
+                        </div>
+                        <hr style="width: 92%;margin-left: 110px">
+                        <p class="layui-btn buttonStyle" style="display: block;margin-left: 110px;width: 150px"><i class="layui-icon">&#x1006;</i>添加一组</p>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">成本价格</label>
+                    <div class="layui-input-block">
+                        <input lay-verify="cost_price" type="number" name="cost_price" autocomplete="off" value="0" class="layui-input">
+                    </div>
+                    <p class="notice">*商品进货价，可以不填，填写有利于商户系统的利润统计分析！</p>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">起购数量</label>
+                    <div class="layui-input-block">
+                        <input type="number" lay-verify="low_num" name="low_num" autocomplete="off" value="1" class="layui-input">
+                    </div>
+                    <p class="notice">*每次购买最少购买多少件！（默认1件起售）</p>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">限购数量</label>
+                    <div class="layui-input-block">
+                        <input type="number" lay-verify="above_num" name="above_num" autocomplete="off" value="0" class="layui-input">
+                    </div>
+                    <p class="notice">*每次购买最多购买多少件！（0为不限）</p>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">库存显示</label>
+                    <div class="layui-input-block">
+                        <input type="radio" name="stock_status" value="0" title="显示数量" checked="">
+                        <input type="radio" name="stock_status" value="1" title="显示范围">
+                        <input type="radio" name="stock_status" value="2" title="不显示">
+                    </div>
+                    <p class="notice">*商品说明将显示在商品购买页面</p>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">取卡密码</label>
+                    <div class="layui-input-block">
+                        <input type="radio" lay-filter="is_pwd" name="is_getCard_pass" value="0" title="不需要" checked>
+                        <input type="radio" lay-filter="is_pwd" name="is_getCard_pass" value="1" title="需要">
+                    </div>
+                    <p class="notice">*开启后用户购买必须填写取卡密码</p>
+                </div>
+                <div class="layui-form-item" id="id_hide" style="display: none">
+                    <label class="layui-form-label">访问密码</label>
+                    <div class="layui-input-block">
+                        <input type="text" lay-verify="must_fill" name="visit_pass" autocomplete="off" placeholder="下单页访问密码，可空" class="layui-input">
+                    </div>
+                    <p class="notice">*下单页访问密码,留空为不需要访问密码</p>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">发卡顺序</label>
+                    <div class="layui-input-block">
+                        <input type="radio" name="sequence" value="0" title="顺序发卡" checked>
+                        <input type="radio" name="sequence" value="1" title="随机发卡">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">是否支持优惠券</label>
+                    <div class="layui-input-block">
+                        <input type="radio" name="is_coupon" value="0" title="不支持" checked>
+                        <input type="radio" name="is_coupon" value="1" title="支持">
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">是否买家承担手续费</label>
+                    <div class="layui-input-block">
+                        <input type="radio" name="is_buyer_server_money" value="0" title="否" checked="">
+                        <input type="radio" name="is_buyer_server_money" value="1" title="是">
+                    </div>
+                    <p class="notice">*如果买家承担手续费，如商品10元买家需支付10.3元</p>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">开启代理</label>
+                    <div class="layui-input-block">
+                        <input type="radio" name="is_agent" value="0" title="否" checked="">
+                        <input type="radio" name="is_agent" value="1" title="是">
+                    </div>
+                </div>
+                <div class="layui-form-item layui-form-text">
+                    <label class="layui-form-label">商品说明</label>
+                    <div class="layui-input-block">
+                        <textarea name="desc" placeholder="商品说明显示在商品购买页面，一般填写商品特点等信息" class="layui-textarea"></textarea>
+                    </div>
+                    <p class="notice">*商品说明实现是在商品购买页面</p>
+                </div>
+                <div class="layui-form-item layui-form-text">
+                    <label class="layui-form-label">使用说明</label>
+                    <div class="layui-input-block">
+                        <textarea name="use_desc" placeholder="使用说明将显示在订单查询结果中，一般填写使用方法，售后QQ群或者下载地址等信息" class="layui-textarea"></textarea>
+                    </div>
+                    <p class="notice">*使用说明惊险是在订单查询结果中，一般设置售后QQ群，或者下载地址等</p>
+                </div>
+                <div class="layui-form-item layui-layout-admin">
+                    <div class="layui-input-block">
+                        <div class="layui-footer" style="left: 0;">
+                            <button class="layui-btn buttonStyle" style="width: 400px" lay-submit lay-filter="add_goods_btn">添加</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="../../layuiadmin/layui/layui.js"></script>
+<script>
+    layui.config({
+        base: '../../layuiadmin/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index', 'form', 'laydate'], function () {
+
+        var $ = layui.$
+            , layer = layui.layer
+            , laydate = layui.laydate
+            , form = layui.form;
+        //默认不使用批发价
+        $("#tests").hide();
+        $(function(){
+            $(":input").bind("mousewheel",function(){
+                return false;
+            });
+        });
+
+
+        form.render(null, 'component-form-group');
+
+        laydate.render({
+            elem: '#LAY-component-form-group-date'
+        });
+        $("#closeBtn").click(function () {
+            $("#inputBox").hide();
+        });
+
+        //查询商品分类
+        select_classfily();
+        function select_classfily(){
+            $.ajax({
+                url: parent.baseUrl + "/Categorys/userCate",//接口地址
+                dataType: 'json',
+                type: "POST",  //类型
+                data: {
+                    token: localStorage.getItem("token")
+                },
+                success: function (res) {
+                    console.log(res);
+                    if (res.code === "200") {
+                        if( res.data != null ){
+                            let datas = res.data;
+                            //渲染select->option的值
+                            for (var i = 0;i < datas.length;i++){
+                                $('#googds_classfily').append('<option value="' + datas[i].id + '">' + datas[i].categorys_name + '</option>');
+                            }
+                            form.render('select');
+                        }
+                    } else {
+                        layer.msg(res.msg)
+                    }
+                }
+            });
+        }
+
+
+        /* 自定义验证规则 */
+        form.verify({
+            goods_name: function (value) {
+                if (value === "" ) {
+                    return '商品名称为必填项';
+                }
+            },
+            sell_price: function (value) {
+                if (value === "" ) {
+                    return '销售价格为必填项';
+                }
+            },
+            cost_price: function (value) {
+                if (value === "" ) {
+                    return '成本价格为必填项';
+                }else if( value === 0 ){
+                    return '成本价格不能为0';
+                }
+            },
+            low_num: function (value) {
+                if (value === "" ) {
+                    return '起购数量为必填项';
+                }
+            },
+            above_num: function (value) {
+                if (value === "" ) {
+                    return '限购数量为必填项';
+                }
+            }
+        });
+
+        /* 监听指定开关 */
+        form.on('switch(mySwitch)', function (data) {
+            if( this.checked === true ){
+                $("#tests").show();
+            }else {
+                $("#tests").hide();
+            }
+        });
+
+        //监听取卡密码单选框
+        form.on('radio(is_pwd)', function(data){
+            //判断是否开启取卡密码 如果开启则显示访问密码input
+            if( data.value === '1' ){
+                $('#id_hide').show();
+                //开启取卡密码,访问密码input不能为空,必填项
+                form.verify({
+                    must_fill: function (value) {
+                        if (value === "" ) {
+                            return '访问密码为必填项';
+                        }
+                    },
+                });
+            }else if( data.value === '0' ){
+                $('#id_hide').hide();
+            }
+        });
+
+        /* 监听添加 */
+        form.on('submit(add_goods_btn)', function (data) {
+            //判断销售价格不能小于成本价格
+            if( data.field.sell_price < data.field.cost_price ){
+                layer.alert("销售价格不能小于成本价格",{icon: 5});
+                return false;
+            }
+            let filed = data.field;
+            filed["token"] = localStorage.getItem("token");//给数据添加token字段
+            $.post( parent.baseUrl + "/Product/addProduct",filed,function(res){
+                console.log(res);
+                if( res.code === "200" ){
+                    layer.msg(res.msg,{icon: 1});
+                        setTimeout(function () {
+                        parent.skip_goods_list();
+                    },800);
+                    $("#clear_form")[0].reset();
+                }else{
+                    layer.msg(res.msg,{icon: 2});
+                }
+            },'json');
+            //一定要阻止表单跳转
+            return false;
+        });
+
+        window.Ban_selling_list = function () {
+            // alert('这是禁售列表');
+
+            layer.open({
+                type: 1,
+                skin: 'layui-layer-demo', //样式类名
+                closeBtn: 0, //不显示关闭按钮
+                anim: 2,
+                width: '500px',
+                shadeClose: true, //开启遮罩关闭
+                content: '<div style="margin: 10px 20px;font-size: 16px">《这是禁售列表，模拟的内容》《这是禁售列表，模拟的内容》</div>' +
+                         '<div style="margin: 10px 20px;font-size: 16px">《这是禁售列表，模拟的内容》《这是禁售列表，模拟的内容》</div>' +
+                         '<div style="margin: 10px 20px;font-size: 16px">《这是禁售列表，模拟的内容》《这是禁售列表，模拟的内容》</div>' +
+                         '<div style="margin: 10px 20px;font-size: 16px">《这是禁售列表，模拟的内容》《这是禁售列表，模拟的内容》</div>' +
+                         '<div style="margin: 10px 20px;font-size: 16px">《这是禁售列表，模拟的内容》《这是禁售列表，模拟的内容》</div>' +
+                         '<div style="margin: 10px 20px;font-size: 16px">《这是禁售列表，模拟的内容》《这是禁售列表，模拟的内容》</div>' +
+                         '<div style="margin: 10px 20px;font-size: 16px">《这是禁售列表，模拟的内容》《这是禁售列表，模拟的内容》</div>' +
+                         '<div style="margin: 10px 20px;font-size: 16px">《这是禁售列表，模拟的内容》《这是禁售列表，模拟的内容》</div>' +
+                         '<div style="margin: 10px 20px;font-size: 16px">《这是禁售列表，模拟的内容》《这是禁售列表，模拟的内容》</div>' +
+                         '<div style="margin: 10px 20px;font-size: 16px">《这是禁售列表，模拟的内容》《这是禁售列表，模拟的内容》</div>' +
+                         '<div style="margin: 10px 20px;font-size: 16px">《这是禁售列表，模拟的内容》《这是禁售列表，模拟的内容》</div>' ,
+
+            });
+        }
+    });
+</script>
+</body>
+</html>

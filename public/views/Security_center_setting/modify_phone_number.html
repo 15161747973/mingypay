@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>绑定手机号</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="../../layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../layuiadmin/style/admin.css" media="all">
+    <link rel="stylesheet" href="../../layuiadmin/style/login.css" media="all">
+</head>
+<style>
+    .hand{cursor: pointer;
+        display: inline-block;
+    }
+</style>
+<body>
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-header hand" style="padding-left: 30px" onclick="returns()"><i class="layui-icon" style="left: 13px;top: 19px;">&#xe603;</i>安全中心</div>
+                <form class="layui-form">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">手机号</label>
+                        <div class="layui-input-block" style="display: flex;margin-top: 15px;">
+                            <input style="border: none;color: #000;width: 7%;" value="" id="phone_number" disabled type="text" class="layui-input">
+                            <button class="buttonStyle layui-btn" id="send_code">获取验证码</button>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">验证码</label>
+                        <div class="layui-input-block">
+                            <input type="text" style="width: 14%;" name="code" id="YZcode" class="layui-input">
+                        </div>
+                    </div>
+                    <div style="padding-bottom: 20px;margin-left: 50px;">
+                        <button type="button" class="layui-btn buttonStyle" style="width: 200px;" onclick="submit_phone_num()">提交</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+<script src="../../layuiadmin/layui/layui.js"></script>
+<script>
+    let sms;
+    layui.use(['table','laydate'], function () {
+        var form = layui.form
+            ,$ = layui.$;
+        //查询用户所有信息
+        get_user_info();
+        function get_user_info() {
+            $.ajax({
+                url: parent.baseUrl + "/users/shopInfo",//接口地址
+                dataType: 'json',
+                type: "POST",  //类型
+                data: {
+                    token: localStorage.getItem("token")
+                },
+                success: function (res) {
+                    console.log(res);
+                    if (res.code === "200") {
+                        if (res.data != null) {
+                            let datas = res.data;
+                            $("#phone_number").val(datas.mobile);
+                        }
+                    } else {
+                        layer.msg(res.msg)
+                    }
+                }
+            });
+        }
+
+        //短信验证接口
+        $("#send_code").click(function () {
+            var phone_number1 = $("#phone_number").val();
+            var countdown = 60;
+            settime($(this));
+            function settime(obj) {
+                if (countdown == 0) {
+                    $(obj).removeAttr("disabled");
+                    $(obj).text("获取验证码");
+                    $(obj).css({"pointer-events": "", "color": "#fff"});
+                    countdown = 60;
+                    return;
+                } else {
+                    $(obj).attr("disabled", true);
+                    $(obj).text(countdown + 's' + '后重发');
+                    $(obj).css({"pointer-events": "none", "color": "#ccc"});
+                    countdown--;
+                }
+                setTimeout(function () {
+                    settime(obj)
+                }, 1000)
+            }
+            $.ajax({
+                url: parent.baseUrl + "/sms/SendSms",
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    mobile: phone_number1,
+                    type: 7,
+                    event: "resetMobile",
+                },
+                success: function (ret) {
+                    console.log(ret);
+                    if ( ret.code === "200" ) {
+                        sms = ret.data;
+                        layer.msg('' + ret.msg + '');
+                    } else {
+                        layer.msg(ret.msg);
+                    }
+                }
+            });
+        });
+        //点击提交弹出框
+        window.submit_phone_num = function () {
+            let YZcode1 = $("#YZcode").val();
+          if( sms != YZcode1 ) {
+              layer.msg("验证码不正确");
+              return false;
+          }
+            layer.open({
+                title: "输入新手机号：",
+                area: ['600px', '310px'],
+                type: 2,
+                content: '../operation/edit_phone_num.html'
+            });
+        };
+        //修改页面修改成功之后回调
+        window.refresh = function () {
+            get_user_info();
+            layer.closeAll('iframe');
+            layer.msg("修改成功", {icon: 6});
+        };
+
+        //返回上级页面
+        window.returns = function () {
+            window.history.go(-1);
+        };
+    });
+
+
+</script>
+</html>

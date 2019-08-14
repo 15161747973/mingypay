@@ -1,0 +1,2125 @@
+---------------------------------------------------------------
+[ 2019-08-10T19:05:36+08:00 ] 0.0.0.0 POST test.mingypay.com/index.php/api/order/orderList
+[运行时间：0.091608s] [吞吐率：10.92req/s] [内存消耗：5,194.55kb] [文件加载：134]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000039s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002096s ]
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'order',
+    2 => 'orderList',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'test.mingypay.com',
+  'connection' => 'Keep-Alive',
+  'accept-encoding' => 'gzip',
+  'cf-ipcountry' => 'CN',
+  'x-forwarded-for' => '2409:8920:2e40:7062:1147:9318:26aa:9b0c',
+  'cf-ray' => '50417ee4e63a4cd0-CSX',
+  'x-forwarded-proto' => 'http',
+  'cf-visitor' => '{"scheme":"http"}',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'origin' => 'http://test.mingypay.com',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.131 Safari/537.36',
+  'referer' => 'http://test.mingypay.com/views/home/overviewInformation.html',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => '__cfduid=de8229e2343b12b3734c097198e7d41ac1564657316; Hm_lvt_d214947968792b839fd669a4decaaffc=1564657530; Hm_lpvt_d214947968792b839fd669a4decaaffc=1565435126',
+  'cf-connecting-ip' => '2409:8920:2e40:7062:1147:9318:26aa:9b0c',
+  'cdn-loop' => 'cloudflare',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'content-length' => '58',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'limit' => '10',
+  'token' => 'f566f57c-cb7f-4711-9871-082fac1f6a2d',
+)
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/public/../application/api/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.001391s ]
+[ info ] [ TOKEN ] INIT Mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\Order->orderList[ /www/wwwroot/test.mingypay.com/mingypay/application/api/controller/Order.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003465s ] mysql:host=106.12.50.41;port=3306;dbname=mingypay;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user_token` [ RunTime:0.001965s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user_token` WHERE  `token` = '4e69f6c244f61d472c2838f56086d467f6ea34dd' LIMIT 1 [ RunTime:0.001415s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user` [ RunTime:0.002785s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.002367s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_order` [ RunTime:0.002140s ]
+[ sql ] [ SQL ] SELECT o.uid,o.id,o.order_num,FROM_UNIXTIME(o.create_time) as time,o.pro_num,o.price,o.card_id,o.user_price,o.mobile,o.status,o.pay_type,p.product_name,p.categorys_id FROM fa_order o LEFT JOIN `fa_product` `p` ON `o`.`pro_id`=`p`.`id` WHERE  `o`.`order_type` = '0'  AND `o`.`uid` = 2 ORDER BY `o`.`create_time` DESC LIMIT 0,10 [ RunTime:0.001959s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_cardinfo` [ RunTime:0.002258s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_cardinfo` WHERE (  `id` = 417 ) AND `fa_cardinfo`.`delete_time` IS NULL LIMIT 1 [ RunTime:0.001945s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_cardinfo` WHERE (  `id` = 416 ) AND `fa_cardinfo`.`delete_time` IS NULL LIMIT 1 [ RunTime:0.001742s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_cardinfo` WHERE (  `id` = 415 ) AND `fa_cardinfo`.`delete_time` IS NULL LIMIT 1 [ RunTime:0.001943s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_cardinfo` WHERE (  `id` = 414 ) AND `fa_cardinfo`.`delete_time` IS NULL LIMIT 1 [ RunTime:0.001721s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_cardinfo` WHERE (  `id` = 413 ) AND `fa_cardinfo`.`delete_time` IS NULL LIMIT 1 [ RunTime:0.001579s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_cardinfo` WHERE (  `id` = 412 ) AND `fa_cardinfo`.`delete_time` IS NULL LIMIT 1 [ RunTime:0.001625s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_cardinfo` WHERE (  `id` = 411 ) AND `fa_cardinfo`.`delete_time` IS NULL LIMIT 1 [ RunTime:0.001903s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_cardinfo` WHERE (  `id` = 410 ) AND `fa_cardinfo`.`delete_time` IS NULL LIMIT 1 [ RunTime:0.001596s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_cardinfo` WHERE (  `id` = 409 ) AND `fa_cardinfo`.`delete_time` IS NULL LIMIT 1 [ RunTime:0.002921s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_cardinfo` WHERE (  `id` = 408 ) AND `fa_cardinfo`.`delete_time` IS NULL LIMIT 1 [ RunTime:0.001829s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM fa_order o LEFT JOIN `fa_product` `p` ON `o`.`pro_id`=`p`.`id` WHERE  `o`.`order_type` = '0'  AND `o`.`uid` = 2 LIMIT 1 [ RunTime:0.001660s ]
+---------------------------------------------------------------
+[ 2019-08-10T19:05:36+08:00 ] 0.0.0.0 POST test.mingypay.com/index.php/api/index/dataInfo
+[运行时间：0.553206s] [吞吐率：1.81req/s] [内存消耗：5,301.38kb] [文件加载：135]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000032s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002796s ]
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'index',
+    2 => 'dataInfo',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'test.mingypay.com',
+  'connection' => 'Keep-Alive',
+  'accept-encoding' => 'gzip',
+  'cf-ipcountry' => 'CN',
+  'x-forwarded-for' => '2409:8920:2e40:7062:1147:9318:26aa:9b0c',
+  'cf-ray' => '50417ee2519f4ce2-CSX',
+  'x-forwarded-proto' => 'http',
+  'cf-visitor' => '{"scheme":"http"}',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'origin' => 'http://test.mingypay.com',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.131 Safari/537.36',
+  'referer' => 'http://test.mingypay.com/views/home/overviewInformation.html',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => '__cfduid=de8229e2343b12b3734c097198e7d41ac1564657316; Hm_lvt_d214947968792b839fd669a4decaaffc=1564657530; Hm_lpvt_d214947968792b839fd669a4decaaffc=1565435126',
+  'cf-connecting-ip' => '2409:8920:2e40:7062:1147:9318:26aa:9b0c',
+  'cdn-loop' => 'cloudflare',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'content-length' => '42',
+)
+[ info ] [ PARAM ] array (
+  'token' => 'f566f57c-cb7f-4711-9871-082fac1f6a2d',
+)
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/public/../application/api/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.002188s ]
+[ info ] [ TOKEN ] INIT Mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\Index->dataInfo[ /www/wwwroot/test.mingypay.com/mingypay/application/api/controller/Index.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.001738s ] mysql:host=106.12.50.41;port=3306;dbname=mingypay;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user_token` [ RunTime:0.004146s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user_token` WHERE  `token` = '4e69f6c244f61d472c2838f56086d467f6ea34dd' LIMIT 1 [ RunTime:0.004168s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user` [ RunTime:0.002300s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.001756s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_withdraw` [ RunTime:0.002347s ]
+[ sql ] [ SQL ] SELECT `money` FROM `fa_withdraw` WHERE  `uid` = 2  AND `is_pass` <> 2  AND `create_time` BETWEEN 1565366400 AND 1565452800 [ RunTime:0.001407s ]
+[ sql ] [ SQL ] SELECT `can_use_money` FROM `fa_user` WHERE  `id` = 2  AND `is_freeze` = 0 LIMIT 1 [ RunTime:0.001811s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_order` [ RunTime:0.003456s ]
+[ sql ] [ SQL ] SELECT `id`,`order_num`,`user_price` FROM `fa_order` WHERE  `uid` = 2  AND `status` = 2  AND `pay_time` BETWEEN 1565366400 AND 1565452800 [ RunTime:0.001911s ]
+[ sql ] [ SQL ] SELECT `id`,`order_num`,`user_price` FROM `fa_order` WHERE  `uid` = 2  AND `status` = 2  AND `pay_time` BETWEEN 1565366400 AND 1565452800 [ RunTime:0.001663s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_order` WHERE  `uid` = 2  AND `pay_time` BETWEEN 1565280000 AND 1565366400 LIMIT 1 [ RunTime:0.001380s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_order` WHERE  `uid` = 2  AND `pay_time` BETWEEN 1565366400 AND 1565452800 LIMIT 1 [ RunTime:0.212121s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_order` WHERE  `uid` = 2  AND `pay_time` BETWEEN 1565366400 AND 1565452800 [ RunTime:0.002022s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_order` WHERE  `uid` = 2  AND `pay_time` BETWEEN 1565366400 AND 1565452800 [ RunTime:0.001782s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_product` [ RunTime:0.002009s ]
+[ sql ] [ SQL ] SELECT `cost_price` FROM `fa_product` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.204157s ]
+[ sql ] [ SQL ] SELECT `cost_price` FROM `fa_product` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.001846s ]
+[ sql ] [ SQL ] SELECT `cost_price` FROM `fa_product` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.001736s ]
+[ sql ] [ SQL ] SELECT `cost_price` FROM `fa_product` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.001498s ]
+[ sql ] [ SQL ] SELECT `cost_price` FROM `fa_product` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.001738s ]
+[ sql ] [ SQL ] SELECT `cost_price` FROM `fa_product` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.001361s ]
+[ sql ] [ SQL ] SELECT `cost_price` FROM `fa_product` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.001430s ]
+[ sql ] [ SQL ] SELECT `cost_price` FROM `fa_product` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.001496s ]
+[ sql ] [ SQL ] SELECT `cost_price` FROM `fa_product` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.001261s ]
+[ sql ] [ SQL ] SELECT `cost_price` FROM `fa_product` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.001242s ]
+[ sql ] [ SQL ] SELECT `cost_price` FROM `fa_product` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.001576s ]
+[ sql ] [ SQL ] SELECT `cost_price` FROM `fa_product` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.001520s ]
+[ sql ] [ SQL ] SELECT `cost_price` FROM `fa_product` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.001982s ]
+[ sql ] [ SQL ] SELECT `cost_price` FROM `fa_product` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.001526s ]
+[ sql ] [ SQL ] SELECT `cost_price` FROM `fa_product` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.001465s ]
+[ sql ] [ SQL ] SELECT `cost_price` FROM `fa_product` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.001566s ]
+[ sql ] [ SQL ] SELECT `cost_price` FROM `fa_product` WHERE  `id` = 1 LIMIT 1 [ RunTime:0.001547s ]
+[ sql ] [ SQL ] SELECT SUM(pay_price) as money FROM `fa_order` WHERE  `uid` = 2 LIMIT 1 [ RunTime:0.001893s ]
+---------------------------------------------------------------
+[ 2019-08-10T19:05:37+08:00 ] 0.0.0.0 POST test.mingypay.com/index.php/api/users/shopInfo
+[运行时间：0.520953s] [吞吐率：1.92req/s] [内存消耗：4,891.00kb] [文件加载：130]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000050s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002503s ]
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'users',
+    2 => 'shopInfo',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'test.mingypay.com',
+  'connection' => 'Keep-Alive',
+  'accept-encoding' => 'gzip',
+  'cf-ipcountry' => 'CN',
+  'x-forwarded-for' => '2409:8920:2e40:7062:1147:9318:26aa:9b0c',
+  'cf-ray' => '50417ee410664cee-CSX',
+  'x-forwarded-proto' => 'http',
+  'cf-visitor' => '{"scheme":"http"}',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'origin' => 'http://test.mingypay.com',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.131 Safari/537.36',
+  'referer' => 'http://test.mingypay.com/views/home/overviewInformation.html',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => '__cfduid=de8229e2343b12b3734c097198e7d41ac1564657316; Hm_lvt_d214947968792b839fd669a4decaaffc=1564657530; Hm_lpvt_d214947968792b839fd669a4decaaffc=1565435126',
+  'cf-connecting-ip' => '2409:8920:2e40:7062:1147:9318:26aa:9b0c',
+  'cdn-loop' => 'cloudflare',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'content-length' => '42',
+)
+[ info ] [ PARAM ] array (
+  'token' => 'f566f57c-cb7f-4711-9871-082fac1f6a2d',
+)
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/public/../application/api/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.001955s ]
+[ info ] [ TOKEN ] INIT Mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\Users->shopInfo[ /www/wwwroot/test.mingypay.com/mingypay/application/api/controller/Users.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003231s ] mysql:host=106.12.50.41;port=3306;dbname=mingypay;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user_token` [ RunTime:0.001912s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user_token` WHERE  `token` = '4e69f6c244f61d472c2838f56086d467f6ea34dd' LIMIT 1 [ RunTime:0.001565s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user` [ RunTime:0.011871s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.456107s ]
+---------------------------------------------------------------
+[ 2019-08-10T19:05:37+08:00 ] 0.0.0.0 POST test.mingypay.com/index.php/api/users/getPubIp
+[运行时间：0.827249s] [吞吐率：1.21req/s] [内存消耗：4,886.66kb] [文件加载：130]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000064s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002791s ]
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'users',
+    2 => 'getPubIp',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'test.mingypay.com',
+  'connection' => 'Keep-Alive',
+  'accept-encoding' => 'gzip',
+  'cf-ipcountry' => 'CN',
+  'x-forwarded-for' => '2409:8920:2e40:7062:1147:9318:26aa:9b0c',
+  'cf-ray' => '50417ee247114ce8-CSX',
+  'x-forwarded-proto' => 'http',
+  'cf-visitor' => '{"scheme":"http"}',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'origin' => 'http://test.mingypay.com',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.131 Safari/537.36',
+  'referer' => 'http://test.mingypay.com/views/home/overviewInformation.html',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => '__cfduid=de8229e2343b12b3734c097198e7d41ac1564657316; Hm_lvt_d214947968792b839fd669a4decaaffc=1564657530; Hm_lpvt_d214947968792b839fd669a4decaaffc=1565435126',
+  'cf-connecting-ip' => '2409:8920:2e40:7062:1147:9318:26aa:9b0c',
+  'cdn-loop' => 'cloudflare',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'content-length' => '42',
+)
+[ info ] [ PARAM ] array (
+  'token' => 'f566f57c-cb7f-4711-9871-082fac1f6a2d',
+)
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/public/../application/api/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.002086s ]
+[ info ] [ TOKEN ] INIT Mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\Users->getPubIp[ /www/wwwroot/test.mingypay.com/mingypay/application/api/controller/Users.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003459s ] mysql:host=106.12.50.41;port=3306;dbname=mingypay;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user_token` [ RunTime:0.002374s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user_token` WHERE  `token` = '4e69f6c244f61d472c2838f56086d467f6ea34dd' LIMIT 1 [ RunTime:0.001379s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user` [ RunTime:0.002943s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.004305s ]
+---------------------------------------------------------------
+[ 2019-08-10T19:05:45+08:00 ] 0.0.0.0 POST test.mingypay.com/index.php/api/users/getCity
+[运行时间：11.945120s] [吞吐率：0.08req/s] [内存消耗：4,960.68kb] [文件加载：133]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000072s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002210s ]
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'users',
+    2 => 'getCity',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'test.mingypay.com',
+  'connection' => 'Keep-Alive',
+  'accept-encoding' => 'gzip',
+  'cf-ipcountry' => 'CN',
+  'x-forwarded-for' => '2409:8920:2e40:7062:1147:9318:26aa:9b0c',
+  'cf-ray' => '50417ecfc33c4cd0-CSX',
+  'x-forwarded-proto' => 'http',
+  'cf-visitor' => '{"scheme":"http"}',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'origin' => 'http://test.mingypay.com',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.131 Safari/537.36',
+  'referer' => 'http://test.mingypay.com/views/index.html',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => '__cfduid=de8229e2343b12b3734c097198e7d41ac1564657316; Hm_lvt_d214947968792b839fd669a4decaaffc=1564657530; Hm_lpvt_d214947968792b839fd669a4decaaffc=1564749573',
+  'cf-connecting-ip' => '2409:8920:2e40:7062:1147:9318:26aa:9b0c',
+  'cdn-loop' => 'cloudflare',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'content-length' => '42',
+)
+[ info ] [ PARAM ] array (
+  'token' => 'f566f57c-cb7f-4711-9871-082fac1f6a2d',
+)
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/public/../application/api/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.001518s ]
+[ info ] [ TOKEN ] INIT Mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\Users->getCity[ /www/wwwroot/test.mingypay.com/mingypay/application/api/controller/Users.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002957s ] mysql:host=106.12.50.41;port=3306;dbname=mingypay;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user_token` [ RunTime:0.002182s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user_token` WHERE  `token` = '4e69f6c244f61d472c2838f56086d467f6ea34dd' LIMIT 1 [ RunTime:0.001382s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user` [ RunTime:0.002499s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.002653s ]
+[ error ] [2]file_get_contents(http://ip.taobao.com/service/getIpInfo.php?ip=106.12.50.41): failed to open stream: HTTP request failed! [/www/wwwroot/test.mingypay.com/mingypay/application/api/controller/Users.php:499]
+---------------------------------------------------------------
+[ 2019-08-10T19:06:03+08:00 ] 0.0.0.0 POST test.mingypay.com/index.php/api/users/shopInfo
+[运行时间：0.073084s] [吞吐率：13.68req/s] [内存消耗：4,889.96kb] [文件加载：130]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000046s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002285s ]
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'users',
+    2 => 'shopInfo',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'test.mingypay.com',
+  'connection' => 'Keep-Alive',
+  'accept-encoding' => 'gzip',
+  'cf-ipcountry' => 'CN',
+  'x-forwarded-for' => '2409:8920:2e40:7062:1147:9318:26aa:9b0c',
+  'cf-ray' => '50417f8b52094cee-CSX',
+  'x-forwarded-proto' => 'http',
+  'cf-visitor' => '{"scheme":"http"}',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'origin' => 'http://test.mingypay.com',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.131 Safari/537.36',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => '__cfduid=de8229e2343b12b3734c097198e7d41ac1564657316; Hm_lvt_d214947968792b839fd669a4decaaffc=1564657530; Hm_lpvt_d214947968792b839fd669a4decaaffc=1565435126',
+  'cf-connecting-ip' => '2409:8920:2e40:7062:1147:9318:26aa:9b0c',
+  'cdn-loop' => 'cloudflare',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'content-length' => '42',
+)
+[ info ] [ PARAM ] array (
+  'token' => 'f566f57c-cb7f-4711-9871-082fac1f6a2d',
+)
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/public/../application/api/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.001653s ]
+[ info ] [ TOKEN ] INIT Mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\Users->shopInfo[ /www/wwwroot/test.mingypay.com/mingypay/application/api/controller/Users.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005906s ] mysql:host=106.12.50.41;port=3306;dbname=mingypay;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user_token` [ RunTime:0.003488s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user_token` WHERE  `token` = '4e69f6c244f61d472c2838f56086d467f6ea34dd' LIMIT 1 [ RunTime:0.001884s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user` [ RunTime:0.006643s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.003462s ]
+---------------------------------------------------------------
+[ 2019-08-10T19:06:03+08:00 ] 0.0.0.0 POST test.mingypay.com/index.php/api/Gatherinfo/getInfo
+[运行时间：0.089767s] [吞吐率：11.14req/s] [内存消耗：4,820.24kb] [文件加载：131]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000061s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.003675s ]
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'Gatherinfo',
+    2 => 'getInfo',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'test.mingypay.com',
+  'connection' => 'Keep-Alive',
+  'accept-encoding' => 'gzip',
+  'cf-ipcountry' => 'CN',
+  'x-forwarded-for' => '2409:8920:2e40:7062:1147:9318:26aa:9b0c',
+  'cf-ray' => '50417f8b601c4ce8-CSX',
+  'x-forwarded-proto' => 'http',
+  'cf-visitor' => '{"scheme":"http"}',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'origin' => 'http://test.mingypay.com',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.131 Safari/537.36',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => '__cfduid=de8229e2343b12b3734c097198e7d41ac1564657316; Hm_lvt_d214947968792b839fd669a4decaaffc=1564657530; Hm_lpvt_d214947968792b839fd669a4decaaffc=1565435126',
+  'cf-connecting-ip' => '2409:8920:2e40:7062:1147:9318:26aa:9b0c',
+  'cdn-loop' => 'cloudflare',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'content-length' => '42',
+)
+[ info ] [ PARAM ] array (
+  'token' => 'f566f57c-cb7f-4711-9871-082fac1f6a2d',
+)
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/public/../application/api/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.002641s ]
+[ info ] [ TOKEN ] INIT Mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\Gatherinfo->getInfo[ /www/wwwroot/test.mingypay.com/mingypay/application/api/controller/Gatherinfo.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003020s ] mysql:host=106.12.50.41;port=3306;dbname=mingypay;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user_token` [ RunTime:0.002561s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user_token` WHERE  `token` = '4e69f6c244f61d472c2838f56086d467f6ea34dd' LIMIT 1 [ RunTime:0.001671s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user` [ RunTime:0.004064s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.001950s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_gatherinfo` [ RunTime:0.003398s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_gatherinfo` WHERE  `uid` = 2 LIMIT 1 [ RunTime:0.002974s ]
+---------------------------------------------------------------
+[ 2019-08-10T19:06:03+08:00 ] 0.0.0.0 POST test.mingypay.com/index.php/api/users/shorturl1
+[运行时间：0.270493s] [吞吐率：3.70req/s] [内存消耗：4,886.59kb] [文件加载：130]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000040s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002142s ]
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'users',
+    2 => 'shorturl1',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'test.mingypay.com',
+  'connection' => 'Keep-Alive',
+  'accept-encoding' => 'gzip',
+  'cf-ipcountry' => 'CN',
+  'x-forwarded-for' => '2409:8920:2e40:7062:1147:9318:26aa:9b0c',
+  'cf-ray' => '50417f8b47954cd0-CSX',
+  'x-forwarded-proto' => 'http',
+  'cf-visitor' => '{"scheme":"http"}',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'origin' => 'http://test.mingypay.com',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.131 Safari/537.36',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => '__cfduid=de8229e2343b12b3734c097198e7d41ac1564657316; Hm_lvt_d214947968792b839fd669a4decaaffc=1564657530; Hm_lpvt_d214947968792b839fd669a4decaaffc=1565435126',
+  'cf-connecting-ip' => '2409:8920:2e40:7062:1147:9318:26aa:9b0c',
+  'cdn-loop' => 'cloudflare',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'content-length' => '117',
+)
+[ info ] [ PARAM ] array (
+  'url' => 'http://test.mingypay.com/Purchase_page/goumai_page_main.html',
+  'token' => 'f566f57c-cb7f-4711-9871-082fac1f6a2d',
+)
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/public/../application/api/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.002201s ]
+[ info ] [ TOKEN ] INIT Mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\Users->shorturl1[ /www/wwwroot/test.mingypay.com/mingypay/application/api/controller/Users.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003218s ] mysql:host=106.12.50.41;port=3306;dbname=mingypay;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user_token` [ RunTime:0.003881s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user_token` WHERE  `token` = '4e69f6c244f61d472c2838f56086d467f6ea34dd' LIMIT 1 [ RunTime:0.004929s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user` [ RunTime:0.004662s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.010439s ]
+---------------------------------------------------------------
+[ 2019-08-10T19:06:05+08:00 ] 0.0.0.0 POST test.mingypay.com/index.php/api/users/commsion
+[运行时间：0.067791s] [吞吐率：14.75req/s] [内存消耗：5,157.77kb] [文件加载：132]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000052s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.001885s ]
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'users',
+    2 => 'commsion',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'test.mingypay.com',
+  'connection' => 'Keep-Alive',
+  'accept-encoding' => 'gzip',
+  'cf-ipcountry' => 'CN',
+  'x-forwarded-for' => '2409:8920:2e40:7062:1147:9318:26aa:9b0c',
+  'cf-ray' => '50417f96c40c4cee-CSX',
+  'x-forwarded-proto' => 'http',
+  'cf-visitor' => '{"scheme":"http"}',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'origin' => 'http://test.mingypay.com',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.131 Safari/537.36',
+  'referer' => 'http://test.mingypay.com/views/home/promoteInformation.html',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => '__cfduid=de8229e2343b12b3734c097198e7d41ac1564657316; Hm_lvt_d214947968792b839fd669a4decaaffc=1564657530; Hm_lpvt_d214947968792b839fd669a4decaaffc=1565435126',
+  'cf-connecting-ip' => '2409:8920:2e40:7062:1147:9318:26aa:9b0c',
+  'cdn-loop' => 'cloudflare',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'content-length' => '58',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'limit' => '10',
+  'token' => 'f566f57c-cb7f-4711-9871-082fac1f6a2d',
+)
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/public/../application/api/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.001522s ]
+[ info ] [ TOKEN ] INIT Mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\Users->commsion[ /www/wwwroot/test.mingypay.com/mingypay/application/api/controller/Users.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004912s ] mysql:host=106.12.50.41;port=3306;dbname=mingypay;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user_token` [ RunTime:0.002303s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user_token` WHERE  `token` = '4e69f6c244f61d472c2838f56086d467f6ea34dd' LIMIT 1 [ RunTime:0.002001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user` [ RunTime:0.003278s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.002189s ]
+[ sql ] [ SQL ] SELECT `id` FROM `fa_user` WHERE  `refer_id` = 2 [ RunTime:0.001628s ]
+---------------------------------------------------------------
+[ 2019-08-10T19:06:05+08:00 ] 0.0.0.0 POST test.mingypay.com/index.php/api/users/popList
+[运行时间：0.069780s] [吞吐率：14.33req/s] [内存消耗：4,958.30kb] [文件加载：132]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000051s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002096s ]
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'users',
+    2 => 'popList',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'test.mingypay.com',
+  'connection' => 'Keep-Alive',
+  'accept-encoding' => 'gzip',
+  'cf-ipcountry' => 'CN',
+  'x-forwarded-for' => '2409:8920:2e40:7062:1147:9318:26aa:9b0c',
+  'cf-ray' => '50417f96d1724cd0-CSX',
+  'x-forwarded-proto' => 'http',
+  'cf-visitor' => '{"scheme":"http"}',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'origin' => 'http://test.mingypay.com',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.131 Safari/537.36',
+  'referer' => 'http://test.mingypay.com/views/home/promoteInformation.html',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => '__cfduid=de8229e2343b12b3734c097198e7d41ac1564657316; Hm_lvt_d214947968792b839fd669a4decaaffc=1564657530; Hm_lpvt_d214947968792b839fd669a4decaaffc=1565435126',
+  'cf-connecting-ip' => '2409:8920:2e40:7062:1147:9318:26aa:9b0c',
+  'cdn-loop' => 'cloudflare',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'content-length' => '58',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'limit' => '10',
+  'token' => 'f566f57c-cb7f-4711-9871-082fac1f6a2d',
+)
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/public/../application/api/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.001798s ]
+[ info ] [ TOKEN ] INIT Mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\Users->popList[ /www/wwwroot/test.mingypay.com/mingypay/application/api/controller/Users.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002064s ] mysql:host=106.12.50.41;port=3306;dbname=mingypay;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user_token` [ RunTime:0.003323s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user_token` WHERE  `token` = '4e69f6c244f61d472c2838f56086d467f6ea34dd' LIMIT 1 [ RunTime:0.001981s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user` [ RunTime:0.003724s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.001788s ]
+[ sql ] [ SQL ] SELECT id,username,email,mobile,FROM_UNIXTIME(createtime) as createtime,refer_id FROM `fa_user` WHERE  `refer_id` = 2  AND `is_freeze` = 0 LIMIT 0,10 [ RunTime:0.001809s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_user` WHERE  `refer_id` = 2  AND `is_freeze` = 0 LIMIT 1 [ RunTime:0.002472s ]
+---------------------------------------------------------------
+[ 2019-08-10T19:06:05+08:00 ] 0.0.0.0 POST test.mingypay.com/index.php/api/users/shorturl1
+[运行时间：0.197554s] [吞吐率：5.06req/s] [内存消耗：4,886.77kb] [文件加载：130]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000047s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002135s ]
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'users',
+    2 => 'shorturl1',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'test.mingypay.com',
+  'connection' => 'Keep-Alive',
+  'accept-encoding' => 'gzip',
+  'cf-ipcountry' => 'CN',
+  'x-forwarded-for' => '2409:8920:2e40:7062:1147:9318:26aa:9b0c',
+  'cf-ray' => '50417f9691c94ce8-CSX',
+  'x-forwarded-proto' => 'http',
+  'cf-visitor' => '{"scheme":"http"}',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'origin' => 'http://test.mingypay.com',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.131 Safari/537.36',
+  'referer' => 'http://test.mingypay.com/views/home/promoteInformation.html',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => '__cfduid=de8229e2343b12b3734c097198e7d41ac1564657316; Hm_lvt_d214947968792b839fd669a4decaaffc=1564657530; Hm_lpvt_d214947968792b839fd669a4decaaffc=1565435126',
+  'cf-connecting-ip' => '2409:8920:2e40:7062:1147:9318:26aa:9b0c',
+  'cdn-loop' => 'cloudflare',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'content-length' => '90',
+)
+[ info ] [ PARAM ] array (
+  'token' => 'f566f57c-cb7f-4711-9871-082fac1f6a2d',
+  'url' => 'http://test.mingypay.com/index.html',
+)
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/public/../application/api/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.001517s ]
+[ info ] [ TOKEN ] INIT Mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\Users->shorturl1[ /www/wwwroot/test.mingypay.com/mingypay/application/api/controller/Users.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003701s ] mysql:host=106.12.50.41;port=3306;dbname=mingypay;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user_token` [ RunTime:0.032233s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user_token` WHERE  `token` = '4e69f6c244f61d472c2838f56086d467f6ea34dd' LIMIT 1 [ RunTime:0.006619s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user` [ RunTime:0.003842s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.007126s ]
+---------------------------------------------------------------
+[ 2019-08-10T19:06:05+08:00 ] 0.0.0.0 POST test.mingypay.com/index.php/api/ComplainOrder/agentComplainOrder
+[运行时间：0.056690s] [吞吐率：17.64req/s] [内存消耗：4,826.72kb] [文件加载：132]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000040s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.001857s ]
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'ComplainOrder',
+    2 => 'agentComplainOrder',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'test.mingypay.com',
+  'connection' => 'Keep-Alive',
+  'accept-encoding' => 'gzip',
+  'cf-ipcountry' => 'CN',
+  'x-forwarded-for' => '2409:8920:2e40:7062:1147:9318:26aa:9b0c',
+  'cf-ray' => '50417f9ac2704ce8-CSX',
+  'x-forwarded-proto' => 'http',
+  'cf-visitor' => '{"scheme":"http"}',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'origin' => 'http://test.mingypay.com',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.131 Safari/537.36',
+  'referer' => 'http://test.mingypay.com/views/home/complaintManagement.html',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => '__cfduid=de8229e2343b12b3734c097198e7d41ac1564657316; Hm_lvt_d214947968792b839fd669a4decaaffc=1564657530; Hm_lpvt_d214947968792b839fd669a4decaaffc=1565435126',
+  'cf-connecting-ip' => '2409:8920:2e40:7062:1147:9318:26aa:9b0c',
+  'cdn-loop' => 'cloudflare',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'content-length' => '71',
+)
+[ info ] [ PARAM ] array (
+  'page' => '1',
+  'limit' => '10',
+  'order_type' => '0',
+  'token' => 'f566f57c-cb7f-4711-9871-082fac1f6a2d',
+)
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/public/../application/api/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.001374s ]
+[ info ] [ TOKEN ] INIT Mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\Complainorder->agentComplainOrder[ /www/wwwroot/test.mingypay.com/mingypay/application/api/controller/Complainorder.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002323s ] mysql:host=106.12.50.41;port=3306;dbname=mingypay;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user_token` [ RunTime:0.002060s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user_token` WHERE  `token` = '4e69f6c244f61d472c2838f56086d467f6ea34dd' LIMIT 1 [ RunTime:0.001505s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user` [ RunTime:0.002594s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.001838s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_complainorder` [ RunTime:0.002129s ]
+[ sql ] [ SQL ] SELECT p.product_name,c.*,o.pay_price,FROM_UNIXTIME(c.create_time) as create_time FROM fa_complainorder c LEFT JOIN `fa_order` `o` ON `c`.`order_num`=`o`.`order_num` LEFT JOIN `fa_product` `p` ON `o`.`pro_id`=`p`.`id` WHERE  `c`.`uid` = 2  AND `c`.`order_type` = '0' LIMIT 0,10 [ RunTime:0.001609s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM fa_complainorder c LEFT JOIN `fa_order` `o` ON `c`.`order_num`=`o`.`order_num` LEFT JOIN `fa_product` `p` ON `o`.`pro_id`=`p`.`id` WHERE  `c`.`uid` = 2  AND `c`.`order_type` = '0' LIMIT 1 [ RunTime:0.002069s ]
+---------------------------------------------------------------
+[ 2019-08-10T19:06:10+08:00 ] 0.0.0.0 POST test.mingypay.com/index.php/api/users/shopInfo
+[运行时间：0.067422s] [吞吐率：14.83req/s] [内存消耗：4,891.15kb] [文件加载：130]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000060s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002831s ]
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'users',
+    2 => 'shopInfo',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'test.mingypay.com',
+  'connection' => 'Keep-Alive',
+  'accept-encoding' => 'gzip',
+  'cf-ipcountry' => 'CN',
+  'x-forwarded-for' => '2409:8920:2e40:7062:1147:9318:26aa:9b0c',
+  'cf-ray' => '50417fb606494ce8-CSX',
+  'x-forwarded-proto' => 'http',
+  'cf-visitor' => '{"scheme":"http"}',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'origin' => 'http://test.mingypay.com',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/74.0.3729.131 Safari/537.36',
+  'referer' => 'http://test.mingypay.com/views/transactionManagement/applySettlement.html',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => '__cfduid=de8229e2343b12b3734c097198e7d41ac1564657316; Hm_lvt_d214947968792b839fd669a4decaaffc=1564657530; Hm_lpvt_d214947968792b839fd669a4decaaffc=1565435126',
+  'cf-connecting-ip' => '2409:8920:2e40:7062:1147:9318:26aa:9b0c',
+  'cdn-loop' => 'cloudflare',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'content-length' => '42',
+)
+[ info ] [ PARAM ] array (
+  'token' => 'f566f57c-cb7f-4711-9871-082fac1f6a2d',
+)
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/public/../application/api/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.002247s ]
+[ info ] [ TOKEN ] INIT Mysql
+[ info ] [ DB ] INIT mysql
+[ info ] [ RUN ] app\api\controller\Users->shopInfo[ /www/wwwroot/test.mingypay.com/mingypay/application/api/controller/Users.php ]
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002615s ] mysql:host=106.12.50.41;port=3306;dbname=mingypay;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user_token` [ RunTime:0.002221s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user_token` WHERE  `token` = '4e69f6c244f61d472c2838f56086d467f6ea34dd' LIMIT 1 [ RunTime:0.001943s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user` [ RunTime:0.002677s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.001962s ]
+---------------------------------------------------------------
+[ 2019-08-10T19:08:01+08:00 ] 110.75.242.60 POST test.mingypay.com//index.php/api/payment/AliNotify
+[运行时间：0.091814s] [吞吐率：10.89req/s] [内存消耗：5,574.89kb] [文件加载：142]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000048s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002300s ]
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'payment',
+    2 => 'AliNotify',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'test.mingypay.com',
+  'connection' => 'Keep-Alive',
+  'accept-encoding' => 'gzip',
+  'cf-ipcountry' => 'CN',
+  'x-forwarded-for' => '110.75.242.60',
+  'cf-ray' => '5041826e575a8a11-SZX',
+  'x-forwarded-proto' => 'http',
+  'cf-visitor' => '{"scheme":"http"}',
+  'user-agent' => 'Mozilla/4.0',
+  'cf-connecting-ip' => '110.75.242.60',
+  'cdn-loop' => 'cloudflare',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'content-length' => '1028',
+)
+[ info ] [ PARAM ] array (
+  'gmt_create' => '2019-08-10 15:41:33',
+  'charset' => 'UTF-8',
+  'gmt_payment' => '2019-08-10 15:41:41',
+  'notify_time' => '2019-08-10 19:08:01',
+  'subject' => '商品1',
+  'sign' => 'eiQCDfWQwe+g5cZzHmt8RzjHjMFONvnRsHiqb8IHMK44/nlHmEwqx0qXnp8XQnLzqr6/qPlUIWMEv1jMhTJO0KsEZycsBHDA2tof0+1/kjQZV+aVbM3b1BvAZmrAhIymP+yA/CHk6iC+Vyrmf2oQn7IDJUs/9rBZz80kvqquNlFPNBqGeMot9kacStTF7Y2UQt9UOxcCGeRebniFt7fhzZcqbodmt/BxsbNm3w430pZ4BT2wyTj4rXlNuk4QhbUEYjH/n9uvd6Gd/MYgRme3KWypcSDsRA0VfcKM5SiafUlFGzSgIL3VT/7Zh5N2+Pmj0J25Odu7Jm5H8ZzN0sz9og==',
+  'buyer_id' => '2088902777548236',
+  'invoice_amount' => '0.01',
+  'version' => '1.0',
+  'notify_id' => '2019081000222154141048230582387375',
+  'fund_bill_list' => '[{"amount":"0.01","fundChannel":"ALIPAYACCOUNT"}]',
+  'notify_type' => 'trade_status_sync',
+  'out_trade_no' => '0810662643LVOSUK',
+  'total_amount' => '0.01',
+  'trade_status' => 'TRADE_SUCCESS',
+  'trade_no' => '2019081022001448230528990432',
+  'auth_app_id' => '2019061065476823',
+  'receipt_amount' => '0.01',
+  'point_amount' => '0.00',
+  'buyer_pay_amount' => '0.01',
+  'app_id' => '2019061065476823',
+  'sign_type' => 'RSA2',
+  'seller_id' => '2088531358287251',
+)
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/public/../application/api/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.001561s ]
+[ info ] [ RUN ] app\api\controller\Payment->AliNotify[ /www/wwwroot/test.mingypay.com/mingypay/application/api/controller/Payment.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003908s ] mysql:host=106.12.50.41;port=3306;dbname=mingypay;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_order` [ RunTime:0.002347s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_order` WHERE  `order_num` = '0810662643LVOSUK' LIMIT 1 [ RunTime:0.001678s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_product` [ RunTime:0.002169s ]
+[ sql ] [ SQL ] SELECT `p`.*,`c`.`categorys_name` FROM fa_product p LEFT JOIN `fa_categorys` `c` ON `p`.`categorys_id`=`c`.`id` WHERE  `p`.`id` = 1 LIMIT 1 [ RunTime:0.001577s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user` [ RunTime:0.002313s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.001940s ]
+---------------------------------------------------------------
+[ 2019-08-10T19:10:45+08:00 ] 110.75.242.213 POST test.mingypay.com//index.php/api/payment/AliNotify
+[运行时间：0.088473s] [吞吐率：11.30req/s] [内存消耗：5,575.03kb] [文件加载：142]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000041s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002294s ]
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'payment',
+    2 => 'AliNotify',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'test.mingypay.com',
+  'connection' => 'Keep-Alive',
+  'accept-encoding' => 'gzip',
+  'cf-ipcountry' => 'CN',
+  'x-forwarded-for' => '110.75.242.213',
+  'cf-ray' => '5041866f36378bb4-SZX',
+  'x-forwarded-proto' => 'http',
+  'cf-visitor' => '{"scheme":"http"}',
+  'user-agent' => 'Mozilla/4.0',
+  'cf-connecting-ip' => '110.75.242.213',
+  'cdn-loop' => 'cloudflare',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'content-length' => '1020',
+)
+[ info ] [ PARAM ] array (
+  'gmt_create' => '2019-08-10 15:43:37',
+  'charset' => 'UTF-8',
+  'gmt_payment' => '2019-08-10 15:43:46',
+  'notify_time' => '2019-08-10 19:10:45',
+  'subject' => '商品1',
+  'sign' => 'kg0A4mJ8ChyxYPIyFLI+7JvSuRkbIT+BrPRC9c0qxWJTtsRQcf2/NyFpKhTL3xVvpA81ijHGNarFlsK0hxfXae3DCFo6bKxL2gw7f7mvJGQaQaxrTOlNv7CGsNGb2mgRsMo4iOs6k4BuJfd7x3d1rEQxfDuFAs+FTqXxWx4Il7cTdeLAUUoG6/DCB7er5nPW7RlaID2EMvzjytA+QKIKLbArkBtL+UTTQwagKfxMjQ2LVgi59nLLersClW/nK+HEHVHfngtOYUtNDHTjQ43tCCB8cAc0F12R0e4QWUmSZ/frBzSujuhWLfCa7GEmWBaXOs1F75qSoDXdZFx+LW0vTA==',
+  'buyer_id' => '2088902777548236',
+  'invoice_amount' => '0.01',
+  'version' => '1.0',
+  'notify_id' => '2019081000222154346048230582334314',
+  'fund_bill_list' => '[{"amount":"0.01","fundChannel":"ALIPAYACCOUNT"}]',
+  'notify_type' => 'trade_status_sync',
+  'out_trade_no' => '08106910059ZFOPR',
+  'total_amount' => '0.01',
+  'trade_status' => 'TRADE_SUCCESS',
+  'trade_no' => '2019081022001448230527668314',
+  'auth_app_id' => '2019061065476823',
+  'receipt_amount' => '0.01',
+  'point_amount' => '0.00',
+  'buyer_pay_amount' => '0.01',
+  'app_id' => '2019061065476823',
+  'sign_type' => 'RSA2',
+  'seller_id' => '2088531358287251',
+)
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/public/../application/api/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.001665s ]
+[ info ] [ RUN ] app\api\controller\Payment->AliNotify[ /www/wwwroot/test.mingypay.com/mingypay/application/api/controller/Payment.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004829s ] mysql:host=106.12.50.41;port=3306;dbname=mingypay;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_order` [ RunTime:0.002045s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_order` WHERE  `order_num` = '08106910059ZFOPR' LIMIT 1 [ RunTime:0.002734s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_product` [ RunTime:0.002581s ]
+[ sql ] [ SQL ] SELECT `p`.*,`c`.`categorys_name` FROM fa_product p LEFT JOIN `fa_categorys` `c` ON `p`.`categorys_id`=`c`.`id` WHERE  `p`.`id` = 1 LIMIT 1 [ RunTime:0.001895s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user` [ RunTime:0.002765s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.001730s ]
+---------------------------------------------------------------
+[ 2019-08-10T19:16:31+08:00 ] 110.75.242.29 POST test.mingypay.com//index.php/api/payment/AliNotify
+[运行时间：0.110819s] [吞吐率：9.02req/s] [内存消耗：5,574.89kb] [文件加载：142]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000040s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002360s ]
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'payment',
+    2 => 'AliNotify',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'test.mingypay.com',
+  'connection' => 'Keep-Alive',
+  'accept-encoding' => 'gzip',
+  'cf-ipcountry' => 'CN',
+  'x-forwarded-for' => '110.75.242.29',
+  'cf-ray' => '50418ee2b5278bd2-SZX',
+  'x-forwarded-proto' => 'http',
+  'cf-visitor' => '{"scheme":"http"}',
+  'user-agent' => 'Mozilla/4.0',
+  'cf-connecting-ip' => '110.75.242.29',
+  'cdn-loop' => 'cloudflare',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'content-length' => '1026',
+)
+[ info ] [ PARAM ] array (
+  'gmt_create' => '2019-08-10 15:46:53',
+  'charset' => 'UTF-8',
+  'gmt_payment' => '2019-08-10 15:46:59',
+  'notify_time' => '2019-08-10 19:16:31',
+  'subject' => '商品1',
+  'sign' => 'dWBDTtzWeGwAoysCMbQHotWFvY2nKayGCgDs/UMQgAm/xEqQaioKyAdREf+++kgnjQH2NQ08Ub9S0k0dhcq6V3RgkIQAuqoPRQvm7hpdcFsXNA8ZfVifByUQDBacG7eS2tFXX+ypbdfl+FYPEc/a9bh9kqXQyC3RehPXs1xM/eJbiFQGa+kroBew008o18lQEfLTrKA8KXX+cLx5rMdWAPUKWmbnW834kROOmOvmt8pcepMzIvTJ0IGBGedqzWVbMerLmEzVEFRrKRLRhu2hEJqxdx+WRskIhsIzXIqZGS7SAzoF7XERDZFFGsb2oA7GHILy6dLkA/fdA+mUaM0o7g==',
+  'buyer_id' => '2088902777548236',
+  'invoice_amount' => '0.01',
+  'version' => '1.0',
+  'notify_id' => '2019081000222154659048230582578487',
+  'fund_bill_list' => '[{"amount":"0.01","fundChannel":"ALIPAYACCOUNT"}]',
+  'notify_type' => 'trade_status_sync',
+  'out_trade_no' => '0810659360AOVYWQ',
+  'total_amount' => '0.01',
+  'trade_status' => 'TRADE_SUCCESS',
+  'trade_no' => '2019081022001448230528538802',
+  'auth_app_id' => '2019061065476823',
+  'receipt_amount' => '0.01',
+  'point_amount' => '0.00',
+  'buyer_pay_amount' => '0.01',
+  'app_id' => '2019061065476823',
+  'sign_type' => 'RSA2',
+  'seller_id' => '2088531358287251',
+)
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/public/../application/api/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.001955s ]
+[ info ] [ RUN ] app\api\controller\Payment->AliNotify[ /www/wwwroot/test.mingypay.com/mingypay/application/api/controller/Payment.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004167s ] mysql:host=106.12.50.41;port=3306;dbname=mingypay;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_order` [ RunTime:0.003624s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_order` WHERE  `order_num` = '0810659360AOVYWQ' LIMIT 1 [ RunTime:0.001866s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_product` [ RunTime:0.003140s ]
+[ sql ] [ SQL ] SELECT `p`.*,`c`.`categorys_name` FROM fa_product p LEFT JOIN `fa_categorys` `c` ON `p`.`categorys_id`=`c`.`id` WHERE  `p`.`id` = 1 LIMIT 1 [ RunTime:0.001638s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user` [ RunTime:0.003194s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.001910s ]
+---------------------------------------------------------------
+[ 2019-08-10T19:19:40+08:00 ] 110.75.242.130 POST test.mingypay.com//index.php/api/payment/AliNotify
+[运行时间：0.093416s] [吞吐率：10.70req/s] [内存消耗：5,574.97kb] [文件加载：142]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000059s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002338s ]
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'payment',
+    2 => 'AliNotify',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'test.mingypay.com',
+  'connection' => 'Keep-Alive',
+  'accept-encoding' => 'gzip',
+  'cf-ipcountry' => 'CN',
+  'x-forwarded-for' => '110.75.242.130',
+  'cf-ray' => '5041937c21858bde-SZX',
+  'x-forwarded-proto' => 'http',
+  'cf-visitor' => '{"scheme":"http"}',
+  'user-agent' => 'Mozilla/4.0',
+  'cf-connecting-ip' => '110.75.242.130',
+  'cdn-loop' => 'cloudflare',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'content-length' => '1026',
+)
+[ info ] [ PARAM ] array (
+  'gmt_create' => '2019-08-10 15:52:05',
+  'charset' => 'UTF-8',
+  'gmt_payment' => '2019-08-10 15:52:12',
+  'notify_time' => '2019-08-10 19:19:40',
+  'subject' => '商品1',
+  'sign' => 'VRf9xkihJE/yJtqv5Zx+TggILeEmNNWhXa8PJB9TdIASzcJkHV+duXq9xOaBpw+5p9IzEprpVCd+NqZn/wlLOHpfLjt0/hsO5d1z6mZTZXTlJlwarnYHffyQpxfsxaKSAWG1N05c/jiY8ph8OMdrpTIsPkSTmDWYB81JxqxNCNuc/LpQfNB/Fapeb/6e2Tg1OO5TeXsmKA4WVFlm68gBhZ5e0e1Fogc8iB4NKkB6S87w2HDxbTOT9Zb+YMGa1xdOQR9gySHq9g9UwkPQ1FvgVzJMjy+mkB7X4kqNQY8fCFP3U4fhPiVbjlzcQlENmv8INpRw3jCrxhh0MV+BzV95lw==',
+  'buyer_id' => '2088902777548236',
+  'invoice_amount' => '0.01',
+  'version' => '1.0',
+  'notify_id' => '2019081000222155212048230582166079',
+  'fund_bill_list' => '[{"amount":"0.01","fundChannel":"ALIPAYACCOUNT"}]',
+  'notify_type' => 'trade_status_sync',
+  'out_trade_no' => '0810694040UGAHV4',
+  'total_amount' => '0.01',
+  'trade_status' => 'TRADE_SUCCESS',
+  'trade_no' => '2019081022001448230529225607',
+  'auth_app_id' => '2019061065476823',
+  'receipt_amount' => '0.01',
+  'point_amount' => '0.00',
+  'buyer_pay_amount' => '0.01',
+  'app_id' => '2019061065476823',
+  'sign_type' => 'RSA2',
+  'seller_id' => '2088531358287251',
+)
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/public/../application/api/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.001641s ]
+[ info ] [ RUN ] app\api\controller\Payment->AliNotify[ /www/wwwroot/test.mingypay.com/mingypay/application/api/controller/Payment.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003585s ] mysql:host=106.12.50.41;port=3306;dbname=mingypay;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_order` [ RunTime:0.003369s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_order` WHERE  `order_num` = '0810694040UGAHV4' LIMIT 1 [ RunTime:0.001927s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_product` [ RunTime:0.002257s ]
+[ sql ] [ SQL ] SELECT `p`.*,`c`.`categorys_name` FROM fa_product p LEFT JOIN `fa_categorys` `c` ON `p`.`categorys_id`=`c`.`id` WHERE  `p`.`id` = 1 LIMIT 1 [ RunTime:0.001746s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user` [ RunTime:0.002483s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.001749s ]
+---------------------------------------------------------------
+[ 2019-08-10T19:23:34+08:00 ] 110.75.242.84 POST test.mingypay.com//index.php/api/payment/AliNotify
+[运行时间：0.090625s] [吞吐率：11.03req/s] [内存消耗：5,575.06kb] [文件加载：142]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000059s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.001957s ]
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'payment',
+    2 => 'AliNotify',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'test.mingypay.com',
+  'connection' => 'Keep-Alive',
+  'accept-encoding' => 'gzip',
+  'cf-ipcountry' => 'CN',
+  'x-forwarded-for' => '110.75.242.84',
+  'cf-ray' => '50419935a2218bd8-SZX',
+  'x-forwarded-proto' => 'http',
+  'cf-visitor' => '{"scheme":"http"}',
+  'user-agent' => 'Mozilla/4.0',
+  'cf-connecting-ip' => '110.75.242.84',
+  'cdn-loop' => 'cloudflare',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'content-length' => '1020',
+)
+[ info ] [ PARAM ] array (
+  'gmt_create' => '2019-08-10 15:56:20',
+  'charset' => 'UTF-8',
+  'gmt_payment' => '2019-08-10 15:56:27',
+  'notify_time' => '2019-08-10 19:23:34',
+  'subject' => '商品1',
+  'sign' => 'XOsJ30vYGbHAivcqpe90AbiXhSGncPfDjWx88VI0XO02YF59BmEj1a0W6Y78gfag+GH9UeenDad0jVYFz/aLvudss0eex39Ol8AqyesIIi+oDqzwBDOYbhyYU/ISQatgCyb76e+NuUEgHXOp4pOS6VgdL7KowBzjXNSMQIG/xtXn/o8leQWbKzXosCDOYOjFTxnKVG9JdhAwXyXioErkUGYu0Z1T03L7ryqR23wH5lX1d3dSqSb89Z/dU2kvl0NBZ/nc3dkoJYDdO32gRl3TB2vVSdetPISq2jw/BRRMVVhjCLK+5BSRWZiMMRxLn2OJliPymQsmj8oIyEcUxeLrlg==',
+  'buyer_id' => '2088902777548236',
+  'invoice_amount' => '0.01',
+  'version' => '1.0',
+  'notify_id' => '2019081000222155628048230582188904',
+  'fund_bill_list' => '[{"amount":"0.01","fundChannel":"ALIPAYACCOUNT"}]',
+  'notify_type' => 'trade_status_sync',
+  'out_trade_no' => '0810644669LWR39Y',
+  'total_amount' => '0.01',
+  'trade_status' => 'TRADE_SUCCESS',
+  'trade_no' => '2019081022001448230529225711',
+  'auth_app_id' => '2019061065476823',
+  'receipt_amount' => '0.01',
+  'point_amount' => '0.00',
+  'buyer_pay_amount' => '0.01',
+  'app_id' => '2019061065476823',
+  'sign_type' => 'RSA2',
+  'seller_id' => '2088531358287251',
+)
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/public/../application/api/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.001525s ]
+[ info ] [ RUN ] app\api\controller\Payment->AliNotify[ /www/wwwroot/test.mingypay.com/mingypay/application/api/controller/Payment.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003740s ] mysql:host=106.12.50.41;port=3306;dbname=mingypay;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_order` [ RunTime:0.001954s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_order` WHERE  `order_num` = '0810644669LWR39Y' LIMIT 1 [ RunTime:0.001823s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_product` [ RunTime:0.002078s ]
+[ sql ] [ SQL ] SELECT `p`.*,`c`.`categorys_name` FROM fa_product p LEFT JOIN `fa_categorys` `c` ON `p`.`categorys_id`=`c`.`id` WHERE  `p`.`id` = 1 LIMIT 1 [ RunTime:0.001594s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user` [ RunTime:0.002557s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.002906s ]
+---------------------------------------------------------------
+[ 2019-08-10T19:27:47+08:00 ] 110.75.242.207 POST test.mingypay.com//index.php/api/payment/AliNotify
+[运行时间：0.086521s] [吞吐率：11.56req/s] [内存消耗：5,575.03kb] [文件加载：142]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000044s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.001925s ]
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'payment',
+    2 => 'AliNotify',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'test.mingypay.com',
+  'connection' => 'Keep-Alive',
+  'accept-encoding' => 'gzip',
+  'cf-ipcountry' => 'CN',
+  'x-forwarded-for' => '110.75.242.207',
+  'cf-ray' => '50419f5fc68d8bae-SZX',
+  'x-forwarded-proto' => 'http',
+  'cf-visitor' => '{"scheme":"http"}',
+  'user-agent' => 'Mozilla/4.0',
+  'cf-connecting-ip' => '110.75.242.207',
+  'cdn-loop' => 'cloudflare',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'content-length' => '1016',
+)
+[ info ] [ PARAM ] array (
+  'gmt_create' => '2019-08-10 16:00:46',
+  'charset' => 'UTF-8',
+  'gmt_payment' => '2019-08-10 16:00:53',
+  'notify_time' => '2019-08-10 19:27:46',
+  'subject' => '商品1',
+  'sign' => 'O4ZOVKvyf409luAF3I0AUWFyCrFRIGg4tfk5pFv/uWqE6d+5T++G7K2vTVRXF76LISEp9qHzGuFzQirQ12YtC3hsJsTOAEtenxbpE8aUjdG6VQRhsxN0NNmDfFmb93OyVAYxv4dQbD1ZzxXCUjNjLUDgUCR54eYih7Vghj7VTEmlgWN/b0e8h2c9jSliT7utIz3jO5UJo5jOvjTB8cqluZNMCyyLXkOEE87E7G3l5N0jhyfKacjMGYoYTjg64vUGN3FvsOntOFY8ZKbOZ8mYpRGGh4If1STQYiQ78nKDJK/qW3mow3ef5hQpBsq7Y6okuJqx7xqAx/P+c2L69D+YKg==',
+  'buyer_id' => '2088902777548236',
+  'invoice_amount' => '0.11',
+  'version' => '1.0',
+  'notify_id' => '2019081000222160054048230582591556',
+  'fund_bill_list' => '[{"amount":"0.11","fundChannel":"ALIPAYACCOUNT"}]',
+  'notify_type' => 'trade_status_sync',
+  'out_trade_no' => '0810637395I0VG13',
+  'total_amount' => '0.11',
+  'trade_status' => 'TRADE_SUCCESS',
+  'trade_no' => '2019081022001448230527668696',
+  'auth_app_id' => '2019061065476823',
+  'receipt_amount' => '0.11',
+  'point_amount' => '0.00',
+  'buyer_pay_amount' => '0.11',
+  'app_id' => '2019061065476823',
+  'sign_type' => 'RSA2',
+  'seller_id' => '2088531358287251',
+)
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/public/../application/api/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.001454s ]
+[ info ] [ RUN ] app\api\controller\Payment->AliNotify[ /www/wwwroot/test.mingypay.com/mingypay/application/api/controller/Payment.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004077s ] mysql:host=106.12.50.41;port=3306;dbname=mingypay;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_order` [ RunTime:0.003047s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_order` WHERE  `order_num` = '0810637395I0VG13' LIMIT 1 [ RunTime:0.001944s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_product` [ RunTime:0.002406s ]
+[ sql ] [ SQL ] SELECT `p`.*,`c`.`categorys_name` FROM fa_product p LEFT JOIN `fa_categorys` `c` ON `p`.`categorys_id`=`c`.`id` WHERE  `p`.`id` = 1 LIMIT 1 [ RunTime:0.002075s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user` [ RunTime:0.002417s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.002074s ]
+---------------------------------------------------------------
+[ 2019-08-10T19:30:29+08:00 ] 110.75.242.121 POST test.mingypay.com//index.php/api/payment/AliNotify
+[运行时间：0.085436s] [吞吐率：11.70req/s] [内存消耗：5,575.02kb] [文件加载：142]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000041s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.001954s ]
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'payment',
+    2 => 'AliNotify',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'test.mingypay.com',
+  'connection' => 'Keep-Alive',
+  'accept-encoding' => 'gzip',
+  'cf-ipcountry' => 'CN',
+  'x-forwarded-for' => '110.75.242.121',
+  'cf-ray' => '5041a354457e8a17-SZX',
+  'x-forwarded-proto' => 'http',
+  'cf-visitor' => '{"scheme":"http"}',
+  'user-agent' => 'Mozilla/4.0',
+  'cf-connecting-ip' => '110.75.242.121',
+  'cdn-loop' => 'cloudflare',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'content-length' => '1018',
+)
+[ info ] [ PARAM ] array (
+  'gmt_create' => '2019-08-10 16:03:34',
+  'charset' => 'UTF-8',
+  'gmt_payment' => '2019-08-10 16:03:42',
+  'notify_time' => '2019-08-10 19:30:29',
+  'subject' => '商品1',
+  'sign' => 'RMrR6pjaz+vPznJaGRkiOrKHyoI9/vH8ub2nvDDH1mq8rsLjZFJwLeWEKJghVvsppwf8Br/BWCidDgXwIw5QDll3SUluyvzUmg60kgP/dN0uX03LoTqCsaznRcjhw0UPVyEZTW35fi1KOgvZxpYn/+HJqUh6lmwQcuBFmUMk/UKMwInQ7UWyUjKKEyIMVt4VNcllJcagORC1ARpWmdOlycKcWEircRGSuoW9nt05+hpaRrP7QGKk/Jshkas3Dvpc7QZqakbo5OU9GZVtnyoii0ZagnI5UHqYl34XfkFt8pYHXBNXOkIiVLUVjSWk93AFf8/id8SO4xfQfs25LsZMbw==',
+  'buyer_id' => '2088902777548236',
+  'invoice_amount' => '0.11',
+  'version' => '1.0',
+  'notify_id' => '2019081000222160343048230582188983',
+  'fund_bill_list' => '[{"amount":"0.11","fundChannel":"ALIPAYACCOUNT"}]',
+  'notify_type' => 'trade_status_sync',
+  'out_trade_no' => '0810614183UTI0RW',
+  'total_amount' => '0.11',
+  'trade_status' => 'TRADE_SUCCESS',
+  'trade_no' => '2019081022001448230530452636',
+  'auth_app_id' => '2019061065476823',
+  'receipt_amount' => '0.11',
+  'point_amount' => '0.00',
+  'buyer_pay_amount' => '0.11',
+  'app_id' => '2019061065476823',
+  'sign_type' => 'RSA2',
+  'seller_id' => '2088531358287251',
+)
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/public/../application/api/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.001584s ]
+[ info ] [ RUN ] app\api\controller\Payment->AliNotify[ /www/wwwroot/test.mingypay.com/mingypay/application/api/controller/Payment.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003460s ] mysql:host=106.12.50.41;port=3306;dbname=mingypay;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_order` [ RunTime:0.002527s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_order` WHERE  `order_num` = '0810614183UTI0RW' LIMIT 1 [ RunTime:0.001646s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_product` [ RunTime:0.002152s ]
+[ sql ] [ SQL ] SELECT `p`.*,`c`.`categorys_name` FROM fa_product p LEFT JOIN `fa_categorys` `c` ON `p`.`categorys_id`=`c`.`id` WHERE  `p`.`id` = 1 LIMIT 1 [ RunTime:0.001612s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user` [ RunTime:0.002638s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.002043s ]
+---------------------------------------------------------------
+[ 2019-08-10T19:38:20+08:00 ] 110.75.242.217 POST test.mingypay.com//index.php/api/payment/AliNotify
+[运行时间：0.107712s] [吞吐率：9.28req/s] [内存消耗：5,574.97kb] [文件加载：142]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000060s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.011149s ]
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'payment',
+    2 => 'AliNotify',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'test.mingypay.com',
+  'connection' => 'Keep-Alive',
+  'accept-encoding' => 'gzip',
+  'cf-ipcountry' => 'CN',
+  'x-forwarded-for' => '110.75.242.217',
+  'cf-ray' => '5041aed4b6c88bd8-SZX',
+  'x-forwarded-proto' => 'http',
+  'cf-visitor' => '{"scheme":"http"}',
+  'user-agent' => 'Mozilla/4.0',
+  'cf-connecting-ip' => '110.75.242.217',
+  'cdn-loop' => 'cloudflare',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'content-length' => '1028',
+)
+[ info ] [ PARAM ] array (
+  'gmt_create' => '2019-08-10 16:11:28',
+  'charset' => 'UTF-8',
+  'gmt_payment' => '2019-08-10 16:11:35',
+  'notify_time' => '2019-08-10 19:38:20',
+  'subject' => '商品1',
+  'sign' => 'nimX/37abe5b1WQn96YbdiS+s/r1iUdzh3SClx/83c0CxZEFYI5t7cRJFJAFgeTKE1XzxjIFTLwV4ZXbjjpx820Vxn7AEjRFLJwu9RpToX5msSx5QFa1ClDFArefSGbJB641l15uN/PKrsYmD6QwT3hbkObMj6D9kYpArXYDWWTBbIn+Faq7u3LCkFF0UsKu2C6NW/z7+s+8MLGbXaL8OJjeOm14HWK1Zb0fPvK6Wm538v/H+8n7T2PYA1NH9h2Jwc9DUjZzG8KrqIC/aaCl6CDzHUAewdf/5r6cBUyt7wGMbky/HGEJ0DFmbJszkpsgapncBCcpKn+rCCtsduHUuA==',
+  'buyer_id' => '2088902777548236',
+  'invoice_amount' => '0.01',
+  'version' => '1.0',
+  'notify_id' => '2019081000222161135048230582267578',
+  'fund_bill_list' => '[{"amount":"0.01","fundChannel":"ALIPAYACCOUNT"}]',
+  'notify_type' => 'trade_status_sync',
+  'out_trade_no' => '0810685957Q1VBIW',
+  'total_amount' => '0.01',
+  'trade_status' => 'TRADE_SUCCESS',
+  'trade_no' => '2019081022001448230527599764',
+  'auth_app_id' => '2019061065476823',
+  'receipt_amount' => '0.01',
+  'point_amount' => '0.00',
+  'buyer_pay_amount' => '0.01',
+  'app_id' => '2019061065476823',
+  'sign_type' => 'RSA2',
+  'seller_id' => '2088531358287251',
+)
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/public/../application/api/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.002834s ]
+[ info ] [ RUN ] app\api\controller\Payment->AliNotify[ /www/wwwroot/test.mingypay.com/mingypay/application/api/controller/Payment.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004098s ] mysql:host=106.12.50.41;port=3306;dbname=mingypay;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_order` [ RunTime:0.002342s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_order` WHERE  `order_num` = '0810685957Q1VBIW' LIMIT 1 [ RunTime:0.001975s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_product` [ RunTime:0.002431s ]
+[ sql ] [ SQL ] SELECT `p`.*,`c`.`categorys_name` FROM fa_product p LEFT JOIN `fa_categorys` `c` ON `p`.`categorys_id`=`c`.`id` WHERE  `p`.`id` = 1 LIMIT 1 [ RunTime:0.001874s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user` [ RunTime:0.002587s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.001854s ]
+---------------------------------------------------------------
+[ 2019-08-10T19:41:21+08:00 ] 110.75.242.173 POST test.mingypay.com//index.php/api/payment/AliNotify
+[运行时间：0.085855s] [吞吐率：11.65req/s] [内存消耗：5,574.69kb] [文件加载：142]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000043s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.001816s ]
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'payment',
+    2 => 'AliNotify',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'test.mingypay.com',
+  'connection' => 'Keep-Alive',
+  'accept-encoding' => 'gzip',
+  'cf-ipcountry' => 'CN',
+  'x-forwarded-for' => '110.75.242.173',
+  'cf-ray' => '5041b340d7138bc0-SZX',
+  'x-forwarded-proto' => 'http',
+  'cf-visitor' => '{"scheme":"http"}',
+  'user-agent' => 'Mozilla/4.0',
+  'cf-connecting-ip' => '110.75.242.173',
+  'cdn-loop' => 'cloudflare',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'content-length' => '1032',
+)
+[ info ] [ PARAM ] array (
+  'gmt_create' => '2019-08-10 16:14:44',
+  'charset' => 'UTF-8',
+  'gmt_payment' => '2019-08-10 16:14:51',
+  'notify_time' => '2019-08-10 19:41:21',
+  'subject' => '商品1',
+  'sign' => 'TLNwi0CwNLtMSY3/z6rg/+/WpQV3v4EYX4uHGTIekVsonG75EdtyejtgDKiV0s0U6lg4Ww7GeyTpdLs/pPUZQJcbH/wpfusvs3/wrXWOdvEPjOrkpQZ8kdXD5n5EXuWCFsp/Ixk6ZOhuGEMEN3ZucndYPmuzyy6iTcKYPK8l3ige4f/SjkrxIgXK3mj8r2im66OsDaRMMB78d2SPkMriMBGndxVX3usAtiyvj7RZRt5tAa9Bk3DK6bw295YYUS/Bl/hOV9arlQ8hGr1Mm/YpO/7GUmC3n7+JzcetAX+vkLI6k3aTOSVw3sbOxpNddfKvcV+eZVhF2P1te+vekTFTQQ==',
+  'buyer_id' => '2088902777548236',
+  'invoice_amount' => '0.01',
+  'version' => '1.0',
+  'notify_id' => '2019081000222161451048230583164631',
+  'fund_bill_list' => '[{"amount":"0.01","fundChannel":"ALIPAYACCOUNT"}]',
+  'notify_type' => 'trade_status_sync',
+  'out_trade_no' => '0810666287TYTLVG',
+  'total_amount' => '0.01',
+  'trade_status' => 'TRADE_SUCCESS',
+  'trade_no' => '2019081022001448230527599844',
+  'auth_app_id' => '2019061065476823',
+  'receipt_amount' => '0.01',
+  'point_amount' => '0.00',
+  'buyer_pay_amount' => '0.01',
+  'app_id' => '2019061065476823',
+  'sign_type' => 'RSA2',
+  'seller_id' => '2088531358287251',
+)
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/public/../application/api/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.001523s ]
+[ info ] [ RUN ] app\api\controller\Payment->AliNotify[ /www/wwwroot/test.mingypay.com/mingypay/application/api/controller/Payment.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003844s ] mysql:host=106.12.50.41;port=3306;dbname=mingypay;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_order` [ RunTime:0.002149s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_order` WHERE  `order_num` = '0810666287TYTLVG' LIMIT 1 [ RunTime:0.001662s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_product` [ RunTime:0.002515s ]
+[ sql ] [ SQL ] SELECT `p`.*,`c`.`categorys_name` FROM fa_product p LEFT JOIN `fa_categorys` `c` ON `p`.`categorys_id`=`c`.`id` WHERE  `p`.`id` = 1 LIMIT 1 [ RunTime:0.001558s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user` [ RunTime:0.002731s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.001913s ]
+---------------------------------------------------------------
+[ 2019-08-10T19:44:08+08:00 ] 110.75.242.19 POST test.mingypay.com//index.php/api/payment/AliNotify
+[运行时间：0.083873s] [吞吐率：11.92req/s] [内存消耗：5,574.78kb] [文件加载：142]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000049s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.001866s ]
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'payment',
+    2 => 'AliNotify',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'test.mingypay.com',
+  'connection' => 'Keep-Alive',
+  'accept-encoding' => 'gzip',
+  'cf-ipcountry' => 'CN',
+  'x-forwarded-for' => '110.75.242.19',
+  'cf-ray' => '5041b75500b78bde-SZX',
+  'x-forwarded-proto' => 'http',
+  'cf-visitor' => '{"scheme":"http"}',
+  'user-agent' => 'Mozilla/4.0',
+  'cf-connecting-ip' => '110.75.242.19',
+  'cdn-loop' => 'cloudflare',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'content-length' => '1016',
+)
+[ info ] [ PARAM ] array (
+  'gmt_create' => '2019-08-10 16:17:21',
+  'charset' => 'UTF-8',
+  'gmt_payment' => '2019-08-10 16:17:28',
+  'notify_time' => '2019-08-10 19:44:08',
+  'subject' => '商品1',
+  'sign' => 'HOS4WR48jsRq23bLUdVST38GSCSv/R66S2Dp+sGcQelNU9sjOaTQ8fHPOJ35Zhm9EZyQNGmP0fLJeB+lTip5zq7v7oV9Zz4EWXukoO88svIUFoUikzLirfOJey0o9wzoJzx/a85krim+bvRIuwemF5ORV4eVB0QeqDbBMVVowhYnNNQB0Haeh90U7NLlY9Io1Z8kl+W6TjUM5Kh2ShQ2MWfdnG4HyjvmtShGfWFzLFtfNOrXnNJEDk9dwyJwaZNFyqAn5vk0xic43pHsfTt+qS2uhjmR1BMyay4jaU3jfdoprkxDrK31UV0ZwSDw7YN/wwBIHqCXwU8/Ez8uLHaSoQ==',
+  'buyer_id' => '2088902777548236',
+  'invoice_amount' => '0.01',
+  'version' => '1.0',
+  'notify_id' => '2019081000222161728048230582080081',
+  'fund_bill_list' => '[{"amount":"0.01","fundChannel":"ALIPAYACCOUNT"}]',
+  'notify_type' => 'trade_status_sync',
+  'out_trade_no' => '0810671909RTOFAQ',
+  'total_amount' => '0.01',
+  'trade_status' => 'TRADE_SUCCESS',
+  'trade_no' => '2019081022001448230527776166',
+  'auth_app_id' => '2019061065476823',
+  'receipt_amount' => '0.01',
+  'point_amount' => '0.00',
+  'buyer_pay_amount' => '0.01',
+  'app_id' => '2019061065476823',
+  'sign_type' => 'RSA2',
+  'seller_id' => '2088531358287251',
+)
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/public/../application/api/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.001429s ]
+[ info ] [ RUN ] app\api\controller\Payment->AliNotify[ /www/wwwroot/test.mingypay.com/mingypay/application/api/controller/Payment.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004938s ] mysql:host=106.12.50.41;port=3306;dbname=mingypay;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_order` [ RunTime:0.002558s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_order` WHERE  `order_num` = '0810671909RTOFAQ' LIMIT 1 [ RunTime:0.001600s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_product` [ RunTime:0.001966s ]
+[ sql ] [ SQL ] SELECT `p`.*,`c`.`categorys_name` FROM fa_product p LEFT JOIN `fa_categorys` `c` ON `p`.`categorys_id`=`c`.`id` WHERE  `p`.`id` = 1 LIMIT 1 [ RunTime:0.001385s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user` [ RunTime:0.003016s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.001577s ]
+---------------------------------------------------------------
+[ 2019-08-10T20:00:30+08:00 ] 110.75.242.39 POST test.mingypay.com//index.php/api/payment/AliNotify
+[运行时间：0.080087s] [吞吐率：12.49req/s] [内存消耗：5,575.06kb] [文件加载：142]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000039s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.001801s ]
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'payment',
+    2 => 'AliNotify',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'test.mingypay.com',
+  'connection' => 'Keep-Alive',
+  'accept-encoding' => 'gzip',
+  'cf-ipcountry' => 'CN',
+  'x-forwarded-for' => '110.75.242.39',
+  'cf-ray' => '5041cf4b40818a17-SZX',
+  'x-forwarded-proto' => 'http',
+  'cf-visitor' => '{"scheme":"http"}',
+  'user-agent' => 'Mozilla/4.0',
+  'cf-connecting-ip' => '110.75.242.39',
+  'cdn-loop' => 'cloudflare',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'content-length' => '1022',
+)
+[ info ] [ PARAM ] array (
+  'gmt_create' => '2019-08-10 16:33:29',
+  'charset' => 'UTF-8',
+  'gmt_payment' => '2019-08-10 16:33:37',
+  'notify_time' => '2019-08-10 20:00:29',
+  'subject' => '商品1',
+  'sign' => 'Hy+RHr/614Mv0sRHZi+BQkXla696Sx/Gr9OQE4OhukXkfzgPGgQnd9IwWNxhbE4MgeufR4kZDHArTsENvCgJZDbt4z1ceeuMPIpbe4k1y3goQNVXNEeJmnlz14+Xm/RFKDVi+T030beIXi6n21b+ImNhjFF4BtWXATDrk7oaYxn11kVqX1OcrUx6SicvCiE+QdLNUpjOe3oLquz7vdKjhirspfp2m3XnneRHUlBI50GU8ATgiCrtHtOZkj+sFSJDo8mVM4wBnahsOu2w9lFXY9LmL8WojUcECjB/QyTvEAuhYoVSSitG/Y4MCuAjS2aOGGH39eyJ7w2WI7MUOyVIDw==',
+  'buyer_id' => '2088902777548236',
+  'invoice_amount' => '0.01',
+  'version' => '1.0',
+  'notify_id' => '2019081000222163338048230583704915',
+  'fund_bill_list' => '[{"amount":"0.01","fundChannel":"ALIPAYACCOUNT"}]',
+  'notify_type' => 'trade_status_sync',
+  'out_trade_no' => '08106624356MWQFD',
+  'total_amount' => '0.01',
+  'trade_status' => 'TRADE_SUCCESS',
+  'trade_no' => '2019081022001448230528861513',
+  'auth_app_id' => '2019061065476823',
+  'receipt_amount' => '0.01',
+  'point_amount' => '0.00',
+  'buyer_pay_amount' => '0.01',
+  'app_id' => '2019061065476823',
+  'sign_type' => 'RSA2',
+  'seller_id' => '2088531358287251',
+)
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/public/../application/api/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.001388s ]
+[ info ] [ RUN ] app\api\controller\Payment->AliNotify[ /www/wwwroot/test.mingypay.com/mingypay/application/api/controller/Payment.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003190s ] mysql:host=106.12.50.41;port=3306;dbname=mingypay;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_order` [ RunTime:0.002272s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_order` WHERE  `order_num` = '08106624356MWQFD' LIMIT 1 [ RunTime:0.001398s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_product` [ RunTime:0.002900s ]
+[ sql ] [ SQL ] SELECT `p`.*,`c`.`categorys_name` FROM fa_product p LEFT JOIN `fa_categorys` `c` ON `p`.`categorys_id`=`c`.`id` WHERE  `p`.`id` = 1 LIMIT 1 [ RunTime:0.001480s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user` [ RunTime:0.002169s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.001619s ]
+---------------------------------------------------------------
+[ 2019-08-10T20:21:31+08:00 ] 110.75.242.3 POST test.mingypay.com//index.php/api/payment/AliNotify
+[运行时间：0.110242s] [吞吐率：9.07req/s] [内存消耗：5,574.86kb] [文件加载：142]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000038s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002302s ]
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'payment',
+    2 => 'AliNotify',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'test.mingypay.com',
+  'connection' => 'Keep-Alive',
+  'accept-encoding' => 'gzip',
+  'cf-ipcountry' => 'CN',
+  'x-forwarded-for' => '110.75.242.3',
+  'cf-ray' => '5041ee18e64189ed-SZX',
+  'x-forwarded-proto' => 'http',
+  'cf-visitor' => '{"scheme":"http"}',
+  'user-agent' => 'Mozilla/4.0',
+  'cf-connecting-ip' => '110.75.242.3',
+  'cdn-loop' => 'cloudflare',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'content-length' => '1014',
+)
+[ info ] [ PARAM ] array (
+  'gmt_create' => '2019-08-10 16:54:37',
+  'charset' => 'UTF-8',
+  'gmt_payment' => '2019-08-10 16:54:46',
+  'notify_time' => '2019-08-10 20:21:31',
+  'subject' => '商品1',
+  'sign' => 'MMtWsVrABsSxfgBl9dY0TOzUwRxLyTK7iBY7ZHP/oXUxz6hTJyfFHapa1n+8sJpQn8sUllLOSd6k6qrCt6dm8ZtbLruHrQner6iSzUjImNTSW9N37f5Em0vxb/ptFipwmnxYErBXFg5Da1njsyIzxGeizC+78IeSdpP4kXa+wP2QaRH1DSi/jabgFDBgY2KuFaVkxU/RUNldDxvaxjjYJfCBWTYgCpKvZA5T37OcC5vKiS10l3QkaUduo0VQdisG19Ihb2DH1WnRCGWtgKgQKpjehnCHYjudt+eKGVSWyd68R9H1H7RRFfQLi9pszlVk5SAjz4BfdzXxIjh3sMLt0w==',
+  'buyer_id' => '2088902777548236',
+  'invoice_amount' => '0.01',
+  'version' => '1.0',
+  'notify_id' => '2019081000222165446048230583355713',
+  'fund_bill_list' => '[{"amount":"0.01","fundChannel":"ALIPAYACCOUNT"}]',
+  'notify_type' => 'trade_status_sync',
+  'out_trade_no' => '0810654457RC9620',
+  'total_amount' => '0.01',
+  'trade_status' => 'TRADE_SUCCESS',
+  'trade_no' => '2019081022001448230531643321',
+  'auth_app_id' => '2019061065476823',
+  'receipt_amount' => '0.01',
+  'point_amount' => '0.00',
+  'buyer_pay_amount' => '0.01',
+  'app_id' => '2019061065476823',
+  'sign_type' => 'RSA2',
+  'seller_id' => '2088531358287251',
+)
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/public/../application/api/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.001647s ]
+[ info ] [ RUN ] app\api\controller\Payment->AliNotify[ /www/wwwroot/test.mingypay.com/mingypay/application/api/controller/Payment.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005502s ] mysql:host=106.12.50.41;port=3306;dbname=mingypay;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_order` [ RunTime:0.004459s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_order` WHERE  `order_num` = '0810654457RC9620' LIMIT 1 [ RunTime:0.001922s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_product` [ RunTime:0.011007s ]
+[ sql ] [ SQL ] SELECT `p`.*,`c`.`categorys_name` FROM fa_product p LEFT JOIN `fa_categorys` `c` ON `p`.`categorys_id`=`c`.`id` WHERE  `p`.`id` = 1 LIMIT 1 [ RunTime:0.002001s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user` [ RunTime:0.003283s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.008609s ]
+---------------------------------------------------------------
+[ 2019-08-10T20:33:30+08:00 ] 110.75.242.25 POST test.mingypay.com//index.php/api/payment/AliNotify
+[运行时间：0.097945s] [吞吐率：10.21req/s] [内存消耗：5,574.89kb] [文件加载：142]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000066s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002596s ]
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'payment',
+    2 => 'AliNotify',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'test.mingypay.com',
+  'connection' => 'Keep-Alive',
+  'accept-encoding' => 'gzip',
+  'cf-ipcountry' => 'CN',
+  'x-forwarded-for' => '110.75.242.25',
+  'cf-ray' => '5041ffa6449d89e7-SZX',
+  'x-forwarded-proto' => 'http',
+  'cf-visitor' => '{"scheme":"http"}',
+  'user-agent' => 'Mozilla/4.0',
+  'cf-connecting-ip' => '110.75.242.25',
+  'cdn-loop' => 'cloudflare',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'content-length' => '1026',
+)
+[ info ] [ PARAM ] array (
+  'gmt_create' => '2019-08-10 17:05:55',
+  'charset' => 'UTF-8',
+  'gmt_payment' => '2019-08-10 17:06:02',
+  'notify_time' => '2019-08-10 20:33:29',
+  'subject' => '商品1',
+  'sign' => 'n5O/JPSJvVDwWy2x00QohwuBQAHO0/JxCQwary2wlYET8OHDZr0uBzyLsrsdVUnVGQn1FtGNkSrhQWeZCuI6MZC3y1IMvuu2tNo5RsPz9pBiPSHd5Z+fCCubNlOiQKx+0tTMxZIbX9KTDO26lvE/g6p4kTTgQ2uMf+sHyYDx2dBIQWWXY8EkXHcrCqmfMPUBvd+iII3gpt9yCfhsbL729csKua27+yGFDqsHUnwlJFicekv9nArxr/KCVdR0cVVrJHcfyoEhba2S/sCwtBSiCZ8iza6i6Fbtc3UQIxXXDkLXf3t808OOSRadFV6pk1MKB9+NxNc/y/poJh8UAs/YVQ==',
+  'buyer_id' => '2088902777548236',
+  'invoice_amount' => '0.01',
+  'version' => '1.0',
+  'notify_id' => '2019081000222170602048230583265989',
+  'fund_bill_list' => '[{"amount":"0.01","fundChannel":"ALIPAYACCOUNT"}]',
+  'notify_type' => 'trade_status_sync',
+  'out_trade_no' => '0810671955XUNAPS',
+  'total_amount' => '0.01',
+  'trade_status' => 'TRADE_SUCCESS',
+  'trade_no' => '2019081022001448230527670170',
+  'auth_app_id' => '2019061065476823',
+  'receipt_amount' => '0.01',
+  'point_amount' => '0.00',
+  'buyer_pay_amount' => '0.01',
+  'app_id' => '2019061065476823',
+  'sign_type' => 'RSA2',
+  'seller_id' => '2088531358287251',
+)
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/public/../application/api/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.002118s ]
+[ info ] [ RUN ] app\api\controller\Payment->AliNotify[ /www/wwwroot/test.mingypay.com/mingypay/application/api/controller/Payment.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004177s ] mysql:host=106.12.50.41;port=3306;dbname=mingypay;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_order` [ RunTime:0.002215s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_order` WHERE  `order_num` = '0810671955XUNAPS' LIMIT 1 [ RunTime:0.001924s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_product` [ RunTime:0.004123s ]
+[ sql ] [ SQL ] SELECT `p`.*,`c`.`categorys_name` FROM fa_product p LEFT JOIN `fa_categorys` `c` ON `p`.`categorys_id`=`c`.`id` WHERE  `p`.`id` = 1 LIMIT 1 [ RunTime:0.002142s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user` [ RunTime:0.002753s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user` WHERE  `id` = 2 LIMIT 1 [ RunTime:0.002389s ]
+---------------------------------------------------------------
+[ 2019-08-10T21:36:28+08:00 ] 101.226.103.59 POST test.mingypay.com/index.php/api/payment/WxNotify
+[运行时间：0.065006s] [吞吐率：15.38req/s] [内存消耗：5,128.83kb] [文件加载：129]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000041s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.001795s ]
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'payment',
+    2 => 'WxNotify',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'test.mingypay.com',
+  'connection' => 'Keep-Alive',
+  'accept-encoding' => 'gzip',
+  'cf-ipcountry' => 'CN',
+  'x-forwarded-for' => '101.226.103.59',
+  'cf-ray' => '50425be230754ce2-CSX',
+  'x-forwarded-proto' => 'http',
+  'cf-visitor' => '{"scheme":"http"}',
+  'accept' => '*/*',
+  'pragma' => 'no-cache',
+  'user-agent' => 'Mozilla/4.0',
+  'cf-connecting-ip' => '101.226.103.59',
+  'cdn-loop' => 'cloudflare',
+  'content-type' => 'text/xml',
+  'content-length' => '823',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/public/../application/api/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.001437s ]
+[ info ] [ RUN ] app\api\controller\Payment->WxNotify[ /www/wwwroot/test.mingypay.com/mingypay/application/api/controller/Payment.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004906s ] mysql:host=106.12.50.41;port=3306;dbname=mingypay;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_order` [ RunTime:0.003112s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_order` WHERE  `order_num` = '0810694101DBGWEL' LIMIT 1 [ RunTime:0.002006s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_product` [ RunTime:0.002514s ]
+[ sql ] [ SQL ] SELECT `p`.*,`c`.`categorys_name` FROM fa_product p LEFT JOIN `fa_categorys` `c` ON `p`.`categorys_id`=`c`.`id` WHERE  `p`.`id` = 2 LIMIT 1 [ RunTime:0.001489s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user` [ RunTime:0.002484s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user` WHERE  `id` = 1  AND `is_freeze` = 0 LIMIT 1 [ RunTime:0.002597s ]
+---------------------------------------------------------------
+[ 2019-08-10T21:43:11+08:00 ] 101.226.103.70 POST test.mingypay.com/index.php/api/payment/WxNotify
+[运行时间：0.072520s] [吞吐率：13.79req/s] [内存消耗：5,128.83kb] [文件加载：129]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000055s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002531s ]
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'payment',
+    2 => 'WxNotify',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'test.mingypay.com',
+  'connection' => 'Keep-Alive',
+  'accept-encoding' => 'gzip',
+  'cf-ipcountry' => 'CN',
+  'x-forwarded-for' => '101.226.103.70',
+  'cf-ray' => '504265b8057e4cb2-CSX',
+  'x-forwarded-proto' => 'http',
+  'cf-visitor' => '{"scheme":"http"}',
+  'accept' => '*/*',
+  'pragma' => 'no-cache',
+  'user-agent' => 'Mozilla/4.0',
+  'cf-connecting-ip' => '101.226.103.70',
+  'cdn-loop' => 'cloudflare',
+  'content-type' => 'text/xml',
+  'content-length' => '821',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/public/../application/api/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.001896s ]
+[ info ] [ RUN ] app\api\controller\Payment->WxNotify[ /www/wwwroot/test.mingypay.com/mingypay/application/api/controller/Payment.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004482s ] mysql:host=106.12.50.41;port=3306;dbname=mingypay;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_order` [ RunTime:0.002217s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_order` WHERE  `order_num` = '0810640378YZYI5E' LIMIT 1 [ RunTime:0.001645s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_product` [ RunTime:0.002552s ]
+[ sql ] [ SQL ] SELECT `p`.*,`c`.`categorys_name` FROM fa_product p LEFT JOIN `fa_categorys` `c` ON `p`.`categorys_id`=`c`.`id` WHERE  `p`.`id` = 2 LIMIT 1 [ RunTime:0.001423s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user` [ RunTime:0.002376s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user` WHERE  `id` = 1  AND `is_freeze` = 0 LIMIT 1 [ RunTime:0.001818s ]
+---------------------------------------------------------------
+[ 2019-08-10T21:55:50+08:00 ] 140.207.54.78 POST test.mingypay.com/index.php/api/payment/WxNotify
+[运行时间：0.062092s] [吞吐率：16.11req/s] [内存消耗：5,128.93kb] [文件加载：129]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000040s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.001916s ]
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'payment',
+    2 => 'WxNotify',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'test.mingypay.com',
+  'connection' => 'Keep-Alive',
+  'accept-encoding' => 'gzip',
+  'cf-ipcountry' => 'CN',
+  'x-forwarded-for' => '140.207.54.78',
+  'cf-ray' => '5042784121934cf4-CSX',
+  'x-forwarded-proto' => 'http',
+  'cf-visitor' => '{"scheme":"http"}',
+  'accept' => '*/*',
+  'pragma' => 'no-cache',
+  'user-agent' => 'Mozilla/4.0',
+  'cf-connecting-ip' => '140.207.54.78',
+  'cdn-loop' => 'cloudflare',
+  'content-type' => 'text/xml',
+  'content-length' => '821',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/public/../application/api/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.001924s ]
+[ info ] [ RUN ] app\api\controller\Payment->WxNotify[ /www/wwwroot/test.mingypay.com/mingypay/application/api/controller/Payment.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004333s ] mysql:host=106.12.50.41;port=3306;dbname=mingypay;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_order` [ RunTime:0.002351s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_order` WHERE  `order_num` = '0810692885LXZ7N1' LIMIT 1 [ RunTime:0.001770s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_product` [ RunTime:0.002301s ]
+[ sql ] [ SQL ] SELECT `p`.*,`c`.`categorys_name` FROM fa_product p LEFT JOIN `fa_categorys` `c` ON `p`.`categorys_id`=`c`.`id` WHERE  `p`.`id` = 2 LIMIT 1 [ RunTime:0.001510s ]
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user` [ RunTime:0.002463s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user` WHERE  `id` = 1  AND `is_freeze` = 0 LIMIT 1 [ RunTime:0.001927s ]
+---------------------------------------------------------------
+[ 2019-08-10T22:26:05+08:00 ] 122.96.41.103 POST test.mingypay.com/index.php/api/Notice/accountNotice
+[运行时间：0.068077s] [吞吐率：14.69req/s] [内存消耗：4,615.16kb] [文件加载：128]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000033s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002336s ]
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'Notice',
+    2 => 'accountNotice',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'test.mingypay.com',
+  'connection' => 'Keep-Alive',
+  'accept-encoding' => 'gzip',
+  'cf-ipcountry' => 'CN',
+  'x-forwarded-for' => '122.96.41.103,61.151.178.180',
+  'cf-ray' => '5042a490e1084ce8-CSX',
+  'x-forwarded-proto' => 'http',
+  'cf-visitor' => '{"scheme":"http"}',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'accept-language' => 'zh-CN,zh-CN;q=0.9,en-US;q=0.8',
+  'cookie' => '__cfduid=d64cff0f33d6f84db5b792ae9c85e4ecb1558843575; Hm_lvt_acd72c6dc0d8343dbd7f77766f891473=1562916063,1564986139; Hm_lpvt_acd72c6dc0d8343dbd7f77766f891473=1564986139',
+  'origin' => 'http://test.mingypay.com',
+  'referer' => 'http://test.mingypay.com/',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 9; VOG-AL00 Build/HUAWEIVOG-AL00; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/66.0.3359.126 MQQBrowser/6.2 TBS/044807 Mobile Safari/537.36 V1_AND_SQ_7.1.0_0_TIM_D TIM/2.3.1.1834 QQ/6.5.5  NetType/4G WebP/0.3.0 Pixel/1080',
+  'x-forwarded-for-pound' => '122.96.41.103',
+  'x-requested-with' => 'XMLHttpRequest',
+  'cf-connecting-ip' => '61.151.178.180',
+  'cdn-loop' => 'cloudflare',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'content-length' => '8',
+)
+[ info ] [ PARAM ] array (
+  'status' => '2',
+)
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/public/../application/api/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.001732s ]
+[ info ] [ RUN ] app\api\controller\Notice->accountNotice[ /www/wwwroot/test.mingypay.com/mingypay/application/api/controller/Notice.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.019281s ] mysql:host=106.12.50.41;port=3306;dbname=mingypay;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_notice` [ RunTime:0.002253s ]
+[ sql ] [ SQL ] SELECT title,content,FROM_UNIXTIME(create_time) as time FROM `fa_notice` WHERE  `status` = 2 ORDER BY `id` DESC LIMIT 0,5 [ RunTime:0.003356s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_notice` WHERE  `status` = 2 LIMIT 1 [ RunTime:0.001456s ]
+---------------------------------------------------------------
+[ 2019-08-10T22:26:05+08:00 ] 122.96.41.103 POST test.mingypay.com/index.php/api/Notice/articleList
+[运行时间：0.070363s] [吞吐率：14.21req/s] [内存消耗：4,554.45kb] [文件加载：127]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000041s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.022609s ]
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'Notice',
+    2 => 'articleList',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'test.mingypay.com',
+  'connection' => 'Keep-Alive',
+  'accept-encoding' => 'gzip',
+  'cf-ipcountry' => 'CN',
+  'x-forwarded-for' => '122.96.41.103,61.151.178.180',
+  'cf-ray' => '5042a490e0bd4cca-CSX',
+  'x-forwarded-proto' => 'http',
+  'cf-visitor' => '{"scheme":"http"}',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'accept-language' => 'zh-CN,zh-CN;q=0.9,en-US;q=0.8',
+  'cookie' => '__cfduid=d64cff0f33d6f84db5b792ae9c85e4ecb1558843575; Hm_lvt_acd72c6dc0d8343dbd7f77766f891473=1562916063,1564986139; Hm_lpvt_acd72c6dc0d8343dbd7f77766f891473=1564986139',
+  'origin' => 'http://test.mingypay.com',
+  'referer' => 'http://test.mingypay.com/',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 9; VOG-AL00 Build/HUAWEIVOG-AL00; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/66.0.3359.126 MQQBrowser/6.2 TBS/044807 Mobile Safari/537.36 V1_AND_SQ_7.1.0_0_TIM_D TIM/2.3.1.1834 QQ/6.5.5  NetType/4G WebP/0.3.0 Pixel/1080',
+  'x-forwarded-for-pound' => '122.96.41.103',
+  'x-requested-with' => 'XMLHttpRequest',
+  'cf-connecting-ip' => '61.151.178.180',
+  'cdn-loop' => 'cloudflare',
+  'content-type' => 'application/x-www-form-urlencoded',
+  'content-length' => '0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/public/../application/api/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.002069s ]
+[ info ] [ RUN ] app\api\controller\Notice->articleList[ /www/wwwroot/test.mingypay.com/mingypay/application/api/controller/Notice.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.003224s ] mysql:host=106.12.50.41;port=3306;dbname=mingypay;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_article` [ RunTime:0.003631s ]
+[ sql ] [ SQL ] SELECT title,content,FROM_UNIXTIME(create_time) as create_time FROM `fa_article` [ RunTime:0.001570s ]
+---------------------------------------------------------------
+[ 2019-08-10T22:26:05+08:00 ] 122.96.41.103 POST test.mingypay.com/index.php/api/Notice/accountNotice
+[运行时间：0.057964s] [吞吐率：17.25req/s] [内存消耗：4,614.65kb] [文件加载：128]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000066s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002066s ]
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'Notice',
+    2 => 'accountNotice',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'test.mingypay.com',
+  'connection' => 'Keep-Alive',
+  'accept-encoding' => 'gzip',
+  'cf-ipcountry' => 'CN',
+  'x-forwarded-for' => '122.96.41.103,61.151.178.180',
+  'cf-ray' => '5042a490e79e4cfa-CSX',
+  'x-forwarded-proto' => 'http',
+  'cf-visitor' => '{"scheme":"http"}',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'accept-language' => 'zh-CN,zh-CN;q=0.9,en-US;q=0.8',
+  'cookie' => '__cfduid=d64cff0f33d6f84db5b792ae9c85e4ecb1558843575; Hm_lvt_acd72c6dc0d8343dbd7f77766f891473=1562916063,1564986139; Hm_lpvt_acd72c6dc0d8343dbd7f77766f891473=1564986139',
+  'origin' => 'http://test.mingypay.com',
+  'referer' => 'http://test.mingypay.com/',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 9; VOG-AL00 Build/HUAWEIVOG-AL00; wv) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/66.0.3359.126 MQQBrowser/6.2 TBS/044807 Mobile Safari/537.36 V1_AND_SQ_7.1.0_0_TIM_D TIM/2.3.1.1834 QQ/6.5.5  NetType/4G WebP/0.3.0 Pixel/1080',
+  'x-forwarded-for-pound' => '122.96.41.103',
+  'x-requested-with' => 'XMLHttpRequest',
+  'cf-connecting-ip' => '61.151.178.180',
+  'cdn-loop' => 'cloudflare',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'content-length' => '8',
+)
+[ info ] [ PARAM ] array (
+  'status' => '1',
+)
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/public/../application/api/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.001430s ]
+[ info ] [ RUN ] app\api\controller\Notice->accountNotice[ /www/wwwroot/test.mingypay.com/mingypay/application/api/controller/Notice.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004054s ] mysql:host=106.12.50.41;port=3306;dbname=mingypay;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_notice` [ RunTime:0.002472s ]
+[ sql ] [ SQL ] SELECT id,status,title,content,FROM_UNIXTIME(create_time) as time FROM `fa_notice` WHERE  `status` = 1 ORDER BY `id` DESC LIMIT 10 [ RunTime:0.007771s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_notice` WHERE  `status` = 1 LIMIT 1 [ RunTime:0.001317s ]
+---------------------------------------------------------------
+[ 2019-08-10T22:30:10+08:00 ] 222.79.62.253 POST test.mingypay.com/index.php/api/Notice/accountNotice
+[运行时间：0.078493s] [吞吐率：12.74req/s] [内存消耗：4,614.35kb] [文件加载：128]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000047s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.003279s ]
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'Notice',
+    2 => 'accountNotice',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'test.mingypay.com',
+  'connection' => 'Keep-Alive',
+  'accept-encoding' => 'gzip',
+  'cf-ipcountry' => 'CN',
+  'x-forwarded-for' => '222.79.62.253',
+  'cf-ray' => '5042aa89807b8bd8-SZX',
+  'x-forwarded-proto' => 'http',
+  'cf-visitor' => '{"scheme":"http"}',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'origin' => 'http://test.mingypay.com',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36',
+  'referer' => 'http://test.mingypay.com/',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__cfduid=d4407d65e804d65d605c480c1b5f82fde1565122944; Hm_lvt_acd72c6dc0d8343dbd7f77766f891473=1565122955',
+  'cf-connecting-ip' => '222.79.62.253',
+  'cdn-loop' => 'cloudflare',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'content-length' => '8',
+)
+[ info ] [ PARAM ] array (
+  'status' => '2',
+)
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/public/../application/api/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.002557s ]
+[ info ] [ RUN ] app\api\controller\Notice->accountNotice[ /www/wwwroot/test.mingypay.com/mingypay/application/api/controller/Notice.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.010736s ] mysql:host=106.12.50.41;port=3306;dbname=mingypay;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_notice` [ RunTime:0.002353s ]
+[ sql ] [ SQL ] SELECT title,content,FROM_UNIXTIME(create_time) as time FROM `fa_notice` WHERE  `status` = 2 ORDER BY `id` DESC LIMIT 0,5 [ RunTime:0.004204s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_notice` WHERE  `status` = 2 LIMIT 1 [ RunTime:0.001646s ]
+---------------------------------------------------------------
+[ 2019-08-10T22:30:10+08:00 ] 222.79.62.253 POST test.mingypay.com/index.php/api/Notice/articleList
+[运行时间：0.074626s] [吞吐率：13.40req/s] [内存消耗：4,554.02kb] [文件加载：127]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000038s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002089s ]
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'Notice',
+    2 => 'articleList',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'test.mingypay.com',
+  'connection' => 'Keep-Alive',
+  'accept-encoding' => 'gzip',
+  'cf-ipcountry' => 'CN',
+  'x-forwarded-for' => '222.79.62.253',
+  'cf-ray' => '5042aa89855789f9-SZX',
+  'x-forwarded-proto' => 'http',
+  'cf-visitor' => '{"scheme":"http"}',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'origin' => 'http://test.mingypay.com',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36',
+  'referer' => 'http://test.mingypay.com/',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__cfduid=d4407d65e804d65d605c480c1b5f82fde1565122944; Hm_lvt_acd72c6dc0d8343dbd7f77766f891473=1565122955',
+  'cf-connecting-ip' => '222.79.62.253',
+  'cdn-loop' => 'cloudflare',
+  'content-length' => '0',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/public/../application/api/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.001589s ]
+[ info ] [ RUN ] app\api\controller\Notice->articleList[ /www/wwwroot/test.mingypay.com/mingypay/application/api/controller/Notice.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.002711s ] mysql:host=106.12.50.41;port=3306;dbname=mingypay;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_article` [ RunTime:0.004580s ]
+[ sql ] [ SQL ] SELECT title,content,FROM_UNIXTIME(create_time) as create_time FROM `fa_article` [ RunTime:0.001705s ]
+---------------------------------------------------------------
+[ 2019-08-10T22:30:10+08:00 ] 222.79.62.253 POST test.mingypay.com/index.php/api/Notice/accountNotice
+[运行时间：0.094842s] [吞吐率：10.54req/s] [内存消耗：4,613.79kb] [文件加载：128]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000038s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.013235s ]
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'Notice',
+    2 => 'accountNotice',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'test.mingypay.com',
+  'connection' => 'Keep-Alive',
+  'accept-encoding' => 'gzip',
+  'cf-ipcountry' => 'CN',
+  'x-forwarded-for' => '222.79.62.253',
+  'cf-ray' => '5042aa89747b8bde-SZX',
+  'x-forwarded-proto' => 'http',
+  'cf-visitor' => '{"scheme":"http"}',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'origin' => 'http://test.mingypay.com',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36',
+  'referer' => 'http://test.mingypay.com/',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__cfduid=d4407d65e804d65d605c480c1b5f82fde1565122944; Hm_lvt_acd72c6dc0d8343dbd7f77766f891473=1565122955',
+  'cf-connecting-ip' => '222.79.62.253',
+  'cdn-loop' => 'cloudflare',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'content-length' => '8',
+)
+[ info ] [ PARAM ] array (
+  'status' => '1',
+)
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/public/../application/api/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.001618s ]
+[ info ] [ RUN ] app\api\controller\Notice->accountNotice[ /www/wwwroot/test.mingypay.com/mingypay/application/api/controller/Notice.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.004112s ] mysql:host=106.12.50.41;port=3306;dbname=mingypay;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_notice` [ RunTime:0.005026s ]
+[ sql ] [ SQL ] SELECT id,status,title,content,FROM_UNIXTIME(create_time) as time FROM `fa_notice` WHERE  `status` = 1 ORDER BY `id` DESC LIMIT 10 [ RunTime:0.002955s ]
+[ sql ] [ SQL ] SELECT COUNT(*) AS tp_count FROM `fa_notice` WHERE  `status` = 1 LIMIT 1 [ RunTime:0.007491s ]
+---------------------------------------------------------------
+[ 2019-08-10T22:30:12+08:00 ] 222.79.62.253 GET test.mingypay.com/favicon.ico
+[运行时间：0.030457s] [吞吐率：32.83req/s] [内存消耗：2,726.51kb] [文件加载：113]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000043s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.002548s ]
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'favicon.ico',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'test.mingypay.com',
+  'connection' => 'Keep-Alive',
+  'accept-encoding' => 'gzip',
+  'cf-ipcountry' => 'CN',
+  'x-forwarded-for' => '222.79.62.253',
+  'cf-ray' => '5042aa9a23e78bd8-SZX',
+  'x-forwarded-proto' => 'http',
+  'cf-visitor' => '{"scheme":"http"}',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36',
+  'accept' => 'image/webp,image/*,*/*;q=0.8',
+  'referer' => 'http://test.mingypay.com/',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__cfduid=d4407d65e804d65d605c480c1b5f82fde1565122944; Hm_lvt_acd72c6dc0d8343dbd7f77766f891473=1565122955',
+  'cf-connecting-ip' => '222.79.62.253',
+  'cdn-loop' => 'cloudflare',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2019-08-10T22:30:25+08:00 ] 222.79.62.253 POST test.mingypay.com/index.php/api/users/login
+[运行时间：0.052268s] [吞吐率：19.13req/s] [内存消耗：4,809.27kb] [文件加载：127]
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.000058s ]
+[ info ] [ CACHE ] INIT File
+[ info ] [ BEHAVIOR ] Run Closure @app_init [ RunTime:0.001942s ]
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'api',
+    1 => 'users',
+    2 => 'login',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'test.mingypay.com',
+  'connection' => 'Keep-Alive',
+  'accept-encoding' => 'gzip',
+  'cf-ipcountry' => 'CN',
+  'x-forwarded-for' => '222.79.62.253',
+  'cf-ray' => '5042aae9977089f9-SZX',
+  'x-forwarded-proto' => 'http',
+  'cf-visitor' => '{"scheme":"http"}',
+  'accept' => 'application/json, text/javascript, */*; q=0.01',
+  'origin' => 'http://test.mingypay.com',
+  'x-requested-with' => 'XMLHttpRequest',
+  'user-agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36',
+  'referer' => 'http://test.mingypay.com/login.html',
+  'accept-language' => 'zh-CN,zh;q=0.8',
+  'cookie' => '__cfduid=d4407d65e804d65d605c480c1b5f82fde1565122944; Hm_lvt_acd72c6dc0d8343dbd7f77766f891473=1565122955',
+  'cf-connecting-ip' => '222.79.62.253',
+  'cdn-loop' => 'cloudflare',
+  'content-type' => 'application/x-www-form-urlencoded; charset=UTF-8',
+  'content-length' => '38',
+)
+[ info ] [ PARAM ] array (
+  'account' => 'licheng123',
+  'password' => 'licheng123',
+)
+[ info ] [ LANG ] /www/wwwroot/test.mingypay.com/mingypay/public/../application/api/lang/zh-cn.php
+[ info ] [ BEHAVIOR ] Run app\common\behavior\Common @module_init [ RunTime:0.001659s ]
+[ info ] [ RUN ] app\api\controller\Users->login[ /www/wwwroot/test.mingypay.com/mingypay/application/api/controller/Users.php ]
+[ info ] [ DB ] INIT mysql
+[ info ] [ LOG ] INIT File
+[ sql ] [ DB ] CONNECT:[ UseTime:0.005387s ] mysql:host=106.12.50.41;port=3306;dbname=mingypay;charset=utf8
+[ sql ] [ SQL ] SHOW COLUMNS FROM `fa_user` [ RunTime:0.002979s ]
+[ sql ] [ SQL ] SELECT * FROM `fa_user` WHERE  `username` = 'licheng123' LIMIT 1 [ RunTime:0.002237s ]

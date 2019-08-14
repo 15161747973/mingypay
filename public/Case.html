@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>联系我们</title>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css" />
+		<link rel="stylesheet" type="text/css" href="css/swiper.min.css" />
+		<script src="js/jquery-3.3.1.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/swiper.min.js"></script>
+	</head>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		/*导航*/
+		
+		.navbar2 {
+			border: 1px solid #FFFFFF;
+			position: fixed;
+			width: 100%;
+			opacity: 0;
+			transition: 0.3s all;
+			z-index: 1;
+			background-color: #FFFFFF;
+			border-bottom: 1px solid #E5E5E5;
+		}
+		
+		.my-navbar2 a {
+			background: transparent !important;
+			color: #333 !important;
+			font-size: 1.2em;
+		}
+		
+		.my-navbar2 a:hover {
+			background: transparent;
+			outline: 0
+		}
+		
+		.navbar2 ul li a:after {
+			content: "";
+			width: 0;
+			height: 1px;
+			position: absolute;
+			top: 75%;
+			left: 50%;
+			transition: all .5s;
+			border-bottom: 2px solid #000000;
+		}
+		
+		.navbar2 li a:hover:after {
+			left: 25%;
+			width: 50%;
+			text-align: center;
+		}
+		
+		#head {
+			background: url(img/banner2.png)no-repeat;
+			background-size: 100% 100%;
+			width: 100%;
+			height: 800px;
+			position: fixed;
+			top: 0px;
+		}
+		
+		.navbar ul li a:after {
+			content: "";
+			width: 0;
+			height: 1px;
+			position: absolute;
+			top: 75%;
+			left: 50%;
+			transition: all .5s;
+			border-bottom: 2px solid #FFFFFF;
+		}
+		
+		.navbar li a:hover:after {
+			left: 25%;
+			width: 50%;
+			text-align: center;
+		}
+		
+		.collapse {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			width: 80%;
+			height: 70px;
+		}
+		
+		.my-navbar a {
+			background: transparent !important;
+			color: #fff !important;
+			font-size: 1.2em;
+		}
+		
+		.my-navbar a:hover {
+			background: transparent;
+			outline: 0
+		}
+		
+		.navbar-nav>li>a {
+			padding-top: 15px;
+			padding-bottom: 15px;
+			padding-left: 20px;
+			padding-right: 20px;
+		}
+		
+		.nav-left {
+			width: 300px;
+			margin-right: 400px;
+		}
+		/*主要内容*/
+		
+		#main {
+			width: 100%;
+			background-color: #FFFFFF;
+			position: absolute;
+			top: 800px;
+		}
+		
+		.main_con {
+			background: url(img/yinying.png)no-repeat;
+			background-size: 100% 100%;
+			width: 100%;
+		}
+		
+		.main_nav {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			width: 70%;
+			margin: auto;
+			font-size: 1.5rem;
+			padding-bottom: 10px;
+		}
+		
+		.main_nav a {
+			color: #000000;
+			text-decoration: none;
+		}
+		
+		.active {
+			border: 1px solid;
+			width: 100px;
+			text-align: center;
+			padding: 18px 0;
+			background-color: #000000;
+		}
+		
+		.active .active2 {
+			color: #FFFFFF;
+		}
+		
+		@keyframes fadeInUp {
+			0% {
+				opacity: 0;
+				transform: translate3d(0, 100%, 0)
+			}
+			100% {
+				opacity: 1;
+				transform: none
+			}
+		}
+		
+		.animate-box {
+			opacity: 0;
+		}
+		
+		.fadeInUp {
+			animation-name: fadeInUp;
+		}
+		
+		.con1 {
+			animation: fadeInUp 1s ease 1s 1 both;
+		}
+		
+		.con2 {
+			animation: fadeInUp 1.1s ease 1.1s 1 both;
+		}
+		
+		.con3 {
+			animation: fadeInUp 1.2s ease 1.2s 1 both;
+		}
+		
+		.con4 {
+			animation: fadeInUp 1.3s ease 1.3s 1 both;
+		}
+		
+		.con5 {
+			animation: fadeInUp 1.4s ease 1.4s 1 both;
+		}
+		
+		.con6 {
+			animation: fadeInUp 1.5s ease 1.5s 1 both;
+		}
+		
+		.con7 {
+			animation: fadeInUp 1s ease 1.6s 1 both;
+		}
+		
+		.con8 {
+			animation: fadeInUp 1.1s ease 1.7s 1 both;
+		}
+		
+		.con9 {
+			animation: fadeInUp 1.2s ease 1.8s 1 both;
+		}
+		
+		.con10 {
+			animation: fadeInUp 1.3s ease 1.9s 1 both;
+		}
+		
+		.con11 {
+			animation: fadeInUp 1.4s ease 2s 1 both;
+		}
+		
+		.con12 {
+			animation: fadeInUp 1.5s ease 2.1s 1 both;
+		}
+		
+		.con13 {
+			animation: fadeInUp 1.3s ease 2.2s 1 both;
+		}
+		
+		.con14 {
+			animation: fadeInUp 1.4s ease 2.3s 1 both;
+		}
+		
+		.con15 {
+			animation: fadeInUp 1.5s ease 2.4s 1 both;
+		}
+		
+		.section-title {
+			margin-top: 80px;
+		}
+		
+		.section-title h2 {
+			position: relative;
+			font-weight: 300;
+			color: #000;
+			margin-bottom: 10px;
+		}
+		
+		.section-title p {
+			color: #999;
+			letter-spacing: 0.1em;
+			font-weight: 100;
+		}
+		
+		.main_3 {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			padding: 60px 0;
+			width: 25%;
+			margin: auto;
+		}
+		
+		.foot {
+			background-color: #F3F3F3;
+			padding-top: 30px;
+			border-top: 1px solid #E5E5E5;
+			padding-bottom: 20px;
+		}
+		
+		.foot h4 {
+			font-weight: 100;
+			font-family: "Microsoft YaHei", Arial;
+			line-height: 1.34;
+			color: #000000;
+		}
+		
+		.foot p {
+			color: #666;
+			font-size: 1.5rem;
+			line-height: 35px;
+		}
+		
+		.foot_con {
+			display: flex;
+			justify-content: space-between;
+			width: 70%;
+			margin: 0 auto;
+		}
+		
+		.tp {
+			overflow: hidden
+		}
+		
+		.tp:hover img {
+			transform: scale(1.1, 1.1);
+			transition: all 0.6s
+		}
+		
+		.main_con2 {
+			background-color: #F3F3F3;
+			margin-top: 50px;
+			animation: fadeInUp 1s ease 3.3s 1 both;
+		}
+		
+		.bt2 {
+			border: 1px solid #0457B7;
+			color: #FFFFFF;
+			padding: 12px 25px;
+			border-radius: 0.333rem;
+			text-decoration: none;
+			background-color: #0457B7;
+		}
+		
+		.bt2:hover {
+			color: #FFFFFF;
+			background-color: #0457B7;
+			text-decoration: none;
+			opacity: 0.7;
+		}
+		/*悬浮*/
+		
+		.fenxiang {
+			position: fixed;
+			top: 300px;
+			right: 0;
+			width: 65px;
+			background-color: black;
+		}
+		
+		.fenxiang-btn {
+			width: 100%;
+			height: 75px;
+			line-height: 60px;
+			margin: auto;
+			text-align: center;
+		}
+		
+		.fenxiang-btn:hover {
+			background-color: #535353;
+		}
+		/*微信弹框*/
+		
+		#mydiv {
+			border: 1px solid #FFFFFF;
+			width: 580px;
+			height: 310px;
+			position: absolute;
+			left: 35%;
+			top: 35%;
+			background-color: #FFFFFF;
+			display: none;
+			z-index: 10;
+		}
+		
+		.mydiv_con {
+			display: flex;
+			align-items: center;
+			font-size: 18px;
+			width: 75%;
+			margin: auto;
+			justify-content: space-between;
+			margin-top: 70px;
+		}
+		
+		.text {
+			color: #333;
+			text-align: center;
+			line-height: 40px;
+			margin-bottom: 30px;
+			font-family: " Microsoft YaHei ", Arial;
+		}
+		
+		.colse {
+			border: 1px solid #000000;
+			text-decoration: none;
+			color: #FFFFFF;
+			padding: 10px 25px;
+			background-color: #000000;
+			font-size: 15px;
+			margin-left: 50px;
+		}
+		
+		.colse:hover {
+			text-decoration: none;
+			color: #FFFFFF;
+			opacity: 0.8;
+		}
+		
+		#mybg {
+			width: 100%;
+			height: 100%;
+			background-color: #000000;
+			opacity: 0.5;
+			position: fixed!important;
+			left: 0;
+			top: 0;
+			display: none;
+		}
+		/*手机弹框*/
+		
+		.footbiga {
+			position: fixed;
+			left: 800px;
+			top: 280px;
+			background-color: #FFFFFF;
+			border-radius: 10px;
+			width: 20%;
+			height: 200px;
+			z-index: 1115;
+			display: none;
+		}
+		
+		.lian {
+			width: 50%;
+			height: 30px;
+			border: solid 1px #9d9d9d;
+			border-radius: 5px;
+			padding-left: 5px;
+		}
+		
+		.lian input {
+			width: 120px;
+			border: 0;
+			outline: none;
+			background-color: white;
+			padding-top: 3px;
+		}
+
+		.registerBtn {
+			border-radius: 20px;
+			width: 60%;
+			text-align: center;
+			margin-left: 10px;
+			background: linear-gradient(to right, #ffa213, #ffc50a);
+			padding: 6px 0;
+		}
+
+		.loginBtn {
+			border-radius: 20px;
+			width: 60%;
+			text-align: center;
+			margin-left: 10px;
+			background: linear-gradient(to right, #ff6a3c, #ff2953);
+			padding: 6px 0;
+			cursor: pointer;
+		}
+
+		.loginBox {
+			margin-top: 9px;
+			display: flex;
+			color: #FFFFFF;
+			font-size: 18px;
+			width: 180px;
+			justify-content: space-between;
+			margin-left: 10px;
+		}
+	</style>
+
+	<body>
+		<div id="head2">
+			<nav class="navbar2 navbar-top my-navbar2" role="navigation">
+				<div class="collapse container">
+					<div class="nav-left"><img src="image/logo.png" alt="" /></div>
+					<div class="nav-right navbar-collapse" id="example-navbar-collapse">
+						<ul class="nav navbar-nav">
+							<li>
+								<a href="index.html">网站首页</a>
+							</li>
+							<li>
+								<a href="Serve.html">公司简介</a>
+							</li>
+							<li>
+								<a href="Case.html">联系我们</a>
+							</li>
+							<li>
+								<a href="viewpoint.html">订单查询</a>
+							</li>
+						</ul>
+						<div class="loginBox">
+							<p class="loginBtn" onclick="toLogin()">登录</p>
+							<p class="registerBtn" onclick="toRegister()">注册</p>
+						</div>
+					</div>
+				</div>
+			</nav>
+		</div>
+		<div id="head">
+			<nav class="navbar navbar-top my-navbar" role="navigation">
+				<div class="collapse container">
+					<div class="nav-left"><img src="image/logo.png" alt="" /></div>
+					<div class="nav-right navbar-collapse" id="example-navbar-collapse">
+						<ul class="nav navbar-nav">
+							<li>
+								<a href="index.html">网站首页</a>
+							</li>
+							<li>
+								<a href="Serve.html">公司简介</a>
+							</li>
+							<li>
+								<a href="Case.html">联系我们</a>
+							</li>
+							<li>
+								<a href="viewpoint.html">订单查询</a>
+							</li>
+						</ul>
+						<div class="loginBox">
+							<p class="loginBtn" onclick="toLogin()">登录</p>
+							<p class="registerBtn" onclick="toRegister()">注册</p>
+						</div>
+					</div>
+				</div>
+			</nav>
+			<div class="text-center" style="margin-top: 330px;">
+				<img src="img/cldw.png" alt="" />
+				<div style="color: #FFFFFF;margin-top: 20px;">汇聚品牌形象与宣传运作的核心</div>
+			</div>
+			<div id="anchor" class="text-center" style="margin-top: 200px;">
+				<a href="#"><img src="img/jiantou.png" alt="" /></a>
+			</div>
+		</div>
+		<div id="main">
+			<div class="m1"></div>
+			<div class="main_nav2">
+				<section id="main_con">
+					<div class="section-title text-center">
+						<h2>联系我们</h2>
+						<p>以下联系方式每一个都可以轻而易举的找到我们</p>
+					</div>
+					<div style="padding: 100px 300px;">
+						<div style="display: flex;width: 70%;justify-content: space-between;margin: auto;padding-top: 30px;">
+							<div class="con1">
+								<a href="">
+									<div class="tp"><img src="img/懒人食谱.png" alt="" /></div>
+								</a>
+								<div style="display: flex;text-align: center">
+									<p><img style="margin-top: 10px" src="image/img_31.png" alt=""></p>
+									<p style="color: gray;margin-top: 15px;margin-left: 15px">扫码加入快捷发卡商户群</p>
+								</div>
+							</div>
+							<div class="con2">
+								<a href="">
+									<div class="tp"><img src="img/商城.png" alt="" /></div>
+								</a>
+								<div style="display: flex;text-align: center">
+									<p><img style="margin-top: 10px" src="image/img_30.png" alt=""></p>
+									<p style="color: gray;margin-top: 15px;margin-left: 15px">扫码关注快捷发卡公众号</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+<!--				底部-->
+			<div class="foot" id="db">
+				<div class="foot_con">
+					<div>
+						<h4>网站导航</h4>
+						<p>
+							首页 / 服务<br /> 网站设计 / 手机APP / 软件设计 / UE原型<br /> 工作流程 / 设计案例 / 新闻中心<br /> 我们观点 / 关于公司
+						</p>
+					</div>
+					<div>
+						<h4>新闻中心</h4>
+						<p>
+							公司2019年会通知
+						</p>
+					</div>
+					<div>
+						<h4>联系方式</h4>
+						<p>
+							地址: 徐州市泉山区矿大科技园B座130室<br /> 热线: 0516-88575998<br /> 手机: 13225262011
+						</p>
+					</div>
+					<div>
+						<h4>关注我们</h4>
+						<p>
+							<img src="img/img_ewm_pc.png" alt="" />
+						</p>
+					</div>
+				</div>
+				<div class="text-center" style="color: #666;font-size: 1.5rem;">
+					Copyright © zchfa.com, All Rights Reserved. 徐州再出发信息科技有限公司
+				</div>
+			</div>
+		</div>
+		<div class="fenxiang">
+			<a href=" ">
+				<div class="fenxiang-btn">
+					<img src="img/icon_xx.png" width="16px" height="15px">
+				</div>
+			</a>
+			<a href="#">
+				<div class="fenxiang-btn" id="dizhi">
+					<img src="img/icon_dz.png" width="14px" height="20px">
+				</div>
+			</a>
+			<a href="#" id="sj">
+				<div class="fenxiang-btn">
+					<img src="img/icon_sj.png" width="15px" height="20px">
+				</div>
+			</a>
+			<a href="#" id="wx">
+				<div class="fenxiang-btn">
+					<img src="img/icon_wx.png" width="20px" height="18px">
+				</div>
+			</a>
+			<a href="#">
+				<div class="fenxiang-btn" id="a">
+					<img src="img/icon_xl.png" width="15.2px" height="10.2px">
+				</div>
+			</a>
+		</div>
+		<!--微信弹框-->
+		<div id="mydiv">
+			<div class="mydiv_con">
+				<div><img src="img/img_ewm_pc.png" /></div>
+				<div>
+					<p class="text">微信扫描二维码<br> 即时沟通企业在线客服</p>
+					<a id="gb" class="colse" href="#">关闭</a>
+				</div>
+			</div>
+		</div>
+		<div id="mybg"></div>
+		<!--手机弹框-->
+		<div class="footbiga">
+			<div style="background-color: #07C5A1;width: 100%;height: 50px;border-radius: 10px 10px 0 0" id="cha">
+				<img src="img/logo_1.png" width="130px" height="20px" style="margin-top: 15px;margin-left: 5px">
+				<a href=""><img src="img/x.png" width="15" height="15px" style="margin-left: 350px;margin-top: -50px"></a>
+			</div>
+			<div class="shouji">
+				<p style="font-size: 19px;font-weight: bold;text-align: center;margin-top: 20px">热线: 400-690-8077</p>
+				<p style="font-size: 19px;font-weight: bold;text-align: center;margin-top: 10px">手机: 13225262011</p>
+			</div>
+			<div style="display: flex;justify-content:space-around;">
+				<div class="lian">
+					<img src="img/sj.png" width="15px" height="20px">
+					<input type="text" placeholder="请留下您的手机号">
+				</div>
+				<button style="border-radius: 5px;background-color: #0457B7;color: #FFFFFF;border: 0;outline: none;width: 110px">立即咨询</button>
+			</div>
+		</div>
+	</body>
+
+</html>
+<script>
+	$(function() {
+		/*获取系统滚动条赋值给a*/
+		setInterval(function() {
+			var a = $(window).scrollTop();
+			$("#head").css("top", -a * 0.3)
+		})
+
+	})
+</script>
+<script type="text/javascript">
+	setInterval(function() {
+		var a = parseInt($(document).scrollTop());
+		/*$("#a").text(a)*/
+		if(a >= 800) {
+			$(".navbar2").css("top", "0px").css("opacity", "1");
+		} else {
+			$(".navbar2").css("top", "-50px").css("opacity", "0");
+		}
+	});
+</script>
+<script type="text/javascript">
+	$(".main_nav").on("click", "div", function() {
+		$(".main_nav2>section").hide();
+		$(".main_nav2>section").eq($(this).index()).show();
+		$(".main_nav>div").attr("class", "");
+		$(this).attr("class", "active")
+	})
+</script>
+<script type="text/javascript">
+	$(function() {
+		$('#anchor').click(function() {
+			$('html,body').animate({
+				scrollTop: $('.m1').offset().top
+			}, 1000);
+		});
+		return false;
+	});
+	$(function() {
+		$('#dizhi').click(function() {
+			$('html,body').animate({
+				scrollTop: $('#db').offset().top
+			}, 1000);
+		});
+		return false;
+	});
+	$(function() {
+		$('#a').click(function() {
+			$('html,body').animate({
+				scrollTop: $('#head2').offset().top
+			}, 1000);
+		});
+		return false;
+	});
+</script>
+<!--右侧悬浮-->
+<script type="text/javascript">
+	$(function() {
+		/*获取系统滚动条赋值给a*/
+		setInterval(function() {
+			var a = $(window).scrollTop();
+			if(a >= 500) {
+				$(".fenxiang").fadeIn(500);
+			} else {
+				$(".fenxiang").fadeOut(500);
+			}
+		});
+	});
+</script>
+<!--微信弹框-->
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("#wx").click(function() {
+			$("#mydiv").show();
+			$("#mybg").show();
+		});
+		$("#gb").click(function() {
+			$("#mydiv").hide();
+			$("#mybg").hide();
+		});
+	});
+	//    点击手机
+	$("#sj").click(function() {
+		$(".footbiga").slideDown();
+		$("#mybg").show();
+	});
+	$("#cha").click(function() {
+		$(".footbiga").hide();
+		$("#mybg").hide();
+	});
+
+	//跳转登录页面
+	function toLogin(){
+		window.location.href = 'login.html'
+	}
+	//跳转注册页面
+	function toRegister(){
+		window.location.href = 'register.html'
+	}
+
+
+
+</script>

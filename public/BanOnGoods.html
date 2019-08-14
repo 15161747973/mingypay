@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>平台协议</title>
+        <script src="js/jquery-3.3.1.js"></script>
+        <link rel="stylesheet" href="css/swiper.min.css"/>
+        <link rel="stylesheet" type="text/css" href="css/layer.css"/>
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+        <link rel="stylesheet" href="css/animate.css">
+        <link rel="stylesheet" href="http://cdn.staticfile.org/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                width: 100%;
+                font-family: "Microsoft YaHei", Arial;
+            }
+
+            .navbar2 {
+                border: 1px solid #FFFFFF;
+                position: fixed;
+                width: 100%;
+                opacity: 0;
+                transition: 0.3s all;
+                z-index: 2222;
+                background-color: #FFFFFF;
+                border-bottom: 1px solid #E5E5E5;
+            }
+
+            .my-navbar2 a {
+                background: transparent !important;
+                color: #333 !important;
+                font-size: 1.2em;
+            }
+
+            .my-navbar2 a:hover {
+                background: transparent;
+                outline: 0
+            }
+
+            .navbar2 ul li a:after {
+                content: "";
+                width: 0;
+                height: 1px;
+                position: absolute;
+                top: 75%;
+                left: 50%;
+                transition: all .5s;
+                border-bottom: 2px solid #000000;
+            }
+
+            .navbar2 li a:hover:after {
+                left: 25%;
+                width: 50%;
+                text-align: center;
+            }
+
+            .navbar ul li a:after {
+                content: "";
+                width: 0;
+                height: 1px;
+                position: absolute;
+                top: 75%;
+                left: 50%;
+                transition: all .5s;
+                border-bottom: 2px solid #FFFFFF;
+            }
+
+            .navbar li a:hover:after {
+                left: 25%;
+                width: 50%;
+                text-align: center;
+            }
+
+            .collapse {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 80%;
+                height: 70px;
+            }
+
+            .my-navbar a {
+                background: transparent !important;
+                color: #fff !important;
+                font-size: 1.2em;
+            }
+
+            .my-navbar a:hover {
+                background: transparent;
+                outline: 0
+            }
+
+            .navbar-nav > li > a {
+                padding-top: 15px;
+                padding-bottom: 15px;
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .nav-left {
+                width: 300px;
+                margin-right: 400px;
+            }
+
+            .lunbo {
+                width: 100%;
+                height: 800px;
+                position: fixed;
+                top: 0px;
+            }
+
+            .item span {
+                opacity: 0;
+                transition: all 1s;
+            }
+              .tu img {
+                filter: opacity(80%);
+                transition: all 0.2s;
+            }
+
+            .tu h2 {
+                margin-top: -150px;
+                transition: all 0.2s;
+            }
+
+            .sja img {
+                transition: all 0.3s;
+            }
+
+            .sja:hover img {
+                transform: scale(1.1);
+                transition: all 0.3s;
+            }
+
+            .hezuo-topa input {
+                border: 0;
+                outline: none;
+                background-color: white;
+                padding-left: 20px;
+                font-size: 18px;
+                width: 80%;
+            }
+            .foot h4 {
+                font-weight: 100;
+                font-family: "Microsoft YaHei", Arial;
+                line-height: 1.34;
+                color: #000000;
+            }
+
+            .foot p {
+                color: #666;
+                font-size: 15px;
+                line-height: 35px;
+            }
+
+            .lian input {
+                width: 120px;
+                border: 0;
+                outline: none;
+                background-color: white;
+                padding-top: 3px;
+            }
+
+            .registerBtn {
+                border-radius: 20px;
+                width: 60%;
+                text-align: center;
+                margin-left: 10px;
+                background: linear-gradient(to right, #ffa213, #ffc50a);
+                padding: 6px 0;
+            }
+
+            .loginBtn {
+                border-radius: 20px;
+                width: 60%;
+                text-align: center;
+                margin-left: 10px;
+                background: linear-gradient(to right, #ff6a3c, #ff2953);
+                padding: 6px 0;
+            }
+
+            .loginBox {
+                margin-top: 9px;
+                display: flex;
+                color: #FFFFFF;
+                font-size: 18px;
+                width: 180px;
+                justify-content: space-between;
+                margin-left: 10px;
+            }
+             .faq_item a {
+                 color:#b76dfe;
+                 text-decoration: underline;
+             }
+            .faq_item h4{
+                color:#fff!important;
+            }
+            .faq_item p{
+                color:#fff!important;
+                display: none;
+            }
+            .static-txt-block {
+                padding-top: 0;
+                background: none;
+                color: #fff;
+                width: 1100px;
+                margin: 0 auto;
+            }
+            .static-txt-block p{
+                color:#fff
+            }
+            .static-txt-block {
+                padding-top: 0;
+                background: none;
+                color: #fff;
+                width: 1100px;
+                margin: 0 auto;
+            }
+            .static-txt-block p{
+                color:#fff
+            }
+            table,
+            table tr,
+            table tr td{
+                border: 1px solid #ddd;
+                border-collapse: collapse;
+            }
+            table tr td{
+                padding: 5px;
+            }
+        </style>
+    </head>
+
+    <body>
+    <div id="head2" style="width: 100%">
+        <nav class="navbar2 navbar-top my-navbar2" role="navigation">
+            <div class="collapse container">
+                <div class="nav-left"><img src="image/logo.png" alt=""/></div>
+                <div class="nav-right navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="index.html">网站首页</a>
+                        </li>
+                        <li>
+                            <a href="Serve.html">公司简介</a>
+                        </li>
+                        <li>
+                            <a href="Case.html">联系我们</a>
+                        </li>
+                        <li>
+                            <a href="viewpoint.html">订单查询</a>
+                        </li>
+                    </ul>
+                    <div class="loginBox">
+                        <p class="loginBtn" onclick="toLogin()">登录</p>
+                        <p class="registerBtn" onclick="toRegister()">注册</p>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <!--轮播-->
+    <div class="lunbo">
+        <div style="position: absolute;z-index: 111;width: 100%">
+            <nav class="navbar navbar-top my-navbar" role="navigation">
+                <div class="collapse container">
+                    <div class="nav-left"><img src="image/logo.png" alt=""/></div>
+                    <div class="nav-right navbar-collapse" id="example-navbar-collapse" style="display: flex;">
+                        <ul class="nav navbar-nav">
+                            <li>
+                                <a href="index.html">网站首页</a>
+                            </li>
+                            <li>
+                                <a href="Serve.html">公司简介</a>
+                            </li>
+                            <li>
+                                <a href="Case.html">联系我们</a>
+                            </li>
+                            <li>
+                                <a href="viewpoint.html">订单查询</a>
+                            </li>
+                        </ul>
+                        <div class="loginBox">
+                            <p class="loginBtn" onclick="toLogin()">登录</p>
+                            <p class="registerBtn" onclick="toRegister()">注册</p>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div id="parallax" style="background: linear-gradient(160deg,#01a0d3,#93aa60);height:auto;"><!-- Parallax Div -->
+        <!-- Our Pricing Area -->
+        <section class="" style="padding-top:180px;padding-bottom: 0">
+            <div class="container">
+                <h2 class="tittle" style="color: #fff;text-align: center">禁售商品</h2>
+            </div>
+        </section>
+        <!-- End Our Pricing Area -->
+        <!-- Faq Area -->
+        <section class="faq_area static-txt-block">
+            <div class="forbid-product-block">
+                <h3 class="block-title" style="text-align: center">明宇发卡自动发卡平台禁售商品</h3>
+                <table style="margin: 10px;">
+                    <colgroup>
+                        <col width="17%">
+                        <col width="22%">
+                        <col width="61%">
+                    </colgroup>
+                    <tbody>
+                    <tr>
+                        <td align="center" rowspan="4" class="rd-right">政治类</td>
+                        <td align="center" rowspan="2" class="rd-right">反动信息</td>
+                        <td align="left" class="td-pa">含有反动、破坏国家统一、破坏主权及领土完整、破坏社会稳定，涉及国家机密、扰乱社会秩序，宣扬邪教迷信，宣扬宗教、种族歧视、藏独、法轮功、违反伦理等信息，或法律法规禁止出版发行的书籍、音像制品、视频、文件资料等；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">其他反动物品及言论等；</td>
+                    </tr>
+                    <tr>
+                        <td align="center" rowspan="2" class="rd-right">政治物品</td>
+                        <td align="left" class="td-pa">国家机密文件资料等；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">带有宗教歧视、种族歧视的相关商品或信息。</td>
+                    </tr>
+                    <tr>
+                        <td align="center" rowspan="2" class="rd-right">军警类</td>
+                        <td align="center" class="rd-right">军火武器/枪械及配件</td>
+                        <td align="left" class="td-pa">枪支、弹药、军火及其相关器材、配件、附属产品，仿制品的衍生工艺品等；包括枪瞄、枪套等枪支配件以及90%大小相似的仿真枪；</td>
+                    </tr>
+                    <tr>
+                        <td align="center" class="rd-right">军警用品</td>
+                        <td align="left" class="td-pa">冒用警用、军用制服、标志、设备及制品；带有警用标志（警徽）物品；描述为军队、警队使用物品；</td>
+                    </tr>
+
+
+                    <tr>
+                        <td align="center" rowspan="8" class="rd-right">治安类（危险品）</td>
+                        <td align="center" class="rd-right">危险品</td>
+                        <td align="left" class="td-pa">烟花爆竹、易燃、易爆物品；介绍制作易燃易爆品方法的相关教程、书籍。</td>
+                    </tr>
+                    <tr>
+                        <td align="center" rowspan="2" class="rd-right">危险武器</td>
+                        <td align="left" class="td-pa">可致使他人暂时失去反抗能力，对他人身体造成重大伤害的管制器具；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">甩棍、电棍、电击棍等危险物品；</td>
+                    </tr>
+                    <tr>
+                        <td align="center" rowspan="2" class="rd-right">危险化学品</td>
+                        <td align="left" class="td-pa">剧毒化学品；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">国家名录中禁止出售的危险化学品（剧毒化学品除外）；</td>
+                    </tr>
+                    <tr>
+                        <td align="center" rowspan="2" class="rd-right">剧毒物品</td>
+                        <td align="left" class="td-pa">毒品、制毒原料、制毒化学品及致瘾性药物；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">毒品吸食工具及配件；</td>
+                    </tr>
+                    <tr>
+                        <td align="center" class="rd-right">毒品、毒品检测工具</td>
+                        <td align="left" class="td-pa">毒品检测试剂准入只允许有资质的戒毒所机构。</td>
+                    </tr>
+
+
+                    <tr>
+                        <td align="center" rowspan="8" class="rd-right">黄赌毒类</td>
+                        <td align="center" class="rd-right" rowspan="3">黄色低俗色情服务及信息</td>
+                        <td align="left" class="td-pa">含有色情淫秽内容的音像制品及视频；色情陪聊服务；成人网站论坛的帐号及邀请码；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">用于传播色情信息的软件及图片；含有情色、暴力、低俗内容的音像制品；原味内衣及相关产品；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">含有情色、暴力、低俗内容的动漫、读物、游戏和图片；</td>
+                    </tr>
+                    <tr>
+                        <td align="center" class="rd-right">赌博器具</td>
+                        <td align="left" class="td-pa">如电子老虎机、百家乐桌子，或者百家乐的筹码等；</td>
+                    </tr>
+                    <tr>
+                        <td align="center" class="rd-right">赌博/博彩服务</td>
+                        <td align="left" class="td-pa">棋牌类网站，游戏货币能直接兑换现金。或者棋牌类网站，游戏货币能直接通过账户流转，且有专门银商收购贩卖游戏币。如：捕鱼游戏、金鲨银鲨、彩金、牛牛等；</td>
+                    </tr>
+                    <tr>
+                        <td align="center" class="rd-right">私彩</td>
+                        <td align="left" class="td-pa">私彩是指私人坐庄，由个人或组织发行的，以诈取钱财为目的的非法彩票。一般以公益彩票的开奖结果进行赌博，骗取高额利润，如地下六合彩，以香港六合彩的开奖号码进行变相赌博，以1赔40左右的高额赔率欺骗民众；</td>
+                    </tr>
+                    <tr>
+                        <td align="center" class="rd-right">毒品、吸毒工具、毒品检测工具</td>
+                        <td align="left" class="td-pa">毒品检测试剂准入只允许有资质的戒毒所机构；毒品检测工具，不允许出售。</td>
+                    </tr>
+                    <tr>
+                        <td align="center" class="rd-right">其他黄色低俗物品或服务</td>
+                        <td align="left" class="td-pa">泡妞秘籍、恋足、恋童、人体摄影、丝袜、原味、捆绑等带有不正当引导倾向的；可致使他人暂时失去反抗能力、意识模糊的口服或外用的催情类商品及人造处女膜。</td>
+                    </tr>
+
+
+                    <tr>
+                        <td align="center" rowspan="7" class="rd-right">侵害隐私类</td>
+                        <td align="center" class="rd-right" rowspan="4">间谍器材</td>
+                        <td align="left" class="td-pa">用于监听、窃取隐私或机密的软件及设备；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">用于非法摄像、录音、取证等用途的设备；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">身份证及身份证验证、阅读设备；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">盗取或破解账号密码的软件、工具、教程及产物。</td>
+                    </tr>
+                    <tr>
+                        <td align="center" class="rd-right" rowspan="2">身份信息等其他侵犯个人隐私的信息</td>
+                        <td align="left" class="td-pa">个人隐私信息及企业内部数据买卖；提供个人手机定位、电话清单查询、银行账户查询等服务；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">出售、转让、回收，包括已作废或者作为收藏用途的银行卡；</td>
+                    </tr>
+                    <tr>
+                        <td align="center" class="rd-right">其他危害隐私的物品或服务</td>
+                        <td align="left" class="td-pa">如间谍服务，私人侦探等。</td>
+                    </tr>
+
+
+                    <tr>
+                        <td align="center" rowspan="6" class="rd-right">医药器械类</td>
+                        <td align="center" class="rd-right">麻醉药品和精神类药品</td>
+                        <td align="left" class="td-pa">精神类、麻醉类、有毒类、放射类、兴奋剂类、计生类药品；非药品添加药品成分；国家公示已查处、药品监督管理局认定禁止生产、使用的药品；用于预防、治疗人体疾病的药物、血液制品或医疗器械；</td>
+                    </tr>
+                    <tr>
+                        <td align="center" class="rd-right">毒性药品</td>
+                        <td align="left" class="td-pa">灭鼠药、蟑螂药、兽药不做限制</td>
+                    </tr>
+                    <tr>
+                        <td align="center" class="rd-right">处方药</td>
+                        <td align="left" class="td-pa">参照《互联网药品交易服务审批暂行规定》</td>
+                    </tr>
+                    <tr>
+                        <td align="center" class="rd-right">无批号药品</td>
+                        <td align="left" class="td-pa">未经药品监督管理部门批准生产、进口，或未经检验即销售的药品</td>
+                    </tr>
+                    <tr>
+                        <td align="center" class="rd-right">胎儿性别鉴定</td>
+                        <td align="left" class="td-pa">违反国家及世界卫生组织的人道精神，任何涉及胎儿性别鉴定商品、服务；</td>
+                    </tr>
+                    <tr>
+                        <td align="center" class="rd-right">成人药品（春药）</td>
+                        <td align="left" class="td-pa">口服催情类药品。</td>
+                    </tr>
+
+
+
+                    <tr>
+                        <td align="center" rowspan="7" class="rd-right">国家保护动植物</td>
+                        <td align="center" class="rd-right" rowspan="7">国家保护动植物</td>
+                        <td align="left" class="td-pa">人体器官、遗体；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">国家重点保护类动物、濒危动物的活体、内脏、任何肢体、皮毛、标本或其他制成品，已灭绝动物与现有国家二级以上保护动物的化石。</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">国家保护类植物活体（树苗除外）；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">国家保护的有益的或者有重要经济、科学研究价值的陆生野生动物的活体、内脏、任何肢体、皮毛、标本或其他制成品；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">捕鱼器相关设备及配件；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">其他动物捕杀工具；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">猫狗肉、猫狗皮毛、鱼翅、熊胆及其制品；</td>
+                    </tr>
+                    <tr>
+                        <td align="center" rowspan="26" class="rd-right">虚拟类</td>
+                        <td align="center" class="rd-right" rowspan="10">网络服务</td>
+                        <td align="left" class="td-pa">未经国家备案的网络游戏、游戏点卡、货币等相关服务类商品；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">外挂、私服相关的网游类商品；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">官方已停止经营的游戏点卡或平台卡商品；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">时间不可查询的虚拟服务类商品；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">网络账户死保帐号以及腾讯QQ帐号；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">Itunes帐号及用户充值类商品；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">各类短信、邮件、QQ/微信群发设备、软件及服务，如短信轰炸机；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">虚拟代刷、炒信、恶意刷店铺流量等服务类商品；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">黑客相关</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">涉外婚介</td>
+                    </tr>
+                    <tr>
+                        <td align="center" class="rd-right" rowspan="5">电信欺诈</td>
+                        <td align="left" class="td-pa">不可查询的分期返还话费类商品；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">不限时间与流量的、时间不可查询的以及被称为漏洞卡、集团卡、内部卡、测试卡的上网资费卡或资费套餐及SIM 卡；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">一卡多号；有蹭网功能的无线网卡，以及描述信息中有告知会员能用于蹭网的设备；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">带破解功能的手机卡贴；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">SP业务自消费类商品；</td>
+                    </tr>
+                    <tr>
+                        <td align="center" class="rd-right" rowspan="6">非法服务、票证</td>
+                        <td align="left" class="td-pa">伪造变造国家机关或特定机构颁发的文件、证书、公章、防伪标签等，仅限国家机关或特定机构方可提供的服务；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">伪造各类公章、图章扰乱市场业务；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">尚可使用或用于报销的票据（及服务）,尚可使用的外贸单证以及代理报关、清单、商检、单证手续的服务；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">未公开发行的国家级正式考试答案；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">代写论文、代考试类相关服务；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">炒作博客人气、炒作网站人气、代投票类商品或信息；</td>
+                    </tr>
+                    <tr>
+                        <td align="center" class="rd-right" rowspan="5">其他高风险的服务</td>
+                        <td align="left" class="td-pa">弹窗广告虚假中奖信息；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">友情链接名称涉及禁售不合作内容；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">模板网站且网站可以打开，只有框架（无商品、无效商品、无帖子）；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">恶意舞弊投票类型；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">微交易，云交易类商户；</td>
+                    </tr>
+
+
+                    <tr>
+                        <td align="center" rowspan="20" class="rd-right">金融类</td>
+                        <td align="center" class="rd-right">非法传销</td>
+                        <td align="left" class="td-pa">传销，金融互助平台。虚假宣传致富，出售书籍、碟片、成功学、消费返利、多级分销、发展下线“金字塔”型提成等；</td>
+                    </tr>
+                    <tr>
+                        <td align="center" class="rd-right">彩票销售</td>
+                        <td align="left" class="td-pa">除O2O类的平台彩票销售；</td>
+                    </tr>
+                    <tr>
+                        <td align="center" class="rd-right">虚拟货币</td>
+                        <td align="left" class="td-pa">虚拟货币，比特币、莱特币、元宝币等虚拟货币交易。</td>
+                    </tr>
+                    <tr>
+                        <td align="center" class="rd-right" rowspan="10">货币业务</td>
+                        <td align="left" class="td-pa">假币或制造机器；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">买卖银行账户（银行卡）；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">非法集资；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">外汇兑换服务；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">境外账户中的虚拟货币；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">期货；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">有价证券或凭证；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">P2P等理财类网站；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">大量流通中的外币及外币兑换服务；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">借贷平台，融资租赁平台，非实物众筹；</td>
+                    </tr>
+                    <tr>
+                        <td align="center" class="rd-right">二清无牌机构</td>
+                        <td align="left" class="td-pa">未取得《支付业务许可证》、非法开展资金支付结算业务的机构，存在挪用、占用资金的风险；禁止随意变更使用场景和范围，出租、出借、出售接口；</td>
+                    </tr>
+                    <tr>
+                        <td align="center" class="rd-right" rowspan="4">支付业务</td>
+                        <td align="left" class="td-pa">禁止网上销售POS机具和提供POS收单业务；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">随意变更使用场景和范围；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">信用卡套现服务；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">违规聚合支付业务；</td>
+                    </tr>
+                    <tr>
+                        <td align="center" class="rd-right">非法交易所</td>
+                        <td align="left" class="td-pa">微盘类交易；省级及以上政府批文且经营范围不符；</td>
+                    </tr>
+                    <tr>
+                        <td align="center" class="rd-right">一元购</td>
+                        <td align="left" class="td-pa">购买抽奖码，商户摇奖公布中奖号码，可能获得实物或是贵金属饰品等物品；</td>
+                    </tr>
+
+                    <tr>
+                        <td align="center" class="rd-right">烟草类</td>
+                        <td align="center" class="rd-right">烟草类</td>
+                        <td align="left" class="td-pa">烟草专卖品及烟草专用机械（线上禁售）。可参照《烟草专用机械名录》（国烟法[2004]）。</td>
+                    </tr>
+
+                    <tr>
+                        <td align="center" class="rd-right" rowspan="2">收藏类</td>
+                        <td align="center" class="rd-right">考古文物</td>
+                        <td align="left" class="td-pa">《中华人民共和国文物保护法》第五十一条第五十二条，国有文物不得买卖</td>
+                    </tr>
+                    <tr>
+                        <td align="center" class="rd-right">收藏品</td>
+                        <td align="left" class="td-pa">国家禁止的集邮票品以及未经邮政行业管理部门批准制作的集邮品，以及一九四九年之后发行的包含“中华民国”字样的邮品。</td>
+                    </tr>
+
+                    <tr>
+                        <td align="center" rowspan="3" class="rd-right">商品质量类</td>
+                        <td align="center" class="rd-right" rowspan="3">假冒伪劣产品</td>
+                        <td align="left" class="td-pa">由不具备生产资质的生产商生产的或不符合国家、地方、行业、企业强制性标准的商品；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">经权威质检部门或生产商认定、公布或召回的商品，国家明令淘汰或停止销售的商品，过期、失效、变质的商品，以及含有罂粟籽的食品、调味品、护肤品等制成品；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">商品本身或外包装上所注明的产品标准、认证标志、成份及含量不符合国家规定的商品；</td>
+                    </tr>
+
+
+                    <tr>
+                        <td align="center" rowspan="21" class="rd-right">其他类</td>
+                        <td align="center" class="rd-right" rowspan="8">非法所得及非法用工具</td>
+                        <td align="left" class="td-pa">走私、盗窃、抢劫等非法所得；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">赌博用具、考试作弊工具、汽车跑表器材等非法用途工具；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">摩卡等，蹭网卡、一卡多号的手机卡等</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">卫星信号收发装置及软件；用于无线电信号屏蔽的仪器或设备；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">撬锁工具、开锁服务及其相关教程、书籍；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">涉嫌欺诈等非法用途的软件；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">可能用于逃避交通管理的商品；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">猫狗肉、猫狗皮毛、鱼翅、熊胆及其制品；</td>
+                    </tr>
+                    <tr>
+                        <td align="center" class="rd-right" rowspan="13">特殊时期特殊规定</td>
+                        <td align="left" class="td-pa">未经许可的募捐类商品；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">原油；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">代孕服务；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">替考、代考、代写论文服务；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">未经许可发布的奥林匹克运动会、世界博览会、亚洲运动会等特许商品；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">邮局包裹、EMS 专递、快递等物流单据凭证及单号；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">国家补助或无偿发放的不得私自转让的商品；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">军需、国家机关专供、特供等商品。</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">股权类众筹商户；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">购物返利类商户；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">虚假交易；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">套现行为；</td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="td-pa">其它违反法律法规、社会公序良俗而不宜接入明宇的物品或服务</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>        </section>
+        <!-- End Faq Area -->
+        <!-- Footer Area -->
+        <footer class="footer_area" style="display: block;
+         background: none;
+         padding-top: 0px;
+         margin-top: 0px;
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        left: 0;
+">
+        </footer>
+</div>
+
+
+
+    </body>
+
+    <script src="js/swiper.min.js"></script>
+    <script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/important.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="layer/layer.js"></script>
+    <script type="text/javascript">
+        //跳转登录页面
+        function toLogin(){
+            window.location.href = 'login.html'
+        }
+        //跳转注册页面
+        function toRegister(){
+            window.location.href = 'register.html'
+        }
+        $(function () {
+            //            $("#my").carousel({
+            //                interval:4000
+            //            });
+            setInterval(function () {
+                $(".item").each(function () {
+                    var a = $(this).hasClass("active");
+                    if (a == true) {
+                        $(this).children("span").css("opacity", "1").css("left", "0px")
+                    } else {
+                        $(this).children("span").css("opacity", "0");
+                        if ($(this).index() == 1 || $(this).index() == 2 || $(this).index() == 3) {
+                            $(this).children("span").css("left", "300px");
+                        } else {
+                            $(this).children("span").css("left", "-300px");
+                        }
+                    }
+                })
+            })
+        });
+
+        //鼠标悬浮
+        $(function () {
+            $(".txx").each(function () {
+                $(this).hover(
+                    function () {
+                        $(this).css("transform", "scaleY(1.1)").css("border-radius", "10px").css("box-shadow", "darkgrey 5px 5px 20px 2px");
+                        $(this).find(".tu").css("padding-top", "20px");
+                        $(this).find(".tu img").css("filter", "opacity(1)");
+                        $(this).find(".tu h2").css("margin-top", "-110px");
+                    },
+                    function () {
+                        $(this).css("transform", "scaleY(1)").css("border-radius", "0").css("box-shadow", "none");
+                        $(this).find(".tu").css("padding-top", "60px");
+                        $(this).find(".tu img").css("filter", "opacity(0.8)");
+                        $(this).find(".tu h2").css("margin-top", "-150px");
+                    })
+            })
+        });
+    </script>
+
+    <script type="text/javascript">
+        setInterval(function () {
+            var a = parseInt($(document).scrollTop());
+            /*$("#a").text(a)*/
+            if (a >= 800) {
+                $(".navbar2").css("top", "0px").css("opacity", "1");
+            } else {
+                $(".navbar2").css("top", "-50px").css("opacity", "0");
+            }
+        });
+    </script>
+
+</html>

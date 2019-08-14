@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" name="referrer" content="no-referrer">
+    <title>订单投诉</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" type="text/css" href="layuiadmin/layui/css/layui.css">
+    <link rel="stylesheet" type="text/css" href="css/layer.css"/>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="css/animate.css">
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            width: 100%;
+            height: 1000px;
+            min-width: 1065px;
+        }
+
+        @media screen and (max-width: 1000px) {
+            .titleOrder {
+                background-color: red
+            }
+        }
+
+        .mukuai img {
+            width: 100%;
+        }
+
+        .jiewei {
+            margin-top: 200px;
+            width: 100%;
+            /*height: 500px;*/
+            /*position: absolute;*/
+            /*bottom: 0;*/
+            z-index: 1111;
+        }
+
+        .navbar ul li a:after {
+            content: "";
+            width: 0;
+            height: 1px;
+            position: absolute;
+            top: 75%;
+            left: 50%;
+            transition: all .5s;
+            border-bottom: 2px solid #FFFFFF;
+        }
+
+        .navbar li a:hover:after {
+            left: 25%;
+            width: 50%;
+            text-align: center;
+        }
+
+        .collapse {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 90%;
+            height: 70px;
+        }
+
+        .my-navbar a {
+            background: transparent !important;
+            color: #fff !important;
+            font-size: 1.2em;
+        }
+
+        .my-navbar a:hover {
+            background: transparent;
+            outline: 0
+        }
+
+        .navbar-nav > li > a {
+            padding-top: 15px;
+            padding-bottom: 15px;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .nav-left {
+            width: 300px;
+            margin-right: 400px;
+        }
+
+        .navbar2 {
+            border: 1px solid #FFFFFF;
+            position: fixed;
+            width: 100%;
+            opacity: 0;
+            transition: 0.3s all;
+            z-index: 2222;
+            background-color: #FFFFFF;
+            border-bottom: 1px solid #E5E5E5;
+        }
+
+        .my-navbar2 a {
+            background: transparent !important;
+            color: #333 !important;
+            font-size: 1.2em;
+        }
+
+        .my-navbar2 a:hover {
+            background: transparent;
+            outline: 0
+        }
+
+        .navbar2 ul li a:after {
+            content: "";
+            width: 0;
+            height: 1px;
+            position: absolute;
+            top: 75%;
+            left: 50%;
+            transition: all .5s;
+            border-bottom: 2px solid #000000;
+        }
+
+        .navbar2 li a:hover:after {
+            left: 25%;
+            width: 50%;
+            text-align: center;
+        }
+
+        .foot {
+            background-color: #F3F3F3;
+            padding-top: 30px;
+            border-top: 1px solid #E5E5E5;
+            padding-bottom: 20px;
+        }
+
+        .foot h4 {
+            font-weight: 100;
+            font-family: "Microsoft YaHei", Arial;
+            line-height: 1.34;
+            color: #000000;
+        }
+
+        .foot p {
+            color: #666;
+            font-size: 15px;
+            line-height: 35px;
+        }
+
+        .foot_con {
+            display: flex;
+            justify-content: space-between;
+            width: 70%;
+            margin: 0 auto;
+        }
+
+
+        .registerBtn {
+            border-radius: 20px;
+            width: 60%;
+            text-align: center;
+            margin-left: 10px;
+            background: linear-gradient(to right, #ffa213, #ffc50a);
+            padding: 6px 0;
+            cursor: pointer;
+        }
+
+        .loginBtn {
+            cursor: pointer;
+            border-radius: 20px;
+            width: 60%;
+            text-align: center;
+            margin-left: 5px;
+            background: linear-gradient(to right, #ff6a3c, #ff2953);
+            padding: 6px 0;
+        }
+
+        .loginBox {
+            margin-top: 9px;
+            display: flex;
+            color: #FFFFFF;
+            font-size: 18px;
+            width: 156px;
+            justify-content: space-between;
+            /*margin-left:5px;*/
+        }
+
+        .bgImages {
+            background-image: url("image/titleImage.png");
+            background-size: 100% 70%;
+            background-repeat: no-repeat;
+            width: 100%;
+            height: 10px;
+            text-align: center;
+            padding-top: 130px;
+        }
+
+        .complaintsBox {
+            display: flex
+        }
+
+        .bigBox {
+            padding: 100px 430px 30px 430px;
+        }
+
+        .orderText {
+            font-size: 35px;
+            color: #666666;
+        }
+
+        .OrderComplaintText {
+            font-size: 35px;
+            color: #999999;
+            margin-left: 10px
+        }
+
+        .titleOrder {
+            background: linear-gradient(to right, #6192fd, #5274b8);
+            color: #FFFFFF;
+            padding: 16px 0;
+            font-size: 20px;
+            text-align: center;
+            margin-top: 80px
+        }
+
+        .firstBox {
+            display: flex;
+            width: 1100px
+        }
+
+        .firstBoxs {
+            display: flex;
+            margin-top: 10px;
+            width: 1100px
+        }
+
+        .orderNumber {
+            background: linear-gradient(to right, #6192fd, #5274b8);
+            font-size: 16px;
+            padding: 10px 20px;
+            color: #FFFFFF
+        }
+
+        .orderNumbers {
+            background: linear-gradient(to right, #6192fd, #5274b8);
+            font-size: 16px;
+            padding: 80px 20px;
+            color: #FFFFFF;
+        }
+
+        .num {
+            font-size: 14px;
+            padding: 10px 0;
+            color: #333333;
+            margin-left: 10px
+        }
+
+        .littleBox {
+            padding: 0 25px;
+            margin-top: 30px;
+        }
+
+        .selectBox {
+            padding-top: 10px;
+            padding-left: 10px
+        }
+
+        .selectBox > select {
+            border: 0;
+            width: 980px;
+            font-size: 16px;
+            height: 25px;
+            outline: none;
+        }
+
+        .inputBox {
+            padding-top: 9px;
+        }
+
+        .inputBox > input {
+            font-size: 16px;
+            color: #333333;
+            margin-left: 10px;
+            width: 930px;
+            border: 0;
+            outline: none;
+        }
+
+        .uploadPictures {
+            border: 1px dashed #6090f8;
+            color: #6090f8;
+            padding: 8px 8px;
+            margin-top: 5px;
+            margin-left: 10px
+        }
+
+        .inputFile {
+            background-color: transparent;
+            position: absolute;
+            width: 100px;
+            height: 40px;
+            left: 10px;
+            top: 2px;
+            opacity: 0
+        }
+
+        .textField > textarea {
+            resize: none;
+            width: 800px;
+            height: 180px;
+            border: 0;
+            outline: none;
+            font-size: 16px;
+            color: #333333;
+            line-height: 30px
+        }
+
+        .bottomBtn {
+            text-align: center;
+            padding: 15px 0;
+            background: linear-gradient(to right, #6192fd, #5274b8);
+            width: 150px;
+            font-size: 18px;
+            color: #FFFFFF;
+            margin-left: 600px;
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+
+<body>
+<div style="position: absolute;z-index: 1113;width: 100%">
+    <nav class="navbar navbar-top my-navbar" role="navigation">
+        <div class="collapse container">
+            <div class="nav-left"><img src="image/logo.png" alt=""/></div>
+            <div class="nav-right navbar-collapse" id="example-navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="index.html">网站首页</a>
+                    </li>
+                    <li>
+                        <a href="Serve.html">公司简介</a>
+                    </li>
+                    <li>
+                        <a href="Case.html">联系我们</a>
+                    </li>
+                    <li>
+                        <a href="viewpoint.html">订单查询</a>
+                    </li>
+                    <li>
+                        <a href="ComplaintsQuery.html">[查询投诉]</a>
+                    </li>
+                </ul>
+                <div class="loginBox">
+                    <p class="loginBtn">登录</p>
+                    <p class="registerBtn">注册</p>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+<div id="head2">
+    <nav class="navbar2 navbar-top my-navbar2" role="navigation">
+        <div class="collapse container">
+            <div class="nav-left"><img src="image/logo.png" alt=""/></div>
+            <div class="nav-right navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="index.html">网站首页</a>
+                    </li>
+                    <li>
+                        <a href="Serve.html">公司简介</a>
+                    </li>
+                    <li>
+                        <a href="Case.html">联系我们</a>
+                    </li>
+                    <li>
+                        <a href="viewpoint.html">订单查询</a>
+                    </li>
+                    <li>
+                        <a href="ComplaintsQuery.html">[查询投诉]</a>
+                    </li>
+                </ul>
+                <div class="loginBox">
+                    <p class="loginBtn">登录</p>
+                    <p class="registerBtn">注册</p>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+<div class="bgImages"></div>
+
+
+<div class="bigBox">
+    <div class="complaintsBox">
+        <p class="orderText">订单投诉</p>
+        <p class="OrderComplaintText">/Order Complaint</p>
+    </div>
+    <p class="titleOrder">订单投诉</p>
+    <div class="littleBox">
+        <div class="firstBox">
+            <p class="orderNumber">订单编号</p>
+            <p class="num" id="order_number"></p>
+        </div>
+        <div class="firstBoxs" style="width: 1100px;">
+            <p class="orderNumber">投诉原因</p>
+            <div class="selectBox">
+                <select name="causeList" id="cause">
+                    <option value="">--请选择投诉原因--</option>
+                    <option value="1">无效卡密</option>
+                    <option value="2">虚假商品</option>
+                    <option value="3">非法商品</option>
+                    <option value="4">侵权商品</option>
+                    <option value="5">不能购买</option>
+                    <option value="6">恐怖色情</option>
+                    <option value="7">其他投诉</option>
+                </select>
+            </div>
+        </div>
+        <div class="firstBoxs">
+            <p class="orderNumber" style="width: 105px;text-align: center">qq</p>
+            <div class="inputBox"><input type="text" id="qq" placeholder="请填写您的QQ号"></div>
+        </div>
+        <div class="firstBoxs">
+            <p class="orderNumber">手机号码</p>
+            <div class="inputBox"><input type="text" id="phone_num" placeholder="用于接收投诉信息，请认真填写"></div>
+        </div>
+        <form action="">
+            <div class="firstBoxs">
+                <p class="orderNumber">付款截图</p>
+                <div style="display: flex;position: relative;">
+                    <p style="cursor: pointer" id="inputFileIds" class="uploadPictures">+&nbsp;&nbsp;&nbsp;上传图片</p>
+                </div>
+            </div>
+        </form>
+        <img id="imagePlus" style="width: 200px;height: 200px;" src="" alt="">
+        <div class="firstBoxs">
+            <p class="orderNumbers">详情说明</p>
+            <div class="textField">
+                <textarea id="bigTextBox" placeholder="请具体说明问题，如：卡密无法正常充值，卖家不处理等"></textarea>
+            </div>
+        </div>
+        <p class="bottomBtn" onclick="get_order_complaints_info()">提交投诉</p>
+    </div>
+</div>
+
+
+<div class="jiewei">
+    <div class="foot" id="foot">
+        <div class="foot_con">
+            <div>
+                <h4>网站导航</h4>
+                <p>
+                    首页 / 服务</br>
+                    网站设计 / 手机APP / 软件设计 / UE原型</br>
+                    工作流程 / 设计案例 / 新闻中心</br>
+                    我们观点 / 关于公司</br>
+                </p>
+            </div>
+            <div>
+                <h4>新闻中心</h4>
+                <p>
+                    公司2019年会通知
+                </p>
+            </div>
+            <div>
+                <h4>联系方式</h4>
+                <p>
+                    地址: 徐州市泉山区矿大科技园B座130</br>
+                    热线: 400-690-8077</br>
+                    手机: 13225262011</br>
+                </p>
+            </div>
+            <div>
+                <h4>关注我们</h4>
+                <p>
+                    <img src="img/erweim.png" alt=""/>
+                </p>
+            </div>
+        </div>
+        <div class="text-center" style="color: #666;font-size: 18px;">
+            Copyright zchfa.com, All Rights Reserved. 徐州再出发信息科技有限公司
+        </div>
+    </div>
+</div>
+</body>
+
+<script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="js/baseUrl.js" type="text/javascript" charset="utf-8"></script>
+<script src="layuiadmin/layui/layui.js" type="text/javascript"></script>
+<script type="text/javascript">
+    let select_value = '';
+    layui.use(['upload'], function () {
+        var upload = layui.upload
+            , layer = layui.layer
+            , $ = layui.$;
+
+        $("#imagePlus").hide();
+        //获取url携带的参数
+        function getUrlParam(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+            var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+            if (r != null) return unescape(r[2]);
+            return null; //返回参数值
+        }
+
+        var order_num = getUrlParam("order_num");
+        var order_type = getUrlParam("order_type");
+        $("#order_number").text(order_num);
+
+        //获取选中select的值
+        $("#cause").change(function () {
+            select_value = $(this).val();
+        });
+
+
+        var uploadInst = upload.render({
+            elem: '#inputFileIds' //绑定元素
+            , url: baseUrl + '/ComplainOrder/complainImg'//上传接口
+            , images: "images"//只允许上传图片
+            , acceptMime: 'image/*'//点击弹出文件夹里只显示图片格式文件
+            , data: {
+                order_num: order_num,
+                type: 3,
+            }
+            , done: function (res) {
+                if (res.code === "200") {
+                    layer.msg("上传成功");
+                    $("#imagePlus").show();
+                    $("#imagePlus").attr("src", res.data);
+                } else {
+                    layer.msg(res.msg);
+                }
+                console.log(res);
+            }
+        });
+        window.get_order_complaints_info = function () {
+            let qq = $("#qq").val();
+            let phone_num = $("#phone_num").val();
+            let details = $("#bigTextBox").val();
+            if (select_value === '') {
+                layer.msg('请选择投诉原因！');
+                return false;
+            }
+            if (qq === '') {
+                layer.msg('请输入QQ号');
+                return false;
+            }
+            if (phone_num === '') {
+                layer.msg('请输手机号');
+                return false;
+            }
+
+            var phoneNum = /^1[3|4|5|8|7][0-9]{9}$/;
+            if (!phoneNum.test($("#phone_num").val())) {
+                layer.msg('手机号格式不正确');
+                return false;
+            }
+            if( details === '' ){
+                layer.msg('请输入投诉详情');
+                return false;
+            }
+
+            $.ajax({
+                url: baseUrl + "/ComplainOrder/addComplain",//接口地址
+                dataType: 'json',
+                type: "POST",  //类型
+                data: {
+                    order_num: order_num,
+                    order_type: order_type,
+                    cause: select_value,
+                    qq: qq,
+                    mobile: phone_num,
+                    detail: details,
+                },
+                success: function (res) {
+                    console.log(res);
+                    if (res.code === "200") {
+                        layer.msg('投诉成功!<br/>平台已经收到您的投诉,并且通知卖家您可以继续联系平台客服',{icon: 1});
+                        setTimeout(function () {
+                            window.location.href = 'viewpoint.html?order_number=' + order_num;
+                        },3000);
+                    } else {
+                        layer.msg(res.msg)
+                    }
+                }
+            });
+        }
+
+    });
+
+
+    //上方导航栏底部横线
+    setInterval(function () {
+        var a = parseInt($(document).scrollTop());
+        if (a >= 600) {
+            $(".navbar2").css("top", "0px").css("opacity", "1");
+        } else {
+            $(".navbar2").css("top", "-50px").css("opacity", "0");
+        }
+    });
+    //跳转登录页面
+    $('.loginBtn').click(function () {
+        window.location.href = 'login.html';
+    });
+    //跳转注册页面
+    $('.registerBtn').click(function () {
+        window.location.href = 'register.html';
+    });
+</script>
+</html>

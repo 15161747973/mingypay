@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>推广信息</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="../../layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../layuiadmin/style/admin.css" media="all">
+</head>
+<style>
+    .copyLinkBox{display: flex;background-color: #9c78fc;margin: 0 10px;border-radius: 5px;height: 60px;line-height: 60px}
+    .copyLinkBox p{color: #FFFFFF;margin-left: 20px}
+    .promoteLink{font-size: 16px;padding: 0 0 5px 10px;}
+</style>
+<body>
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12 layui-card">
+            <div class="layui-card-header">推广信息</div>
+            <div class="promoteLinkBox" style="margin-top: 15px;">
+                <p class="promoteLink">推广链接</p>
+                <div class="copyLinkBox">
+                    <p id="foo" class="promote_links" ></p>
+                    <button data-clipboard-target="#foo" class="copyBtn layui-btn layui-btn-normal buttonStyle" style="margin-left: 20px;margin-top: 11px">复制链接</button>
+                </div>
+            </div>
+            <div class="promoteLinkBox" style="margin-top: 15px;">
+                <p class="promoteLink">推广二维码</p>
+                <img style="width: 163px;height: 165px;" src="../../image/Promotion_code.png" alt="">
+            </div>
+            <div style="width: 99%;margin: 40px 10px 0 10px">
+                <p class="layui-card-header" style="margin-left: -10px">佣金信息</p>
+                <table id="commission_list" class="layui-table" lay-filter="commission_information"> </table>
+            </div>
+            <div style="width: 99%;margin: 40px 10px 0 10px">
+                <p class="layui-card-header" style="margin-left: -10px">推广列表</p>
+                <table id="generalize_list" lay-filter="generalize_list"></table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+<script src="../../layuiadmin/layui/layui.js?t=1"></script>
+<script src="../../js/clipboard.min.js"></script> <!-- 一键复制js -->
+<script>
+    layui.use('table', function(){
+        var table = layui.table,
+            $ = layui.$;
+        //获取推广链接
+        get_url();
+        //佣金信息表
+        table.render({
+            elem: '#commission_list'
+            ,url: parent.baseUrl + '/users/commsion' //数据接口
+            , method: 'POST'
+            , limit: 10
+            , id: 'heavy_load'
+            , where: {
+                token: localStorage.getItem("token")
+            }
+            , parseData: function (res) { //res 即为原始返回的数据
+                var array = [];
+                array.push(res.data.res);
+                return {
+                    "code": res.code, //解析接口状态
+                    "msg": res.msg, //解析提示文本
+                    "count": res.data.count, //解析数据长度
+                    "data": array //解析数据列表
+                };
+            }
+            ,cols: [[ //表头
+                {field: 'uid', title: '商户id', fixed: 'left'},
+                {field: 'Yes_YJ_price', title: '已结算佣金'},
+                {field: 'No_YJ_price', title: '未结算佣金'},
+                {field: 'rate', title: '佣金费率（千分之）'}
+            ]]
+            , done: function (res) {//成功回调
+                console.log(res);
+            }
+            , page: { //支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档//自定义分页
+                layout: ['limit', 'count', 'prev', 'page', 'next', 'skip'] //自定义分页布局
+                , groups: 5 //只显示 1 个连续页码
+                , prev:"上一页"
+                , next:"下一页"
+            }
+        });
+
+        //推广列表接口
+        table.render({
+            elem: '#generalize_list'
+            ,url: parent.baseUrl + '/users/popList' //数据接口
+            ,method: 'POST'
+            , where: {
+                token: localStorage.getItem("token")
+            }
+            ,page: true //开启分页
+            ,cols: [[ //表头
+                {field: 'username', title: '姓名', sort: true,unresize: true},
+                {field: 'email', title: '邮箱', sort: true},
+                {field: 'mobile', title: '联系方式', sort: true},
+                {field: 'createtime', title: '时间', sort: true}
+            ]]
+            ,parseData: function(res){ //res 即为原始返回的数据
+                return {
+                    "code": res.code, //解析接口状态
+                    "msg": res.msg, //解析提示文本
+                    "count": res.data.count, //解析数据长度
+                    "data": res.data.res //解析数据列表
+                };
+            }
+            ,done: function (res) {
+                console.log(res);
+            }
+        });
+
+        //getURL//获取短链接
+        function get_url() {
+            $.ajax({
+                url: parent.baseUrl + '/users/shorturl1',
+                dataType: 'json',
+                type: 'POST',
+                data: {
+                    token: localStorage.getItem('token'),
+                    url: parent.baseUrls + '/index.html'
+                },
+                success: function (res) {
+                    console.log(res);
+                    if( res.code === '200' ){
+                        $(".promote_links").text(res.data.url_short);
+                    }else {
+                        layer.msg(res.msg);
+                    }
+                }
+            })
+        }
+
+        //获取推广二维码接口
+        function get_promotion_code() {
+            $.ajax({
+                url: parent.baseUrl + '',
+                dataType: 'json',
+                type: 'POST',
+                data: {
+                    token: localStorage.getItem('token')
+                },
+                success: function (res) {
+                    if( res.code === '200' ){
+                        console.log(res);
+                    }else {
+                        later.msg(res.msg);
+                    }
+                }
+            })
+        }
+
+
+    });
+
+
+
+
+    var clipboard = new Clipboard(".copyBtn");
+
+    clipboard.on('success', function (e) {
+        layer.msg('复制成功')
+        // console.log(e);
+    });
+    clipboard.on('error', function (e) {
+        console.log(e);
+    });
+
+</script>
+
+</html>
+

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>商品列表</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="../../layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../layuiadmin/style/admin.css" media="all">
+</head>
+<body>
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-header">商品列表</div>
+                <form class="layui-form" style="margin-top: 15px;">
+                    <div class="layui-inline" style="margin-left: 15px">
+                        <select name="categorys_id" lay-filter="all_classify" id="my_classify">
+                            <option value="">全部分类</option>
+                        </select>
+                    </div>
+                    <div class="layui-inline">
+                        <div style="margin-left: 30px;width: 300px">
+                            <input type="text" name="product_name" class="layui-input" placeholder="请输入商品名">
+                        </div>
+                    </div>
+                    <button class="layui-btn buttonStyle" lay-submit lay-filter="search_btn" style="width: 100px;margin-left: 20px" type="button"><i class="layui-icon">&#xe615;</i>搜索
+                    </button>
+                </form>
+                <div class="layui-card-body">
+                    <table class="layui-hide" id="goods_list" lay-filter="goods_list"></table>
+                </div>
+                <div class="layui-btn-group demoTable" style="padding: 0 0 10px 15px;">
+                    <button class="layui-btn" data-type="getCheckData">删除选中</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/html" id="operation">
+    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="my_link">链接</a>
+
+    {{#  if(d.status == 1){ }}
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="sold_out">下架</a>
+    {{#  }else if( d.status == 2 ){ }}
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="sold_out">上架</a>
+    {{# } }}
+
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="delete">删除</a>
+</script>
+
+</body>
+<script src="../../layuiadmin/layui/layui.js"></script>
+<script>
+    var stock;
+    var classfily;
+    layui.use(['table', 'element'], function () {
+        var table = layui.table
+            , form = layui.form
+            , $ = layui.$;
+        select_all_classify();//查询分类接口
+        table.render({
+            elem: '#goods_list'
+            , url: parent.baseUrl + '/agentproduct/agentProList'
+            , method: 'POST'
+            , id: 'heavy_load'
+            , where: {
+                token: localStorage.getItem("token")
+            }
+            , cols: [[
+                {type: 'checkbox', fixed: 'left'}
+                , {field: 'supple_id', title: '供货商ID', unresize: true,}
+                , {field: 'supple_qq', title: '供货QQ', unresize: true}
+                , {field: 'supple_pro_id', title: '供货产品ID', unresize: true}
+                , {field: 'product_name', title: '商品名称', unresize: true}
+                , {field: 'categorys_name', title: '分类名称', unresize: true}
+                , {field: 'score', title: '排序', unresize: true,sort: true}
+                , {field: 'old_price', title: '原价', unresize: true}
+                , {field: 'now_price', title: '现价', unresize: true}
+                , {field: 'stock', title: '库存', unresize: true}
+                , {field: 'sale_num', title: '卖出', unresize: true}
+                , {field: 'status', title: '状态', templet: '#usernameTpl', unresize: true, templet: function (data) {
+                        let statu_plus = data.status;
+                        if (statu_plus === 1) {
+                            return '<span>已上架</span>'
+                        } else if (statu_plus === 2) {
+                            return '<span>已下架</span>'
+                        }
+                    }}
+                , {field: 'create_time', title: '创建时间', unresize: true, templet:'<div>{{ layui.util.toDateString(d.createDate, "yyyy-MM-dd HH:mm:ss") }}</div>'}
+                , {field: 'operation',title: '操作',align: 'center',toolbar: '#operation',unresize: true,width: '20%'}
+            ]]
+            , parseData: function(res){ //res 即为原始返回的数据
+                return {
+                    "code": res.code, //解析接口状态
+                    "msg": res.msg, //解析提示文本
+                    "count": res.data.count, //解析数据长度
+                    "data": res.data.data //解析数据列表
+                };
+            }
+            , done: function (res) {
+                console.log(res)
+            }
+            , page: { //支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档//自定义分页
+                layout: ['limit' ,'count', 'prev', 'page', 'next', 'skip'] //自定义分页布局
+                , groups: 5 //只显示 1 个连续页码
+                , prev:"上一页"
+                , next:"下一页"
+            }
+        });
+
+        //获取选中数据
+        table.on('tool(goods_list)', function (obj) {
+            let datas = obj.data;
+            if (obj.event === 'my_link') {  //链接按钮操作
+                alert(obj.event);
+            } else if (obj.event === 'edit') {//编辑按钮操作
+                goods_list_id = datas.id;
+                stock = datas.stock;
+                classfily = datas.categorys_name;
+                layer.open({
+                    title: "修改：",
+                    area: ['750px', '700px'],
+                    type: 2,
+                    content: '../operation/agent_joint_goods.html'
+                });
+                window.refresh = function (e) {
+                    console.log(e);
+                    obj.update({
+                          score: e.data.score
+                        , now_price: e.data.now_price
+                        , product_name: e.data.product_name
+                        , categorys_name: e.data.categorys_name
+                    });
+                    layer.closeAll('iframe');
+                    layer.msg("修改成功", {icon: 6});
+                };
+
+            } else if (obj.event === 'sold_out') {//上/下架按钮操作
+                //判断表格状态如果是已上架1改变全局变量为2下架状态
+                if( obj.data.status === 1 ){
+                    status_plus = 2;
+                }else if( obj.data.status === 2 ){
+                    status_plus = 1;
+                }
+                stand_up_down(status_plus,datas.id);
+            } else if (obj.event === 'delete') {//删除按钮操作
+                layer.confirm("确定删除词条数据吗？", {icon: 3}, function () {
+                    delect_table_data(datas.id, obj);//删除商品接口
+                });
+            }
+        });
+        //查询用户下所有分类
+        function select_all_classify() {
+            $.ajax({
+                url: parent.baseUrl + "/Categorys/userCate",//接口地址
+                dataType: 'json',
+                type: "POST",  //类型
+                data: {
+                    token: localStorage.getItem("token")
+                },
+                success: function (res) {
+                    console.log(res);
+                    if (res.code === "200") {
+                        if (res.data != null) {
+                            let datas = res.data;
+                            //渲染select->option的值
+                            for (var i = 0;i < datas.length;i++){
+                                $('#my_classify').append('<option value="' + datas[i].id + '">' + datas[i].categorys_name + '</option>');
+                            }
+                            form.render('select');
+                        }
+                    } else {
+                        layer.msg(res.msg)
+                    }
+                }
+            });
+        }
+
+        //删除表格里面的商品
+        function delect_table_data(goods_id,object) {
+            $.ajax({
+                url: parent.baseUrl + "/agentproduct/delAgentPro",//接口地址
+                dataType: 'json',
+                type: "POST",  //类型
+                data: {
+                    id: goods_id,
+                    token: localStorage.getItem("token")
+                },
+                success: function (res) {
+                    console.log(res);
+                    if (res.code === "200") {
+                        object.del();
+                        layer.msg("删除成功", {icon: 1})
+                    } else {
+                        layer.msg(res.msg, {icon: 2})
+                    }
+                }
+            });
+        }
+
+        //商品上下架接口
+        function stand_up_down(status,ids) {
+            $.ajax({
+                url: parent.baseUrl + "/agentproduct/changeStatus",//接口地址
+                dataType: 'json',
+                type: "POST",  //类型
+                data: {
+                    id: ids,
+                    status: status,
+                    token: localStorage.getItem("token")
+                },
+                success: function (res) {
+                    console.log(res);
+                    if (res.code === "200") {
+                        layer.msg("操作成功", {icon: 1});
+                        setTimeout(function () {
+                            table.reload('heavy_load', {
+                                url: parent.baseUrl + '/agentproduct/agentProList'
+                            });
+                        },800);
+                    } else {
+                        layer.msg(res.msg, {icon: 2})
+                    }
+                }
+            });
+        }
+
+        active = {
+            getCheckData: function(){ //获取选中数据
+                var checkStatus = table.checkStatus('heavy_load')
+                    ,data = checkStatus.data;
+                if( data.length === 0 ){
+                    layer.msg("您没有选择任何数据",{icon: 2});
+                    return false;
+                }
+                var arr = [];
+                for (var i = 0;i < data.length;i++){
+                    arr.push(data[i].id);
+                }
+                choose_delete(arr.toString());
+            }
+        };
+        //多选删除按钮的点击事件
+        $('.demoTable .layui-btn').on('click', function(){
+            var type = $(this).data('type');
+            active[type] ? active[type].call(this) : '';
+        });
+
+
+        //批量删除接口
+        function choose_delete(ids) {
+            $.ajax({
+                url: parent.baseUrl + "/agentproduct/delAll",//接口地址
+                dataType: 'json',
+                type: "POST",  //类型
+                data: {
+                    ids: ids,
+                    token: localStorage.getItem("token")
+                },
+                success: function (res) {
+                    console.log(res);
+                    if (res.code === "200") {
+                        layer.msg(res.msg, {icon: 1});
+                        table.reload('heavy_load', {
+                            url: parent.baseUrl + '/agentproduct/agentProList'
+                        });
+                    } else {
+                        layer.msg(res.msg, {icon: 2});
+                    }
+                }
+            });
+        }
+
+        //监听搜索按钮
+        form.on('submit(search_btn)',function (d) {
+            let data = d.field;
+            console.log(data);
+            table.reload('heavy_load', {
+                url: parent.baseUrl + '/agentproduct/agentProList'
+                , where: {
+                    categorys_id: data.categorys_id,
+                    product_name: data.product_name
+                }
+            });
+        });
+
+    });
+</script>
+</html>

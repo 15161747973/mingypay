@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>修改邮箱</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="../../layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../layuiadmin/style/admin.css" media="all">
+    <link rel="stylesheet" href="../../layuiadmin/style/login.css" media="all">
+</head>
+<style>
+    .hand{cursor: pointer;
+        display: inline-block;
+    }
+</style>
+<body>
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-header hand" style="padding-left: 30px" onclick="returns()"><i class="layui-icon" style="left: 13px;top: 19px;">&#xe603;</i>安全中心</div>
+                <form class="layui-form" style="margin-top: 15px;">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">邮箱</label>
+                        <div class="layui-input-block" style="display: flex">
+                            <input type="text" style="width: 80%;" id="e_mail" name="email" autocomplete="off" class="layui-input">
+                            <button class="buttonStyle layui-btn" type="button" style="margin-left: 15px" id="send_code">获取验证码</button>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <label class="layui-form-label">验证码</label>
+                        <div class="layui-input-block">
+                            <input type="text" style="width: 80%;" name="code" autocomplete="off" class="layui-input">
+                        </div>
+                    </div>
+                    <div style="text-align: center;padding-bottom: 20px">
+                        <button type="button" class="layui-btn buttonStyle" lay-submit lay-filter="submit_btn" style="width: 200px;">提交</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+</body>
+<script src="../../layuiadmin/layui/layui.js"></script>
+<script>
+    layui.use(['table','laydate'], function () {
+        var form = layui.form
+            ,$ = layui.$;
+        //邮箱验证接口
+        $("#send_code").click(function () {
+            var e_mail1 = $("#e_mail").val();
+            if( e_mail1 === '' ){
+                layer.msg("请输入邮箱");
+                return false;
+            }
+            var reg = /^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/;
+            var judge = reg.test(e_mail1);
+            if( !judge ) {
+                layer.msg("邮箱格式不正确");
+                return false;
+            }else {
+                var countdown = 60;
+                settime($(this));
+                function settime(obj) {
+                    if (countdown == 0) {
+                        $(obj).removeAttr("disabled");
+                        $(obj).text("获取验证码");
+                        $(obj).css({"pointer-events": "", "color": "#fff"});
+                        countdown = 60;
+                        return;
+                    } else {
+                        $(obj).attr("disabled", true);
+                        $(obj).text(countdown + 's' + '后重发');
+                        $(obj).css({"pointer-events": "none", "color": "#ccc"});
+                        countdown--;
+                    }
+                    setTimeout(function () {
+                        settime(obj)
+                    }, 1000)
+                }
+            }
+            $.ajax({
+                url: parent.baseUrl + "/users/sendEmail",
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    token: localStorage.getItem("token"),
+                    email: e_mail1,
+                    substr: "修改邮箱",
+                },
+                success: function (ret) {
+                    console.log(ret);
+                    if ( ret.code === "200" ) {
+                        sms_code = ret.data;
+                        layer.msg('' + ret.msg + '');
+                    } else {
+                        layer.msg(ret.msg);
+                    }
+                }
+            });
+        });
+
+        //修改邮箱接口
+        form.on('submit(submit_btn)',function (data){
+            let filed = data.field;
+            filed["token"] = localStorage.getItem("token");
+            $.post( parent.baseUrl + "/users/emailCodeCheck",filed,function(res){
+                console.log(res);
+                if( res.code === "200" ){
+                    layer.msg(res.msg,{icon: 1});
+                    setTimeout(function () {
+                        window.returns();
+                    },800)
+                }else{
+                    layer.msg(res.msg,{icon: 2});
+                }
+            },'json');
+            //一定要阻止表单跳转
+            return false;
+        });
+        //返回上级页面
+        window.returns = function () {
+            window.history.go(-1)
+        }
+    });
+
+
+</script>
+</html>

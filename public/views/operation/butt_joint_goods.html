@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>对接商品</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="../../layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../layuiadmin/style/admin.css" media="all">
+</head>
+<style>
+    .notice{margin-left: 115px;margin-top: -2px;color: #ce67c3}
+</style>
+<body>
+
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-card-header">对接商品</div>
+        <div class="layui-card-body" style="padding: 15px;">
+            <form class="layui-form" lay-filter="submit_edit_data" enctype="multipart/form-data">
+                <div class="layui-form-item">
+                    <label class="layui-form-label">商品分类</label>
+                    <div class="layui-input-block">
+                        <select name="categorys_id" id="googds_classfily" lay-filter="googds_classfily"></select>
+                    </div>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">商品排序</label>
+                    <div class="layui-input-block">
+                        <input type="number" name="score" value="0" autocomplete="off" class="layui-input">
+                    </div>
+                    <p class="notice">*数字越大越靠前</p>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">商品名称</label>
+                    <div class="layui-input-block">
+                        <input type="text" lay-verify="goods_name" name="product_name" autocomplete="off" class="layui-input">
+                    </div>
+                    <p class="notice">*好的名字有利于销售哦！</p>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">销售价格</label>
+                    <div class="layui-input-block">
+                        <input type="text" lay-verify="sell_price" name="now_price" autocomplete="off" placeholder="单位（元）" class="layui-input">
+                    </div>
+                    <p class="notice">*商品对外出售的价格即零售价格！（单价需大于1元）</p>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">成本价格</label>
+                    <div class="layui-input-block">
+                        <input type="text" lay-verify="cost_price" name="cost_price" autocomplete="off" value="0" class="layui-input">
+                    </div>
+                    <p class="notice">*商品进货价，可以不填，填写有利于商户系统的利润统计分析！</p>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">起购数量</label>
+                    <div class="layui-input-block">
+                        <input type="text" lay-verify="low_num" name="low_num" autocomplete="off" value="1" class="layui-input">
+                    </div>
+                    <p class="notice">*每次购买最少购买多少件！（默认1件起售）</p>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">限购数量</label>
+                    <div class="layui-input-block">
+                        <input type="text" lay-verify="above_num" name="above_num" autocomplete="off" value="0" class="layui-input">
+                    </div>
+                    <p class="notice">*每次购买最多购买多少件！（0为不限）</p>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label">库存显示</label>
+                    <div class="layui-input-block">
+                        <input type="radio" name="stock_status" value="0" title="显示数量" checked="">
+                        <input type="radio" name="stock_status" value="1" title="显示范围">
+                        <input type="radio" name="stock_status" value="2" title="不显示">
+                    </div>
+                    <p class="notice">*商品说明将显示在商品购买页面</p>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">取卡密码</label>
+                    <div class="layui-input-block">
+                        <input type="radio" name="is_getCard_pass" value="0" title="不需要" checked>
+                        <input type="radio" name="is_getCard_pass" value="1" title="需要">
+                    </div>
+                    <p class="notice">*开启后用户购买必须填写取卡密码</p>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">是否买家承担手续费</label>
+                    <div class="layui-input-block">
+                        <input type="radio" name="is_buyer_server_money" value="0" title="否" checked="">
+                        <input type="radio" name="is_buyer_server_money" value="1" title="是">
+                    </div>
+                    <p class="notice">*如果买家承担手续费，如商品10元买家需支付10.3元</p>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">开启代理</label>
+                    <div class="layui-input-block">
+                        <input type="radio" name="is_agent" value="0" title="否" checked>
+                        <input type="radio" name="is_agent" value="1" title="是">
+                    </div>
+                    <p class="notice">*如果买家承担手续费，如商品10元买家需支付10.3元</p>
+                </div>
+                <div class="layui-form-item">
+                    <label class="layui-form-label">访问密码</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="visit_pass" autocomplete="off" placeholder="下单页访问密码，可空" class="layui-input">
+                    </div>
+                    <p class="notice">*下单页访问密码,留空为不需要访问密码</p>
+                </div>
+                <div class="layui-form-item layui-form-text">
+                    <label class="layui-form-label">商品说明</label>
+                    <div class="layui-input-block">
+                        <textarea name="desc" placeholder="商品说明显示在商品购买页面，一般填写商品特点等信息" class="layui-textarea"></textarea>
+                    </div>
+                    <p class="notice">*商品说明实现是在商品购买页面</p>
+                </div>
+                <div class="layui-form-item layui-form-text">
+                    <label class="layui-form-label">使用说明</label>
+                    <div class="layui-input-block">
+                        <textarea name="use_desc" placeholder="使用说明将显示在订单查询结果中，一般填写使用方法，售后QQ群或者下载地址等信息" class="layui-textarea"></textarea>
+                    </div>
+                    <p class="notice">*使用说明惊险是在订单查询结果中，一般设置售后QQ群，或者下载地址等</p>
+                </div>
+                <div class="layui-form-item layui-layout-admin">
+                    <div class="layui-input-block">
+                        <div class="layui-footer" style="left: 0;">
+                            <button class="layui-btn buttonStyle" style="width: 400px" lay-submit lay-filter="add_goods_btn">对接</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script src="../../layuiadmin/layui/layui.js"></script>
+<script src="../../js/baseUrl.js"></script>
+<script>                    //商品列表编辑        //供货商列表编辑接口
+    layui.config({
+        base: '../../layuiadmin/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index', 'form'], function () {
+        var $ = layui.$
+            , layer = layui.layer
+            , form = layui.form;
+
+        //默认不使用批发价
+        $("#tests").hide();
+        //查询分类
+        traverse_option();
+        function traverse_option() {
+            $.ajax({
+                url: baseUrl + "/Categorys/userCate",//接口地址
+                dataType: 'json',
+                type: "POST",  //类型
+                data: {
+                    token: localStorage.getItem("token")
+                },
+                success: function (res) {
+                    console.log(res);
+                    if (res.code === "200") {
+                        if( res.data != null ){
+                            let datas = res.data;
+                            //渲染select->option的值
+                            datas.forEach((val, index) => {
+                                $('#googds_classfily').append('<option value="' + val.id + '">' + val.categorys_name + '</option>');
+                            });
+                            form.render('select');
+                        }
+                    } else {
+                        layer.msg(res.msg)
+                    }
+                }
+            });
+        }
+        //弹窗关闭按钮
+        $("#closeBtn").click(function () {
+            $("#inputBox").hide();
+        });
+
+
+        /* 自定义验证规则 */
+        form.verify({
+            goods_name: function (value) {
+                if (value === "" ) {
+                    return '商品名称为必填项';
+                }
+            },
+            sell_price: function (value) {
+                if (value === "" ) {
+                    return '销售价格为必填项';
+                }
+            },
+            cost_price: function (value) {
+                if (value === "" ) {
+                    return '成本价格为必填项';
+                }else if( value === 0 ){
+                    return '成本价格不能为0';
+                }
+            },
+            low_num: function (value) {
+                if (value === "" ) {
+                    return '起购数量为必填项';
+                }
+            },
+            above_num: function (value) {
+                if (value === "" ) {
+                    return '限购数量为必填项';
+                }
+            }
+        });
+
+
+
+        /* 监听指定开关 */
+        form.on('switch(mySwitch)', function (data) {
+            console.log(this.checked);
+            if( this.checked === true ){
+                $("#tests").show();
+            }else {
+                $("#tests").hide();
+            }
+        });
+
+
+        //监听对接按钮
+        form.on('submit(add_goods_btn)', function (data) {
+            console.log(data.field);
+            let filed = data.field;
+            filed["token"] = localStorage.getItem("token");
+            filed["uid"] = parent.user_id;
+            filed["product_id"] = parent.good_id;
+            filed["num"] = parent.inventory;
+            filed["sell_price"] = parent.supply_price;
+            $.post( baseUrl + "/agentproduct/agentJoin",filed,function(res){
+                console.log(res);
+                if( res.code === "200" ){
+                    layer.msg(res.msg,{icon: 1});
+                    parent.refresh(res);
+                }else{
+                    layer.msg(res.msg,{icon: 2});
+                }
+            },'json');
+            //一定要阻止表单跳转
+            return false;
+        });
+    });
+</script>
+</body>
+</html>

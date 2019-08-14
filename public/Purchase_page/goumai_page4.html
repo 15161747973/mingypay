@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" name="referrer" content="no-referrer">
+    <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title> 明宇发卡 - 业界领先的自动发卡平台www.mingypay.com</title>
+    <link rel="stylesheet" href="css/default_2.css" />
+    <link rel="stylesheet" href="css/css_2.css" />
+    <link rel="stylesheet" href="css/layer.css">
+
+
+    <style>
+        select::-webkit-input-placeholder{
+            color: #000;
+        }
+        select::-moz-placeholder{
+            color: #000;
+        }
+        select:-ms-input-placeholder{
+            color: #000;
+        }
+        .hide{display: none;}
+        .blue{color: blue;}
+        .layui-input-block{margin: 5px 0 0 0; background: none;}
+        .mainBox{width: 1200px; background: #fff; overflow: hidden; margin: 0 auto; border-radius: 15px; padding: 30px 90px; box-sizing: border-box;box-shadow: 0px 0px 25px 0px rgba(18,8,71,0.3);}
+        .rightBox{width: calc(100% - 90px);}
+        .bg1{width: 100%; height: 175px; background: url(images/bg1_1.jpg) no-repeat;}
+        .bg2{width: 100%; height: 645px; background: url(images/bg2_1.jpg) no-repeat;}
+        .bg3{width: 100%; height: 656px; background: url(images/bg3_1.jpg) no-repeat;}
+        .bg4{width: 100%; height: 279px; background: url(images/bg4_1.jpg) no-repeat;}
+        .bg5{width: 100%; height: 362px; background: url(images/bg5_1.jpg) no-repeat;}
+        .bg6{width: 100%; height: 196px; background: url(images/bg6_1.jpg) no-repeat;}
+        .select-wrap select,.select-wrap option{color:#000;}
+
+        .btnBox {
+            display: flex;
+            font-size: 14px;
+            color: #939292;
+        }
+
+        .btnBox #note, .btnBox #e_mail {
+            font-size: 15px;
+            padding: 12px 10px;
+            border: 1px solid #FFFFFF;
+            -webkit-border-radius: 40px;
+            -moz-border-radius: 40px;
+            border-radius: 40px;
+            color: #FFFFFF;
+        }
+
+        .btnBox #e_mail {
+            margin-left: 15px;
+        }
+
+        .li_left {
+            font-size: 14px;
+        }
+
+        #btn1:checked ~ .li .li_left > .btnBox > #note,
+        #btn2:checked ~ .li .li_left > .btnBox > #e_mail {
+            background-color: #FFFFFF;
+            color: #5474ff;
+        }
+
+        .duihaos{
+            position: absolute;top: -55px;right: 25px;opacity: 0
+        }
+
+        #total_money{font-size: 28px; color: #ff8613;}
+        #selected:checked ~ .bg5 .center .zz_sp .zhifu_box .zhifu_list #alpay img,
+        #selected_plus:checked ~ .bg5 .center .zz_sp .zhifu_box .zhifu_list #weChat img{
+            opacity: 1;
+        }
+
+
+        .confirmBg {
+            display: none;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            background-color: #080808;
+            opacity: .4;
+        }
+        .WeChat_Pay {display: none;position: fixed;top: 50%;left: 50%;transform: translate(-50%,-50%);background-color: #FFFFFF;width: 400px;padding-bottom: 30px}
+        .WeChat_Pay .order_title{display: flex;justify-content: space-between;padding: 8px 20px;border-bottom: 1px solid #aaa198;}
+        .WeChat_Pay .order_info{text-align: center}
+        .close_img{width: 14px;height: 14px;margin-top: 3px;cursor: pointer}
+        .order_pirce{line-height: 27px}
+        .saoma_zhifu{font-size: 18px;font-weight: bold;margin-top: 10px;text-align: center}
+        .order_pirce{font-size: 16px;text-align: center}
+        .scan_imgae{width: 40px;height: 40px;margin-top: -23px;text-align: center}
+        .order_info .scan_box{border: 2px solid #aaa198;display: inline-block;padding-bottom: 15px;margin-top: 6px;}
+        .bottom_box_plus{display: inline-block;font-size: 15px;margin-left: 15px}
+    </style>
+</head>
+<body>
+    <div class="bg1">
+        <div class="center">
+            <div class="ya_logo">
+                <div class="center">
+                    <div class="left"><img src="picture/logo1.png" /> </div>
+                    <div class="right nav_list">
+                        <a href="#" class="current">首页</a>
+                        <a href="/viewpoint.html">订单查询</a>
+                        <a href="/OrderComplaints.html">订单投诉</a>
+                        <a href="/ComplaintsQuery.html">投诉查询</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bg2">
+        <div class="center">
+            <div class="shXinxi left">
+                <div class="tit"> <img src="picture/sh_tit_1.png" /> </div>
+                <div class="cont">
+                    <ul class="list">
+                        <li>
+                            <span class="name">店铺名称：</span>
+                            <p></p>
+                        </li>
+                        <li>
+                            <span class="name">商品类型：</span>
+                            <p>数字卡密</p>
+                        </li>
+                        <li>
+                            <span class="name">发货类型：</span>
+                            <p>自动发货</p>
+                        </li>
+                        <li>
+                            <span class="name">卖家Q Q：</span>
+                            <p>1163201301</p>
+                        </li>
+                    </ul>
+                    <div class="clear"></div>
+                    <div class="lxkf">
+                        <a style="display: flex;align-items: center;color: #fff;justify-content: center;"
+                           href="http://wpa.qq.com/msgrd?v=1&uin=1163201301&site=brfaka.com&menu=yes" target="_blank">  <img src="picture/zx_1.png" /> </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bg3">
+        <div class="center">
+            <div class="zz_sp right" style="box-sizing: border-box;">
+                <div class="zzsp_box"  onload="initialize()">
+                    <div class="li">
+                        <div class="li_follow ">
+                            <span class="left">商品分类</span>
+                            <div class="select-wrap">
+                                <select class=" input_a" id="my_classify_select" >
+                                    <option value='' disabled selected style='display:none;'>请选择分类</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="li">
+                        <div class="li_follow ">
+                            <span class="left">商品名称</span>
+                            <div class="select-wrap">
+                                <select class=" input_a" id="my_goods_select" >
+                                    <option value="" disabled selected style="display:none;">请选择商品</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="li">
+                        <div class="li_follow">
+                            <span class="left">购买数量</span>
+                            <input type="text" id="purchase_quantity" value="1" class="left input_a j-count-input" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}" onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^1-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}">
+                            <div class="yuliang j-kucun"><label class="sxf" id="inventory"></label></div>
+                        </div>
+                    </div>
+                    <div class="smBox">
+                        <div class="shuoming  j-gmsm" style="display: none;"><span>购买说明：</span><i style="font-style: normal"></i></div>
+                        <div class="shuoming j-yhsm" style="display: none"><span>优惠说明：</span><i style="font-style: normal"></i></div>
+                    </div>
+                    <div class="li">
+                        <div class="li_follow">
+                            <span class="left">联系方式</span>
+                            <div class="rightBox left">
+                                <input id="phone_num" type="text" class="left input_a j-contact-input" placeholder="请填写您的手机号码" value="15105226666">
+                                <p style="width: 100%; float: left; font-size: 14px; margin-top: 15px; line-height: 20px;">*此联系方式为订单查询重要凭证</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <input type="checkbox" id="btn1" style="display: none" checked>
+                    <input type="checkbox" id="btn2" style="display: none">
+                    <div class="li j-password" style="margin-top: 15px">
+                        <div class="li_left">
+                            <span class="left" style="color: #FFFFFF;font-size: 16px;margin-left: 5px;">特色服务</span>
+                            <div class="btnBox" style="display: inline-block">
+                                <label class="btns" for="btn1" id="note" style="margin-left: 18px;">发送到手机[收费0.1元]</label>
+                                <label class="btn_plus" for="btn2" id="e_mail">发送到邮箱[免费]</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="li" style="display: none" id="e-mail">
+                        <div class="li_follow">
+                            <span class="left">邮箱地址</span>
+                            <div class="rightBox left">
+                                <input type="text" class="left input_a  j-contact-input" id="email_address" placeholder="请填写您的邮箱">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="li">
+                        <div class="li_follow">
+                            <span class="left">商品说明</span>
+                            <div class="textBox j-spsm" style="min-height:48px;height: auto;border:none;">
+                                暂无说明
+                            </div>
+                        </div>
+                    </div>
+                    <div class="li">
+                        <div class="li_follow">
+                            <span class="left">应付总额</span>
+                            <div class="left">
+                                <label id="total_money" class="j-totalmount">0</label>元
+                            </div>
+                        </div>
+                    </div>
+                    <div class="li">
+                        <div class="li_follow">
+                            <span class="left">验证码</span>
+                            <input id="yzCcode" class="left input_a j-contact-input input-val" style="width: 22%;" placeholder="请输入验证码">
+                            <div style="position: absolute;top: 2px;left: 265px">
+                                <canvas id="canvas" width="100" height="43"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="bg4"></div>
+    <input style="display: none" type="radio" name="my_radio" id="selected">
+    <input style="display: none" type="radio" name="my_radio" id="selected_plus">
+    <div class="bg5">
+        <div class="center">
+            <div class="zz_sp" >
+                <div class="zhifu_box">
+                    <ul class="zhifu_list js-paymethod-list">
+                        <label style="padding: 0 20px;position: relative" for="selected" id="alpay">
+                            <img src="picture/zfb_2.jpg"/>
+                            <img src="picture/xuanzhe_1.jpg" class="duihaos"/>
+                        </label>
+                        <label style="padding: 0 20px;position: relative" for="selected_plus" id="weChat">
+                            <img src="picture/weixin.jpg" height="70px"/>
+                            <img src="picture/xuanzhe_1.jpg" style="right: 21px;" class="duihaos"/>
+                        </label>
+                    </ul>
+                </div>
+            </div>
+            <button onclick="confirm_payment()" class="queren cursor" id="render-order">确认支付</button>
+        </div>
+    </div>
+    <div class="bg6">
+        <div class="center">
+            <footer>
+                <p>© Copyright 2014-2018 明宇发卡（www.mingypay.com） All rights reserved.</p>
+                <p>免责声明：本平台（明宇发卡）仅提供自动发卡服务。本平台不是商品销售商，有关商品售后服务等问题均属于入驻商家服务范畴，与本平台无关！</p>
+            </footer>
+        </div>
+    </div>
+
+    <div class="confirmBg" id="bg_lucency"></div>
+    <div class="WeChat_Pay">
+        <div class="order_title">
+            <p>支付订单</p>
+            <img class="close_img" onclick="close_WeChat_Pay()" src="../image/close.png" alt="">
+        </div>
+        <div class="order_info">
+            <div class="info_boxs">
+                <p class="saoma_zhifu">微信扫码支付</p>
+                <p class="order_pirce">支付金额：<span style="color:#ff6f0a;" id="pirce_num"></span>（元）</p>
+                <p class="order_pirce">订单号：<span style="color:#ff6f0a;" id="order_number"></span></p>
+            </div>
+            <div class="scan_box">
+                <img style="width: 220px;height: 220px;" id="Promotion_code" src="" alt="微信支付二维码">
+                <div style="text-align: center;">
+                    <img class="scan_imgae" src="../image/scan.png" alt="">
+                    <div class="bottom_box_plus">
+                        <p>打开手机微信</p>
+                        <p>扫一扫来支付</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a id="skip" href="" target="_blank" style="display: none"></a>
+</body>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="../layer/layer.js"></script>
+
+<script type="text/javascript">
+    var unit_price = 0;//商品单价
+    var goods_number = $("#purchase_quantity").val();//初始化商品数量
+    var is_sms = 1;//是否选中短信提醒 默认选中为false
+    var inventory;//库存数量
+    var goods_value;//选中商品id
+    var pay_type = 0;//购买方式
+    var is_email = false;//是否判断邮箱为空
+    var verify_code = 0;//判断是否输入验证码
+    var is_pay = false;//判断是否输入验证码
+    var goods_id;//商品id
+    var classify_id;//分类id
+    let timer;//设置定时器
+    var classify_idP;//选中分类的value
+    var password_is_true = true;//是否需要取卡密码
+    let cardPwd;//取卡密码
+
+    $(document).ready(function () {
+        //判断url传参是否为空的函数
+        function whether_is_empty(){
+            if( parent.url_parameter === null ){
+                return false;
+            }else {
+                return true;
+            }
+        }
+        if( whether_is_empty() ){
+            //如果有参数执行获取商品详情方法
+            get_goods_details(parent.url_parameter)
+        }else {
+            //获取商品分类接口
+            get_kami_classfily();
+        }
+        //获取分类
+        function get_kami_classfily() {
+            $.ajax({
+                url: parent.baseUrl + "/Categorys/userCate",//接口地址
+                dataType: 'json',
+                type: "POST",  //类型
+                data: {
+                    token: localStorage.getItem("token")
+                },
+                success: function (res) {
+                    console.log(res);
+                    if (res.code === "200") {
+                        if (res.data != null) {
+                            let datas = res.data;
+                            //渲染select->option的值
+                            for (var i = 0;i < datas.length;i++){
+                                $('#my_classify_select').append('<option value="' + datas[i].id + '">' + datas[i].categorys_name + '</option>');
+                            }
+                        }
+                    } else {
+                        layer.msg(res.msg)
+                    }
+                }
+            });
+        }
+
+        $('#my_classify_select').change(function () {
+            //获取选中select的value
+            classify_idP = $(this).children('option:selected').val();
+            get_classfily_goods(classify_idP);
+        });
+
+        //获取分类下的商品
+        function get_classfily_goods(ids) {
+            $.ajax({
+                url: parent.baseUrl + "/Categorys/catePro",//接口地址
+                dataType: 'json',
+                type: "POST",  //类型
+                data: {
+                    id: ids,
+                    token: localStorage.getItem("token")
+                },
+                success: function (res) {
+                    console.log(res);
+                    if (res.code === "200") {
+                        if (res.data != null) {
+                            let datas = res.data;
+                            let option = '<option value="">请选择商品</option>';
+                            //渲染select->option的值
+                            for (var i = 0; i < datas.length; i++) {
+                                if (datas[i].product_name === null) {
+                                    datas[i].product_name = "没有商品";
+                                }
+                                option += "<option value='" + datas[i].pro_id + "'>" + datas[i].product_name + "</option>";
+                            }
+                            $("#my_goods_select").html(option);
+                        }
+                    } else {
+                        layer.msg(res.msg)
+                    }
+                }
+            });
+        }
+
+        //监听商品select选中
+        $('#my_goods_select').change(function () {
+            goods_value = $(this).children('option:selected').val();
+            get_goods_details(goods_value);
+            goods_number = $("#purchase_quantity").val();
+            is_password(classify_idP,goods_value);
+        });
+
+        //获取是否需要取卡密码
+        function is_password(classify_id,goods_id) {
+            $.ajax({
+                url: parent.baseUrl + "/product/getProInfoByCateAndId",//接口地址
+                dataType: 'json',
+                type: "POST",  //类型
+                data: {
+                    cate_id: classify_id,
+                    pro_id: goods_id
+                },
+                success: function (res) {
+                    console.log(res);
+                    let d = res.data;
+                    cardPwd = d.visit_pass;
+                    if (res.code === "200") {
+                        if( d.is_getCard_pass === 1 ){
+                            password_is_true = false;
+                        }
+                    } else {
+                        layer.msg(res.msg)
+                    }
+                }
+            });
+        }
+
+        //获取商品详情接口、价格、库存
+        function get_goods_details(ids) {
+            $.ajax({
+                url: parent.baseUrl + "/Product/productInfo",//接口地址
+                dataType: 'json',
+                type: "POST",  //类型
+                data: {
+                    id: ids,
+                    token: localStorage.getItem("token")
+                },
+                success: function (res) {
+                    console.log(res);
+                    if (res.code === "200") {
+                        if (res.data != null) {
+                            if( !whether_is_empty() ){
+                                unit_price = res.data.sell_price;
+                                inventory = res.data.num;
+                                $("#commodity_price").text(res.data.sell_price);//销售价格
+                                $(".repertory").show();
+                                if( res.data.stock_status === 0 ){
+                                    $("#inventory").text("库存" + res.data.num + "张");//库存
+                                }else if( res.data.stock_status === 1 ){
+                                    if( inventory === 0 ){
+                                        $("#inventory").text('暂无库存');//库存
+                                    }else if( inventory > 0 && inventory <= 10  ){
+                                        $("#inventory").text('库存少量');//库存
+                                    }else if( inventory > 10 ){
+                                        $("#inventory").text('库存充足');//库存
+                                    }
+                                }else if( res.data.stock_status === 2 ){
+                                    $(".repertory").hide();
+                                }
+                                calculation_amount();//计算价格
+                                if (goods_number > inventory) {
+                                    layer.msg("库存不足，无法购买！");
+                                    return false;
+                                }
+                            }else {
+                                unit_price = res.data.sell_price;
+                                inventory = res.data.num;
+                                goods_id = res.data.product_id;
+                                classify_id = res.data.categorys_id;
+                                $('#my_classify_select').find('option:selected').text(res.data.categorys_name);
+                                $('#my_goods_select').find('option:selected').text(res.data.product_name);
+                                $("#commodity_price").val(res.data.sell_price);
+                                $(".repertory").show();
+                                if( res.data.stock_status === 0 ){
+                                    $("#inventory").text("库存" + res.data.num + "张");//库存
+                                }else if( res.data.stock_status === 1 ){
+                                    if( inventory === 0 ){
+                                        $("#inventory").text('暂无库存');//库存
+                                    }else if( inventory > 0 && inventory <= 10  ){
+                                        $("#inventory").text('库存少量');//库存
+                                    }else if( inventory > 10 ){
+                                        $("#inventory").text('库存充足');//库存
+                                    }
+                                }else if( res.data.stock_status === 2 ){
+                                    $(".repertory").hide();
+                                }
+                                calculation_amount();//计算价格
+                                if (goods_number > inventory) {
+                                    layer.msg("库存不足，无法购买！");
+                                    return false;
+                                }
+                                is_password(res.data.categorys_id,parent.url_parameter);//url携带参数调用 取卡密码接口
+                            }
+                        }
+                    } else {
+                        layer.msg(res.msg)
+                    }
+                }
+            });
+        }
+
+        //实时监听input 值的变化
+        $("#purchase_quantity").on("input", function () {
+            goods_number = $(this).val();
+            if ( goods_number > inventory ) {
+                layer.msg("库存不足，无法购买！");
+                is_pay = false;
+            }else {
+                is_pay = true;
+            }
+            calculation_amount();
+        });
+
+        //是否选择短信发送
+        calculation_amount();
+        $(".btns").click(function () {//是否选中短信提醒
+            if (!$("#btn1").prop("checked")) {//0不发送  1发送
+                is_sms = 1;
+                calculation_amount();
+            } else {
+                is_sms = 0;
+                calculation_amount();
+            }
+        });
+        $(".btn_plus").click(function () {
+            if (!$("#btn2").prop("checked")) {
+                $("#e-mail").show();
+                is_email = true;
+            } else {
+                $("#e-mail").hide();
+                is_email = false;
+            }
+        });
+
+        $("#alpay").click(function () {
+            if (!$("#selected").prop("checked")) {//选中支付宝为1
+                pay_type = 1;
+            }
+        });
+        $("#weChat").click(function () {
+            if (!$("#selected_plus").prop("checked")) {//选中微信为2
+                pay_type = 2;
+            }
+        });
+
+        //计算应付总金额
+        function calculation_amount() {
+            var total_price = unit_price * goods_number;//商品数量 乘以 商品价格
+            if (is_sms === 1) {
+                total_price = unit_price * goods_number + 0.1;
+                $("#total_money").text(total_price.toFixed(2));
+            } else {
+                $("#total_money").text(total_price.toFixed(2));
+            }
+        }
+        //确认支付接口
+        window.confirm_payment = function() {
+            if( !whether_is_empty() ){
+                var my_classify_select1 = $('#my_classify_select option:selected') .val();
+                var my_goods_select1 = $('#my_goods_select option:selected') .val();
+            }else {
+                var my_classify_select1 = goods_id;
+                var my_goods_select1 = classify_id;
+            }
+            var phone_num1 = $("#phone_num").val();
+            var email_address1 = $("#email_address").val();
+
+            if( my_classify_select1 === '' ){//判断是否选择分类
+                layer.msg("请选择分类");
+                return false;
+            }
+            if( my_goods_select1 === '' ){//判断是否选择商品
+                layer.msg("请选择商品");
+                return false;
+            }
+            //是手机号验证
+            var reg = /^1[3456789]\d{9}$/g;
+            var judge = reg.test(phone_num1);
+            if (phone_num1 === '') {
+                layer.msg("请输入手机号");
+                return false;
+            }
+            if (judge === false) {
+                layer.msg("请输入真实的手机号");
+                return false;
+            }
+            if (is_email) {
+                //验证邮箱
+                var emails = /^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/;
+                if (!emails.test(email_address1)) {
+                    layer.msg("邮箱格式不正确");
+                    return false;
+                }
+                if (email_address1 === '') {
+                    layer.msg("请输入邮箱地址");
+                    return false;
+                }
+            }
+            if( verify_code === 0 ){//判断验证码是否输入正确
+                layer.msg("请输入验证码!");
+                return false;
+            }else if( verify_code === 2 ){
+                return false;
+            }
+            if( pay_type === 0 ){//判断是否选择支付方式
+                layer.msg("请选择支付方式");
+                return false;
+            }
+
+            if ( goods_number > inventory ) {
+                layer.msg("库存不足，无法购买！");
+                is_pay = false;
+            }else {
+                is_pay = true;
+            }
+
+            //判断库存是否超过购买数量
+            if( !is_pay ){
+                layer.msg("库存不足,无法购买!");
+                return false;
+            }
+
+            if(  !password_is_true ){
+                layer.prompt({title: '请输入取卡密码：'},function(val, index){
+                    if( cardPwd === val ){
+                        layer.close(index);
+                        password_is_true = true;
+                        confirm_payment();
+                    }else {
+                        layer.msg("取卡密码不正确，请重新输入");
+                        password_is_true = false;
+                    }
+                });
+                return false;
+            }
+
+            $.ajax({
+                url: parent.baseUrl + "/payment/Pay",//接口地址
+                // dataType: 'json',
+                type: "POST",  //类型
+                data: {
+                    mobile: phone_num1,
+                    is_SendEmail: email_address1,
+                    pro_num: goods_number,
+                    pro_price: unit_price,
+                    pro_id: my_goods_select1,
+                    pay_type: pay_type,
+                    is_SendSms: is_sms,
+                    token: localStorage.getItem("token")
+                },
+                success: function (res) {
+                    // console.log(res);
+                    if (res.code === "200") {
+                        if (res.data != null) {
+                            // unit_price = res.data.sell_price;
+                            inventory = res.data.num;
+                            $(".repertory").show();
+                            $("#inventory").text(res.data.num);//库存
+                            if (goods_number > inventory) {
+                                layer.msg("库存不足，无法购买！");
+                                return false;
+                            }
+                        }
+                    }
+                    if( pay_type === 1 ){//支付宝支付
+                        openWin(res);//支付宝支付页面跳转方法
+                    }else if( pay_type === 2 ){//微信支付//微信支付弹出框
+                        $(".WeChat_Pay").show();
+                        $("#bg_lucency").show();
+                        $("#Promotion_code").attr("src",res.data.img_url);
+                        $("#pirce_num").text(res.data.price);
+                        $("#order_number").text(res.data.order_num);
+                        timer = setInterval(function () {
+                            select_order_success(res.data.order_num)
+                        },1000)
+                    }
+                }
+            });
+        };
+
+        //支付宝支付成功打开新页面
+        function openWin(content){
+            myWindow = window.open('to_pay.html');
+            myWindow.document.write(content);
+        }
+
+        //开启轮询 微信支付是否成功
+        function select_order_success(order_number) {
+            $.ajax({
+                url: parent.baseUrl + "/payment/WXJump",//接口地址
+                dataType: 'json',
+                type: "POST",  //类型
+                data: {
+                    order_num: order_number,
+                    token: '82f4bb06-af44-4a42-b553-576c45d424aa'
+                },
+                success: function (res) {
+                    console.log(res);
+                    if( res.code === "200" ){
+                        clearInterval(timer);
+                        layer.msg("支付成功！",{icon: 1});
+                        $(".WeChat_Pay").hide();
+                        $("#bg_lucency").hide();
+                        $("#skip").attr("href",'../viewpoint.html?order_number=' + order_number + '&status=1');
+                        let skip1 = document.getElementById('skip');
+                        setTimeout(function () {
+                            skip1.click();
+                        },1300);
+                    }
+                }
+                ,error: function (e) {
+                    console.log(e);
+                }
+            });
+        }
+
+        window.close_WeChat_Pay = function() {
+            layer.confirm('是否放弃本次交易？', {
+                btn: ['取消','确定'] //按钮
+            }, function(){//取消按钮回调
+                layer.closeAll();
+            }, function(){//确定按钮回调
+                clearInterval(timer);
+                $(".WeChat_Pay").hide();
+                $("#bg_lucency").hide();
+            });
+        };
+
+        //图片验证码js
+        $(function () {
+            var show_num = [];
+            draw(show_num);
+
+            $("#canvas").on('click', function () {
+                draw(show_num);
+            });
+
+            $("#yzCcode").blur(function () {
+                var val = $(".input-val").val().toLowerCase();
+                var num = show_num.join("");
+                if (val == '') {
+                    verify_code = 0;
+                    layer.msg('请输入验证码！');
+                } else if (val == num) {
+                    verify_code = 1;//输入正确
+                } else {
+                    layer.msg('验证码错误！请重新输入！');
+                    $(".input-val").val('');
+                    draw(show_num);
+                    verify_code = 2;//验证码输入错误
+                    return false
+                }
+            });
+
+        });
+        function draw(show_num) {
+            var canvas_width = $('#canvas').width();
+            var canvas_height = $('#canvas').height();
+            var canvas = document.getElementById("canvas");//获取到canvas的对象，演员
+            var context = canvas.getContext("2d");//获取到canvas画图的环境，演员表演的舞台
+            canvas.width = canvas_width;
+            canvas.height = canvas_height;
+            var sCode = "A,B,C,E,F,G,H,J,K,L,M,N,P,Q,R,S,T,W,X,Y,Z,1,2,3,4,5,6,7,8,9,0";
+            var aCode = sCode.split(",");
+            var aLength = aCode.length;//获取到数组的长度
+
+            for (var i = 0; i <= 3; i++) {
+                var j = Math.floor(Math.random() * aLength);//获取到随机的索引值
+                var deg = Math.random() * 30 * Math.PI / 180;//产生0~30之间的随机弧度
+                var txt = aCode[j];//得到随机的一个内容
+                show_num[i] = txt.toLowerCase();
+                var x = 10 + i * 20;//文字在canvas上的x坐标
+                var y = 20 + Math.random() * 8;//文字在canvas上的y坐标
+                context.font = "bold 23px 微软雅黑";
+
+                context.translate(x, y);
+                context.rotate(deg);
+
+                context.fillStyle = randomColor();
+                context.fillText(txt, 0, 0);
+
+                context.rotate(-deg);
+                context.translate(-x, -y);
+            }
+            for (var i = 0; i <= 5; i++) { //验证码上显示线条
+                context.strokeStyle = randomColor();
+                context.beginPath();
+                context.moveTo(Math.random() * canvas_width, Math.random() * canvas_height);
+                context.lineTo(Math.random() * canvas_width, Math.random() * canvas_height);
+                context.stroke();
+            }
+            for (var i = 0; i <= 30; i++) { //验证码上显示小点
+                context.strokeStyle = randomColor();
+                context.beginPath();
+                var x = Math.random() * canvas_width;
+                var y = Math.random() * canvas_height;
+                context.moveTo(x, y);
+                context.lineTo(x + 1, y + 1);
+                context.stroke();
+            }
+        }
+        function randomColor() {//得到随机的颜色值
+            var r = Math.floor(Math.random() * 256);
+            var g = Math.floor(Math.random() * 256);
+            var b = Math.floor(Math.random() * 256);
+            return "rgb(" + r + "," + g + "," + b + ")";
+        }
+    });
+</script>
+</html>

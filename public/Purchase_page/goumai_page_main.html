@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>明宇自动发卡平台</title>
+</head>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    .confirmBg {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background-color: #080808;
+        opacity: .4;
+    }
+
+    .notice_box {
+        width: 580px;
+        height: 430px;
+        background-color: #1185e8;
+        position: fixed;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        color: #FFFFFF;
+    }
+
+    .notice_content {
+        height: 400px;
+        overflow-x: auto;
+        line-height: 40px;
+        padding: 0 20px;
+    }
+
+    .notice_btn {
+        height: 50px;
+        background-color: #FFFFFF;
+        display: flex;
+        justify-content: flex-end;
+        padding: 0 20px;
+    }
+
+    .notice_btn p {
+        color: #FFFFFF;
+        background-color: #199cfd;
+        height: 20px;
+        padding: 5px 10px;
+        margin-top: 10px;
+        border-radius: 5px;
+    }
+</style>
+<body onresize="test()">
+<iframe id="Purchase_pages" style="width: 100%;height: 960px;" src="" frameborder="0"></iframe>
+
+<div class="confirmBg" id="bg_lucency"></div>
+<div class="notice_box" id="notice_hide" style="display: none">
+    <div class="notice_content">
+        <p style="font-size: 16px;font-weight: bold;text-align: center">购买须知</p>
+        <p>1、本站仅是提供自动发卡服务,并非销售商,只保证卡密正确有效,商品使用和相关售后问题请自行联系卖家处理解决!</p>
+        <p>2、建议先咨询卖家商品用途后购买，购买的卡密充值成功表示交易成功,非卡密问题概不退款!（<span style="color:#ffe500;">重要提示：我司不提供实物商品的担保交易，购买需要邮寄商品都是骗子，请勿付款，并联系我司客服进行投诉：投诉QQ：</span><span style="color: #ff0036;">800865555</span>)</p>
+        <p>3、如遇假卡/诈骗/赌博/钓鱼/色情/套现等情况，请在明宇发卡平台查询订单后点击举报投诉及时进行反馈，投诉有效期：购买当天24：00前进行投诉，逾期不支持！ 投诉客服QQ：<span style="color: #ff0036">800865555</span>工作时间：08:00 - 20:00 我们将在第一时间回复您.谢谢!</p>
+        <p>商品使用问题全部联系卖家处理---咨询卖家QQ</p>
+    </div>
+    <div class="notice_btn">
+        <p id="no" style="margin-right: 30px;">不明白，稍后购买</p>
+        <p id="yes">明白了，我要购买</p>
+    </div>
+</div>
+</body>
+<script src="js/jquery.min.js"></script>
+<script src="../js/baseUrl.js"></script>
+<script>
+    // 获取url传参
+    function getUrlParam(name) {
+        var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)"); //构造一个含有目标参数的正则表达式对象
+        var r = window.location.search.substr(1).match(reg);  //匹配目标参数
+        if (r!=null) return unescape(r[2]); return null; //返回参数值
+    }
+    var url_parameter = parent.getUrlParam("parameter");
+
+    let status = localStorage.getItem('status');
+    if( status === null ){
+        status = '0';
+    }
+
+    if (status === "0") {
+        $("#Purchase_pages").attr("src", "goumai_page0.html");
+    } else if (status === "1") {
+        $("#Purchase_pages").attr("src", "goumai_page1.html");
+    } else if (status === "2") {
+        $("#Purchase_pages").attr("src", "goumai_page2.html");
+    } else if (status === "3") {
+        $("#Purchase_pages").attr("src", "goumai_page3.html");
+    } else if (status === "4") {
+        $("#Purchase_pages").attr("src", "goumai_page4.html?attr=4");
+    }
+
+    //弹出框----------->
+    $("#bg_lucency").hide();
+    $("#notice_hide").hide();
+    $("#no").click(function () {
+        window.location.href = 'http://www.baidu.com'
+    });
+</script>
+</html>

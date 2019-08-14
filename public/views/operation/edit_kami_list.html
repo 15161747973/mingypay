@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>修改页面</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="../../layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../layuiadmin/style/admin.css" media="all">
+</head>
+<style>
+    .notice{margin-left: 115px;margin-top: -2px;color: #ce67c3}
+    .my_lable{
+        float: left;
+        display: block;
+        padding: 9px 15px 9px 50px;
+        width: 45px;
+        font-weight: 400;
+        line-height: 20px;
+    }
+</style>
+<body>
+
+<div class="layui-fluid">
+    <div class="layui-card">
+        <div class="layui-card-body" style="padding: 15px;">
+            <form class="layui-form" lay-filter="card_num_pass" id="clear_form" enctype="multipart/form-data">
+                <div class="layui-form-item">
+                    <label class="my_lable">卡号</label>
+                    <div class="layui-input-block">
+                        <input lay-verify="goods_name" type="text" name="card_num" autocomplete="off" class="layui-input">
+                    </div>
+                    <p class="notice">*卡号长度在1-128位之间！</p>
+                </div>
+                <div class="layui-form-item">
+                    <label class="my_lable">卡密</label>
+                    <div class="layui-input-block">
+                        <input lay-verify="goods_name" type="text" name="card_pwd" autocomplete="off" class="layui-input">
+                    </div>
+                    <p class="notice">*卡密长度在1-128位之间！</p>
+                </div>
+                <div style="text-align: right;margin-top: 40px;">
+                    <button class="layui-btn" type="button" lay-submit lay-filter="confirm_close" style="background-color: #6b6f80;margin-right: 10px;border-radius: 7px;width: 100px" id="close_btn">关闭</button>
+                    <button class="layui-btn" type="button" lay-submit lay-filter="confirm_save" style="background-color: #6967ce;border-radius: 7px;width: 100px">修改</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+<script src="../../layuiadmin/layui/layui.js"></script>
+<script src="../../js/baseUrl.js"></script>
+<script>
+    layui.config({
+        base: '../../layuiadmin/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index','form','table'],function () {
+        var form = layui.form
+            ,$ = layui.$;
+
+        get_data_details();//根据id查询详情接口
+        function get_data_details() {
+            $.ajax({
+                url: baseUrl + "/cardinfo/cardInfo",//接口地址
+                dataType: 'json',
+                type: "POST",  //类型
+                data: {
+                    id: parent.table_datas_id,
+                    token: localStorage.getItem("token")
+                },
+                success: function (res) {
+                    console.log(res);
+                    if (res.code === '200') {
+                        if( res.data != null ){
+                            let datas = res.data;
+                            form.val("card_num_pass", {
+                                "card_num":datas.card_num,
+                                "card_pwd":datas.card_pwd,
+                            });
+                        }
+                    }
+                }
+            });
+        }
+
+
+        //修改数据接口
+        form.on('submit(confirm_save)',function (data) {
+            console.log(data.field);
+            let filed = data.field;
+            filed["token"] = localStorage.getItem("token");//传表单之外的参数token
+            filed["id"] = parent.table_datas_id;//传表单之外的参数id
+            $.post( baseUrl + "/cardinfo/updateCard",filed,function(res){
+                console.log(res);
+                if( res.code === "200" ){
+                    layer.msg(res.msg,{icon: 1});
+                    parent.refresh(res);
+                }else{
+                    layer.msg(res.msg,{icon: 2});
+                }
+            },'json');
+            //一定要阻止表单跳转
+            return false;
+        });
+
+
+        $("#close_btn").click(function () {
+            parent.close_btn_log();
+        });
+    });
+</script>
+</html>

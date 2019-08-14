@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>添加商品</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="../../layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../layuiadmin/style/admin.css" media="all">
+</head>
+<body>
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-card">
+                <div class="layui-card-header">结算记录</div>
+                <div class="layui-card-body">
+                    <table class="layui-hide" id="settlement_list"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script src="../../layuiadmin/layui/layui.js"></script>
+<script>
+    layui.config({
+        base: '../../layuiadmin/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index', 'table'], function(){
+        var admin = layui.admin
+            ,table = layui.table;
+
+        table.render({
+            elem: '#settlement_list'
+            ,url: parent.baseUrl + '/withdraw/withdrawList'
+            , method: 'POST'
+            , limit: 10
+            , where: {
+                token: localStorage.getItem("token")
+            }
+            , parseData: function (res) { //res 即为原始返回的数据
+                return {
+                    "code": res.code, //解析接口状态
+                    "msg": res.msg, //解析提示文本
+                    "count": res.data.count, //解析数据长度
+                    "data": res.data.res //解析数据列表
+                };
+            }
+            ,cols: [[
+                {field:'id', title: '流水号', sort: true}
+                ,{field:'money', title: '申请金额', sort: true}
+                ,{field:'gath_type', title: '申请类型', sort: true,templet: function (d) {
+                        if( d.gath_type === 1 ){
+                            return '<span>支付宝</span>'
+                        }else if( d.gath_type === 2 ){
+                            return '<span>银行卡</span>'
+                        }else if( d.gath_type === 3 ){
+                            return '<span>微信</span>'
+                        }
+                    }}
+                ,{field:'charge_money', title: '手续费', sort: true}
+                ,{field:'getMoney', title: '到账金额', sort: true}
+                ,{field:'type', title: '结算方式', sort: true,templet: function (d) {
+                        if( d.type === 1 ){
+                            return '<span>手动结算</span>'
+                        }else if( d.type === 2 ){
+                            return '<span>自动结算</span>'
+                        }
+                    }}
+                ,{field:'create_time', title: '申请时间', sort: true}
+                ,{field:'deal_time', title: '结算时间', sort: true}
+                ,{field:'status', title: '状态', sort: true,templet: function (d) {
+                        if( d.status === 1 ){
+                            return '<span>处理中</span>'
+                        }else if( d.status === 2 ){
+                            return '<span>已结算</span>'
+                        }else if( d.status === 3 ){
+                            return '<span>拒绝结算</span>'
+                        }else if( d.status === 4 ){
+                            return '<span>结算失败</span>'
+                        }
+                    }}
+                ,{field:'noPassReason', title: '备注', sort: true}
+            ]]
+            , done: function (res) {//成功回调
+                console.log(res);
+            }
+            , page: { //支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档//自定义分页
+                layout: ['limit', 'count', 'prev', 'page', 'next', 'skip'] //自定义分页布局
+                , groups: 5 //只显示 1 个连续页码
+                , prev:"上一页"
+                , next:"下一页"
+            }
+        });
+    });
+</script>
+</html>

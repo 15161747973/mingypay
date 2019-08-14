@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>欢迎登录</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+        <script src="js/jquery-3.3.1.js"></script>
+        <link rel="stylesheet" href="css/swiper.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/layer.css" />
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+        <link rel="stylesheet" href="css/animate.css">
+        <style>
+            body {
+                padding: 0;
+                margin: 0;
+                width: 100%;
+                /*height: 1000px;*/
+                min-width: 1065px;
+            }
+            @media screen and (max-width: 1000px) {
+                .titleOrder{background-color: red}
+            }
+            .mukuai img {
+                width: 100%;
+            }
+
+            .jiewei {
+                width: 100%;
+                /*height: 500px;*/
+                /*position: absolute;*/
+                /*bottom: 0;*/
+                z-index: 1111;
+                position: fixed;
+                bottom: 0;
+            }
+
+            .navbar ul li a:after {
+                content: "";
+                width: 0;
+                height: 1px;
+                position: absolute;
+                top: 75%;
+                left: 50%;
+                transition: all .5s;
+                border-bottom: 2px solid #FFFFFF;
+            }
+
+            .navbar li a:hover:after {
+                left: 25%;
+                width: 50%;
+                text-align: center;
+            }
+
+            .collapse {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 90%;
+                height: 70px;
+            }
+
+            .my-navbar a {
+                background: transparent !important;
+                color: #fff !important;
+                font-size: 1.2em;
+            }
+
+            .my-navbar a:hover {
+                background: transparent;
+                outline: 0
+            }
+
+            .navbar-nav>li>a {
+                padding-top: 15px;
+                padding-bottom: 15px;
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .nav-left {
+                width: 300px;
+                margin-right: 400px;
+            }
+
+            .my-navbar2 a {
+                background: transparent !important;
+                color: #333 !important;
+                font-size: 1.2em;
+            }
+
+            .my-navbar2 a:hover {
+                background: transparent;
+                outline: 0
+            }
+
+            .navbar2 ul li a:after {
+                content: "";
+                width: 0;
+                height: 1px;
+                position: absolute;
+                top: 75%;
+                left: 50%;
+                transition: all .5s;
+                border-bottom: 2px solid #000000;
+            }
+
+            .navbar2 li a:hover:after {
+                left: 25%;
+                width: 50%;
+                text-align: center;
+            }
+
+            .foot h4 {
+                font-weight: 100;
+                font-family: "Microsoft YaHei", Arial;
+                line-height: 1.34;
+                color: #000000;
+            }
+
+            .foot p {
+                color: #666;
+                font-size: 15px;
+                line-height: 35px;
+            }
+
+            .registerBtns {
+                border-radius: 20px;
+                width: 60%;
+                text-align: center;
+                margin-left: 10px;
+                background: linear-gradient(to right, #ffa213, #ffc50a);
+                padding: 6px 0;
+            }
+
+            .loginBoxs {
+                margin-top: 9px;
+                display: flex;
+                color: #FFFFFF;
+                font-size: 18px;
+                width: 156px;
+                justify-content: space-between;
+                /*margin-left:5px;*/
+            }
+
+            .bgImages{
+                background-image: url("image/bgImage.png");
+                background-size: 100% 100%;
+                background-repeat: no-repeat;
+                width: 100%;
+                height:937px;
+                text-align: center;
+                padding-top: 130px;
+
+            }
+            .loginBox{width: 600px;border-radius: 15px;margin: 130px auto;background-color: #FFFFFF;padding-bottom: 20px;}
+            .WelcomeTo{text-align: center;font-size: 25px;color: #000000;padding-top: 30px}
+            .userNameBox{display: flex;justify-content: center;margin-top: 40px}
+            .userNameBox>p{font-size: 18px;color: #333333;margin-top: 10px}
+            .userNameBox>input{border: none;outline: none;font-size: 15px;color: #333333;margin-left: 40px;width: 300px}
+            .line{border-top: 1px solid #eeeeee;width: 55%;margin-top: 0}
+            .forgetThePassword{font-size: 14px;color: #999999;text-align: right;margin-right: 200px}
+            .loginBtn{background: linear-gradient(to right, #3864f9, #708ffa);color: #FFFFFF;font-size: 20px;text-align: center;width: 30%;margin: 0 auto;padding: 8px 0;border-radius: 10px;margin-top: 20px;cursor: pointer}
+            .bottomBtn{text-align: center;font-size: 16px;margin-top: 20px;}
+            #password{margin-left:100px}
+        </style>
+    </head>
+
+    <body>
+    <div style="position: absolute;z-index: 1113;width: 100%">
+        <nav class="navbar navbar-top my-navbar" role="navigation">
+            <div class="collapse container">
+                <div class="nav-left"><img src="image/logo.png" alt="" /></div>
+                <div class="nav-right navbar-collapse" id="example-navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="index.html">网站首页</a>
+                        </li>
+                        <li>
+                            <a href="Serve.html">公司简介</a>
+                        </li>
+                        <li>
+                            <a href="Case.html">联系我们</a>
+                        </li>
+                        <li>
+                            <a href="viewpoint.html">订单查询</a>
+                        </li>
+                    </ul>
+                    <div class="loginBoxs">
+<!--                        <p class="loginBtns" onclick="toLogin()">登录</p>-->
+                        <p class="registerBtns" onclick="toRegister()">注册</p>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="bgImages">
+        <div class="bgImage">
+            <div class="loginBox">
+                <p class="WelcomeTo">欢迎登录</p>
+                <div class="userNameBox">
+                    <p>用户名/邮箱</p>
+                    <input id="userName" type="text" value="" placeholder="请输入用户名/邮箱">
+                </div>
+                <hr class="line">
+                <div class="userNameBox">
+                    <p>密码</p>
+                    <input id="password" value="" type="password" placeholder="请输入密码">
+                </div>
+                <hr class="line">
+                <p class="forgetThePassword" onclick="toForgetPassword()">忘记密码？</p>
+                <p class="loginBtn" onclick="login()">登录</p>
+                <div class="bottomBtn">
+                    <span>没有账号？</span><span onclick="toRegister()" style="color: #3864f9;">立即注册</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    </body>
+
+    <script src="js/swiper.min.js"></script>
+    <script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/important.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="layer/layer.js"></script>
+    <script src="js/baseUrl.js"></script>
+    <script type="text/javascript">
+        let types = "";
+
+        //上方导航栏底部横线
+        setInterval(function() {
+            var a = parseInt($(document).scrollTop());
+            /*$("#a").text(a)*/
+            if(a >= 600) {
+                $(".navbar2").css("top", "0px").css("opacity", "1");
+            } else {
+                $(".navbar2").css("top", "-50px").css("opacity", "0");
+            }
+        });
+        //页面跳转
+        $("#ImmediatelyQuery").click(function () {
+            window.location.href = 'complaintInformation.html'
+        });
+
+        //跳转登录页面
+        function toLogin(){
+            window.location.href = 'login.html'
+        }
+        //跳转注册页面
+        function toRegister(){
+            window.location.href = 'register.html'
+        }
+        function toForgetPassword() {
+            window.location.href = 'forgetPassword.html'
+        }
+        //跳转注册页面
+        function toRegister(){
+            window.location.href = 'register.html'
+        }
+
+        //屏幕缩小 自动跳转页面
+
+        $(function(){
+            browserRedirect()
+        });
+        function browserRedirect() {
+            var sUserAgent = navigator.userAgent.toLowerCase();
+            var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+            var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+            var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+            var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+            var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+            var bIsAndroid = sUserAgent.match(/android/i) == "android";
+            var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+            var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+            if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) {
+                types = "2";//移动端
+            } else {
+                types = "1";//PC端
+            }
+        }
+
+
+
+        //点击回车登录
+        $(document).keydown(function(event){
+            if( event.keyCode === 13 ){
+                login();
+            }
+        });
+        //登录接口
+        function login() {
+            var userName1 = $("#userName").val();
+            var password1 = $("#password").val();
+            if( userName1 === "" || password1 === "" ){
+                layer.msg("用户名和密码不能为空");
+                return false;
+            }
+            $.ajax({
+                url: baseUrl + "/users/login",//接口地址
+                dataType: 'json',
+                type: "post",  //类型
+                data: {
+                    account: userName1,
+                    password: password1
+                },
+                success: function (ret) {
+                    console.log(ret);
+                    if (ret.code === "200") {
+                        localStorage.setItem("token",ret.data.userinfo.token);
+                        localStorage.setItem("statu_s",1);
+                        layer.msg('登录成功');
+                        setTimeout(function () {
+                            window.location.href = 'views/index.html';
+                        },1000);
+                    } else {
+                        layer.msg(ret.msg)
+                    }
+                }
+            });
+        }
+    </script>
+
+</html>

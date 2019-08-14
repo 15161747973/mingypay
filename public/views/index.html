@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta name="X-UA-Compatible" content="IE=EDGE,Chrome=1">
+    <title>明宇发卡平台</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="../layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../layuiadmin/style/admin.css" media="all">
+    <link rel="shortcut icon"  href="../image/favicon.ico" >
+</head>
+<style>
+    /* 修改导航栏右边三角颜色 */
+    .layui-nav .layui-nav-mored,.layui-nav-itemed>a .layui-nav-more {
+        border-color:transparent transparent #333333
+    }
+    .layui-nav .layui-nav-more {
+        border-top-color:#333333;
+    }
+    /* 修改导航栏字体颜色 */
+    .layui-nav .layui-nav-mored,.layui-nav-itemed>a cite {
+        color: #333333;
+        margin-left: 5px;
+        font-size: 20px;
+    }
+    .layui-nav cite{
+        color: #333333;
+        margin-left: 5px;
+        font-size: 20px;
+    }
+    /* 修改导航栏左侧icon颜色 */
+    .layui-nav .layui-nav-mored,.layui-nav-itemed>a i {
+        color: #333333;
+        font-size: 20px;
+    }
+    .layui-nav i{
+        color: #333333;
+        font-size: 20px;
+    }
+    /* 选项卡字体 */
+    .layui-nav-tree .layui-nav-child a {
+        color: #333;
+        font-size: 18px;
+    }
+    .layui-nav-tree .layui-nav-child dd {
+        background-color: #efefef;
+    }
+    .layui-side-menu .layui-nav .layui-nav-itemed > .layui-nav-child {
+         padding: 0;
+    }
+    .layui-layout-admin .layui-header .layui-nav .layui-nav-more {
+        border-top-color: #fbfbfb;
+        margin-top: 3px;
+    }
+  .layui-side-scroll{
+  	background-color: #FFFFFF!important;
+  }
+  .layui-header{
+  	background-color:#1175c0!important;
+  }
+</style>
+<body class="layui-layout-body">
+<div id="LAY_app">
+    <div class="layui-layout layui-layout-admin">
+        <div class="layui-header" style="height: 70px;">
+            <!-- 头部区域 -->
+            <ul class="layui-nav layui-layout-left" style="padding-left: 60px">
+                <li class="layui-nav-item layadmin-flexible" lay-unselect>
+                    <a href="javascript:;" layadmin-event="flexible" title="侧边伸缩" style="padding-top: 8px">
+                        <i style="font-size: 22px;color: #FFFFFF;" class="layui-icon layui-icon-shrink-right" id="LAY_app_flexible"></i>
+                    </a>
+                </li>
+                <li class="layui-nav-item layui-hide-xs" lay-unselect style="padding-top: 12px">
+                    <a href="../Purchase_page/goumai_page_main.html" target="_blank" title="购买链接">
+                        <i style="font-size: 22px;color: #FFFFFF;" class="layui-icon layui-icon-website"></i>
+                    </a>
+                </li>
+                <li class="layui-nav-item" lay-unselect style="padding-top: 14px">
+                    <a href="javascript:;" class="refresh_s" layadmin-event="refresh" title="刷新">
+                        <i style="font-size: 22px;color: #FFFFFF;" class="layui-icon layui-icon-refresh-3"></i>
+                    </a>
+                </li>
+            </ul>
+            <ul class="layui-nav layui-layout-right" lay-filter="layadmin-layout-right" style="padding-right: 100px">
+                <li class="layui-nav-item" lay-unselect style="padding-top: 14px">
+                    <a layadmin-event="message" lay-text="消息中心">
+                        <i style="font-size: 22px;color: #FFFFFF;" class="layui-icon layui-icon-notice"></i>
+                        <!-- 如果有新消息，则显示小圆点 -->
+<!--                        <span class="layui-badge-dot"></span>--><!-- 小圆点 -->
+                    </a>
+                </li>
+                <li class="layui-nav-item" lay-unselect style="margin-right: 20px">
+                    <a href="javascript:;" style="padding-top: 5px">
+                        <cite id="userName"></cite>
+                    </a>
+                    <dl class="layui-nav-child">
+                        <dd><a lay-href="home/basicInformation.html">基本信息</a></dd>
+                        <dd><a href="../forgetPassword.html" target="_blank">修改密码</a></dd>
+                        <hr>
+                        <dd layadmin-event="" id="out_login" style="text-align: center;"><a href="../index.html">退出</a></dd>
+                    </dl>
+                </li>
+                <li class="layui-nav-item layui-show-xs-inline-block layui-hide-sm" lay-unselect>
+                    <a href="javascript:;" layadmin-event="more"><i class="layui-icon layui-icon-more-vertical"></i></a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- 侧边菜单 -->
+        <div class="layui-side layui-side-menu">
+            <div class="layui-side-scroll">
+                <div class="layui-logo" style="height: 69px;">
+                    <img width="75px" src="../image/page_logo.png"/>
+                </div>
+                <ul class="layui-nav layui-nav-tree" lay-shrink="all" id="LAY-system-side-menu" lay-filter="layadmin-system-side-menu" style="margin-top: 69px">
+                    <li data-name="home" class="layui-nav-item layui-nav-itemed">
+                        <a href="javascript:;" lay-tips="主页" lay-direction="2" style="padding-top: 17px">
+                            <i class="layui-icon layui-icon-home"></i>
+                            <cite>综合信息</cite>
+                        </a>
+                        <dl class="layui-nav-child">
+                            <dd data-name="console" class="layui-this">
+                                <a style="" lay-href="home/overviewInformation.html">信息总览</a>
+                            </dd>
+                            <dd data-name="console">
+                                <a style="" lay-href="home/basicInformation.html">基本信息</a>
+                            </dd>
+                            <dd data-name="console">
+                                <a lay-href="home/promoteInformation.html">推广信息</a>
+                            </dd>
+<!--                            <dd data-name="console">-->
+<!--                                <a style="color: #333333" lay-href="home/WeChatNotice.html">微信通知</a>-->
+<!--                            </dd>-->
+                            <dd data-name="console">
+                                <a lay-href="home/complaintManagement.html">投诉管理</a>
+                            </dd>
+<!--                            <dd data-name="console">-->
+<!--                                <a lay-href="home/paymentMethod.html">付款方式管理</a>-->
+<!--                            </dd>-->
+                        </dl>
+                    </li>
+                    <li data-name="component" class="layui-nav-item">
+                        <a href="javascript:;" lay-tips="组件" lay-direction="2" class="clickTabBar">
+                            <i class="layui-icon layui-icon-component"></i>
+                            <cite >商品管理</cite>
+                        </a>
+                        <dl class="layui-nav-child">
+                            <dd data-name="button">
+                                <a lay-href="commodityManagement/purchasePage.html">购买页面</a>
+                            </dd>
+                            <dd data-name="nav">
+                                <a lay-href="commodityManagement/sortManagement .html">分类管理</a>
+                            </dd>
+                            <dd data-name="tabs">
+                                <a lay-href="commodityManagement/goodsList.html" class="clickTabBar class_log">商品列表</a>
+                            </dd>
+                            <dd data-name="progress">
+                                <a class="add_goods" lay-href="commodityManagement/addGoods.html?parameter=1">添加商品</a>
+                            </dd>
+                        </dl>
+                    </li>
+                    <li data-name="template" class="layui-nav-item">
+                        <a href="javascript:;" lay-tips="页面" lay-direction="2" id="skip_page" class="class_tabBar">
+                            <i class="layui-icon layui-icon-template"></i>
+                            <cite >卡密管理</cite>
+                        </a>
+                        <dl class="layui-nav-child">
+                            <dd><a lay-href="camiloManagement/CamiloList.html" class="skip_page">卡密列表</a></dd>
+                            <dd><a lay-href="camiloManagement/AddCardSecret.html" class="class_tabBar">添加卡密</a></dd>
+                            <dd><a lay-href="camiloManagement/CamiloManagement.html">卡密管理</a></dd>
+                            <dd><a lay-href="camiloManagement/recycleBin.html">卡密回收站</a></dd>
+                        </dl>
+                    </li>
+                    <li data-name="app" class="layui-nav-item">
+                        <a href="javascript:;" lay-tips="应用" lay-direction="2" class="clickTabBarIndex clickTabBars incomeStatistics">
+                            <i class="layui-icon layui-icon-app"></i>
+                            <cite >交易管理</cite>
+                        </a>
+                        <dl class="layui-nav-child">
+                            <dd>
+                                <a lay-href="transactionManagement/recentlySold.html">最近卖出</a>
+                            </dd>
+                            <dd data-name="workorder">
+                                <a lay-href="transactionManagement/tradingRecord.html" class="clickTabBars">交易记录</a>
+                            </dd>
+                            <dd data-name="workorder">
+                                <a lay-href="transactionManagement/incomeStatistics.html" class="incomeStatistics">收益统计</a>
+                            </dd>
+                            <dd data-name="workorder">
+                                <a class="jiesuan" lay-href="transactionManagement/settlementRecords.html">结算记录</a>
+                            </dd>
+                            <dd data-name="workorder">
+                                <a class="clickTabBarIndex" lay-href="transactionManagement/applySettlement.html">申请结算</a>
+                            </dd>
+                        </dl>
+                    </li>
+                    <li data-name="senior" class="layui-nav-item">
+                        <a href="javascript:;" lay-tips="高级" lay-direction="2">
+                            <i class="layui-icon layui-icon-senior"></i>
+                            <cite >我是供货商</cite>
+                        </a>
+                        <dl class="layui-nav-child">
+                            <dd>
+                                <a lay-href="supplier/AgentManagement.html">代理管理</a>
+                            </dd>
+                            <dd>
+                                <a lay-href="supplier/SupplyProducts.html">供货产品</a>
+                            </dd>
+                            <dd>
+                                <a lay-href="supplier/allOrders.html">全部订单</a>
+                            </dd>
+                            <dd>
+                                <a lay-href="supplier/complaintOrder.html">投诉订单</a>
+                            </dd>
+                            <dd>
+                                <a lay-href="supplier/profitAnalysis.html">收益分析</a>
+                            </dd>
+                        </dl>
+                    </li>
+                    <li data-name="user" class="layui-nav-item">
+                        <a href="javascript:;" lay-tips="用户" lay-direction="2">
+                            <i class="layui-icon layui-icon-user"></i>
+                            <cite >我是代理商</cite>
+                        </a>
+                        <dl class="layui-nav-child">
+                            <dd>
+                                <a lay-href="agent/DockingManagement.html">对接管理</a>
+                            </dd>
+                            <dd>
+                                <a lay-href="agent/goodsList.html">商品列表</a>
+                            </dd>
+                            <dd>
+                                <a lay-href="agent/allOrders.html">全部订单</a>
+                            </dd>
+                            <dd>
+                                <a lay-href="agent/complaintOrder.html">投诉订单</a>
+                            </dd>
+                            <dd>
+                                <a lay-href="agent/profitAnalysis.html">收益分析</a>
+                            </dd>
+                        </dl>
+                    </li>
+                    <li data-name="user" class="layui-nav-item">
+                        <a href="javascript:;" lay-tips="用户" lay-direction="2">
+                            <i class="layui-icon layui-icon-user"></i>
+                            <cite >优惠券</cite>
+                        </a>
+                        <dl class="layui-nav-child">
+                            <dd><a lay-href="discount_coupon/add_coupon.html">添加优惠券</a></dd>
+                            <dd><a class="manage_coupon" lay-href="discount_coupon/manage_coupon.html">管理优惠券</a></dd>
+                        </dl>
+                    </li>
+                    <li data-name="get" class="layui-nav-item">
+                        <a href="javascript:;" lay-href="securityCenter.html" lay-tips="授权" lay-direction="2">
+                            <i class="layui-icon layui-icon-auz"></i>
+                            <cite >安全中心</cite>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- 页面标签 -->
+        <div class="layadmin-pagetabs" id="LAY_app_tabs" style="margin-top: 32px">
+            <div class="layui-icon layadmin-tabs-control layui-icon-prev" layadmin-event="leftPage"></div>
+            <div class="layui-icon layadmin-tabs-control layui-icon-next" layadmin-event="rightPage"></div>
+            <div class="layui-icon layadmin-tabs-control layui-icon-down">
+                <ul class="layui-nav layadmin-tabs-select" lay-filter="layadmin-pagetabs-nav">
+                    <li class="layui-nav-item" lay-unselect>
+                        <a href="javascript:;"></a>
+                        <dl class="layui-nav-child layui-anim-fadein">
+                            <dd layadmin-event="closeThisTabs"><a href="javascript:;">关闭当前标签页</a></dd>
+                            <dd layadmin-event="closeOtherTabs"><a href="javascript:;">关闭其它标签页</a></dd>
+                            <dd layadmin-event="closeAllTabs"><a href="javascript:;">关闭全部标签页</a></dd>
+                        </dl>
+                    </li>
+                </ul>
+            </div>
+            <div class="layui-tab" lay-unauto lay-allowClose="true" lay-filter="layadmin-layout-tabs" lay-id="aaa">
+                <ul class="layui-tab-title" id="LAY_app_tabsheader">
+                    <li lay-id="home/overviewInformation.html" lay-attr="home/overviewInformation.html" class="layui-this"><i class="layui-icon layui-icon-home"></i></li>
+                </ul>
+            </div>
+        </div>
+        <!-- 主体内容 -->
+        <div class="layui-body" id="LAY_app_body" style="margin-top: 24px">
+            <div class="layadmin-tabsbody-item layui-show">
+                <iframe src="home/overviewInformation.html" frameborder="0" class="layadmin-iframe"></iframe>
+            </div>
+        </div>
+
+        <!-- 辅助元素，一般用于移动设备下遮罩 -->
+        <div class="layadmin-body-shade" layadmin-event="shade"></div>
+    </div>
+</div>
+
+<script src="../layuiadmin/jquery.min.js"></script>
+<script src="../layuiadmin/layui/layui.js"></script>
+<script src="../js/baseUrl.js"></script>
+<script>
+    var goods_id_transfer_parameters;//商品id
+    var add_card_pwd_goods_name;//商品名称
+    var add_card_pwd_goods_classify;//商品分类
+    var parameter;
+    layui.config({
+        base: '../layuiadmin/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index','element'], function () {
+        var $ = layui.$
+            , element = layui.element;
+        //监听选项卡切换 切换选项卡刷新当前页面
+        element.on('tab(layadmin-layout-tabs)', function (e) {
+            $('.layui-tab-title').find("li").eq(e.index).attr('layadmin-event', 'refresh');
+        });
+
+        get_user_info();//调用获取用户所有信息方法
+        //查询用户所有信息
+        function get_user_info() {
+            $.ajax({
+                url: parent.baseUrl + "/users/shopInfo",//接口地址
+                dataType: 'json',
+                type: "POST",  //类型
+                data: {
+                    token: localStorage.getItem("token")
+                },
+                success: function (res) {
+                    console.log(res);
+                    if (res.code === "200") {
+                        if (res.data != null) {
+                            var datas = res.data;
+                            $("#userName").text("您好，" + datas.nickname);
+                        }
+                    } else {
+                        layer.msg(res.msg)
+                    }
+                }
+            });
+        }
+        //退出登录清除本地保存
+        $("#out_login").click(function () {
+            localStorage.removeItem("token");
+        });
+    });
+
+    function goToGoodsList(){//商品列表
+        $(".clickTabBar").click();
+    }
+    //分类列表方法
+    function skip_goods_list(){
+        $(".class_log").click();
+    }
+
+    function go_to_applySettlement() {
+        $(".clickTabBarIndex").click();
+    }
+
+    function go_to_tradingRecord() {
+        $(".clickTabBars").click();
+    }
+
+    function go_to_addGoods(){//添加商品页面
+        parameter = 1;
+        $(".clickTabBar").click();
+        $(".add_goods").click();
+    }
+
+    function go_to_incomeStatistics(){//收益统计页面跳转
+        $(".incomeStatistics").click();
+    }
+
+
+    //点击添加卡密
+    function go_to_kami() {
+        $(".class_tabBar").click();
+        $(".refresh_s").trigger('click');
+    }
+
+    //点击库存卡跳转
+    function go_to_kucun() {
+        $("#skip_page").click();
+        $(".skip_page").click();
+    }
+
+    //执行跳转卡密列表
+    function skip_kami_list() {
+        $(".skip_page").click();
+    }
+    //跳转结算
+    function skip_jisuan_list() {
+        $(".jiesuan").click();
+    }
+    //添加优惠券
+    function to_manage_coupon() {
+        $(".manage_coupon").click();
+    }
+
+
+    if( localStorage.getItem('statu_s') === '1' ){//等于1的时候执行方法 否则不执行
+        get_ip_address()
+    }
+    //根据ip查相应地址
+    function get_ip_address() {
+        $.ajax({
+            url: baseUrl + "/users/getCity",//接口地址
+            dataType: 'json',
+            type: "post",  //类型
+            data: {
+                token: localStorage.getItem("token")
+            },
+            success: function (ret) {
+                console.log(ret);
+                if (ret.code === "200") {
+                    let info_address = ret.data;
+                    addLoginLog(info_address.ip,info_address.city,info_address.region);
+                }
+            },
+        });
+    }
+
+    function addLoginLog(ips,citys,regions) {
+        $.ajax({
+            url: baseUrl + "/loginlog/addLoginLog",//接口地址
+            dataType: 'json',
+            type: "post",  //类型
+            data: {
+                token: localStorage.getItem("token"),
+                ip: ips,
+                city: citys,
+                region: regions,
+            },
+            success: function (ret) {
+                if (ret.code === "200") {
+                    localStorage.removeItem('statu_s');
+                }
+            }
+        });
+    }
+</script>
+
+<!-- 百度统计 -->
+<script>
+    var _hmt = _hmt || [];
+    (function () {
+        var hm = document.createElement("script");
+        hm.src = "https://hm.baidu.com/hm.js?d214947968792b839fd669a4decaaffc";
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(hm, s);
+    })();
+</script>
+</body>
+</html>
+
+

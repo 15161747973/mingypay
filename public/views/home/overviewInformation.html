@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>信息总览</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="../../layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../layuiadmin/style/admin.css" media="all">
+</head>
+
+<style>
+    .bg_fff{background-color: #FFFFFF!important;
+        color: #01a0e1!important;}
+    .layuiadmin-card-list p.layuiadmin-big-font {
+       color: #FFFFFF;
+    }
+</style>
+
+<body>
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-sm6 layui-col-md3">
+            <div class="layui-card" style="background-color: #01a0e1">
+                <div class="layui-card-header" style="color: #FFFFFF;">
+                    账户余额
+                    <span onclick="parent.go_to_applySettlement()" class="layui-badge layui-bg-blue layuiadmin-badge bg_fff" style="cursor: pointer">查看</span>
+                </div>
+                <div class="layui-card-body layuiadmin-card-list" style="display: flex;justify-content: space-between">
+                    <div>
+                        <p style="color: #FFFFFF;">当前可提现余额</p>
+                        <p class="layuiadmin-big-font" id="money_1"></p>
+                    </div>
+                    <div>
+                        <p style="color: #FFFFFF;">当前未结余额</p>
+                        <p class="layuiadmin-big-font" id="money_2"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-sm6 layui-col-md3">
+            <div class="layui-card" style="background-color: #01a0e1">
+                <div class="layui-card-header" style="color: #FFFFFF;">
+                    订单数据
+                    <span class="layui-badge layui-bg-cyan layuiadmin-badge bg_fff" onclick="parent.go_to_tradingRecord()" style="cursor: pointer">查看</span>
+                </div>
+                <div class="layui-card-body layuiadmin-card-list" style="display: flex;justify-content: space-between">
+                    <div>
+                        <p style="color: #FFFFFF;">昨日成交订单</p>
+                        <p class="layuiadmin-big-font" id="money_3"></p>
+                    </div>
+                    <div>
+                        <p style="color: #FFFFFF;">今日成交订单</p>
+                        <p class="layuiadmin-big-font" id="money_4"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-sm6 layui-col-md3">
+            <div class="layui-card" style="background-color: #01a0e1">
+                <div class="layui-card-header" style="color: #FFFFFF;">
+                    虚拟卡
+                    <span class="layui-badge layui-bg-green layuiadmin-badge bg_fff" onclick="parent.goToGoodsList()" style="cursor: pointer">查看</span>
+                </div>
+                <div class="layui-card-body layuiadmin-card-list" style="display: flex;justify-content: space-between">
+                    <div>
+                        <p style="color: #FFFFFF;">今日卖出卡量</p>
+                        <p class="layuiadmin-big-font" id="money_5"></p>
+                    </div>
+                    <div>
+                        <p style="color: #FFFFFF;">投诉冻结金额</p>
+                        <p class="layuiadmin-big-font" id="money_8"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-sm6 layui-col-md3">
+            <div class="layui-card" style="background-color: #01a0e1">
+                <div class="layui-card-header" style="color: #FFFFFF;">
+                    交易金额
+                    <span class="layui-badge layui-bg-orange layuiadmin-badge bg_fff" onclick="parent.go_to_incomeStatistics()" style="cursor: pointer">查看</span>
+                </div>
+                <div class="layui-card-body layuiadmin-card-list" style="display: flex;justify-content: space-between">
+                    <div>
+                        <p style="color: #FFFFFF;">今日卖出成本</p>
+                        <p class="layuiadmin-big-font" id="money_6"></p>
+                    </div>
+                    <div>
+                        <p style="color: #FFFFFF;">今日卖出利润</p>
+                        <p class="layuiadmin-big-font" id="money_7"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-sm6" id="deal">
+            <div class="layui-card">
+                <div style="display: flex;justify-content: space-between">
+                    <div class="layui-card-header" style="flex: 1;">过去交易金额</div>
+                    <div id="close_btn" style="cursor: pointer" class="layui-card-header"><i class="layui-icon">&#x1006;</i></div>
+                </div>
+                <div class="layui-card-body">
+                    <div class="layui-row">
+                        <div class="layui-carousel layadmin-carousel layadmin-dataview" data-anim="fade" lay-filter="LAY-index-pagetwo">
+                            <div carousel-item id="LAY-index-pagetwo">
+                                <div><i class="layui-icon layui-icon-loading1 layadmin-loading"></i></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-sm3" id="isShow">
+            <div class="layui-card" style="height: 395px;">
+                <div style="display: flex;justify-content: space-between">
+                    <div class="layui-card-header" style="flex: 1;">平台公告</div>
+                    <div id="_close_btn" style="cursor: pointer" class="layui-card-header"><i class="layui-icon">&#x1006;</i></div>
+                </div>
+                <div class="layui-card-body">
+                    <div class="">
+                        <div class="layui-tab-item layui-show">
+                            <table lay-skin="nob" class="layui-table" id="noticeTable" lay-filter="dataTable"></table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-sm3" id="isHide">
+            <div class="layui-card" style="height: 395px;">
+               <div style="display: flex;justify-content: space-between">
+                   <div class="layui-card-header" style="flex: 1;">最近登录日志</div>
+                   <div id="_close_btn_" style="cursor: pointer" class="layui-card-header"><i class="layui-icon">&#x1006;</i></div>
+               </div>
+                <div class="layui-card-body">
+                    <div class="layui-tab-content">
+                        <div class="layui-tab-item layui-show">
+                            <table id="log_Tables" lay-skin="nob"></table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-sm12">
+            <div class="layui-card">
+                <div class="layui-card-header">交易订单</div>
+                <div class="layui-card-body">
+                    <div class="layui-tab-content">
+                        <div class="layui-tab-item layui-show">
+                            <table id="orderTable"></table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script id="lay_dome" type="text/html">
+    {{# if( d.card_pwd.length > 1 ){ }}
+        {{# for(var i = 0;i < d.card_pwd.length;i++){ }}
+            {{# if( d.card_pwd[i].card_num === '' ) { }}
+                <span style="display: none">卡号:{{ d.card_pwd[i].card_num }};</span><span>卡密:{{ d.card_pwd[i].card_pwd }};</span>
+            {{# }else { }}
+                <span>卡号:{{ d.card_pwd[i].card_num }};</span><span>卡密:{{ d.card_pwd[i].card_pwd }};</span>
+            {{# } }}
+        {{# } }}
+    {{# }else { }}
+        {{# if( d.card_pwd[0].card_num === '' ) { }}
+            <span style="display: none">卡号:{{ d.card_pwd[0].card_num }};</span><span>卡密:{{ d.card_pwd[0].card_pwd }};</span>
+        {{# }else { }}
+            <span>卡号:{{ d.card_pwd[0].card_num }};</span><span>卡密:{{ d.card_pwd[0].card_pwd }};</span>
+        {{# } }}
+    {{# } }}
+</script>
+
+</body>
+<script src="../../layuiadmin/lib/echarts.min.js"></script>
+<script src="../../layuiadmin/layui/layui.js"></script>
+<script>
+    var is_verify_ip = "";
+    var is_check = false;
+    var card_number;
+    var card_password;
+
+    layui.config({
+        base: '../../layuiadmin/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index', 'sample', 'senior', 'table'], function () {
+        var $ = layui.$,
+            table = layui.table;
+        get_user_info();//调用获取用户所有信息方法
+        get_ip_address();//调用获取IP地址方法
+        //获取首页金额接口
+        data_info();
+        function data_info() {
+            $.ajax({
+                url: parent.baseUrl + "/index/dataInfo",//接口地址
+                dataType: 'json',
+                type: "POST",  //类型
+                data: {
+                    token: localStorage.getItem("token")
+                },
+                success: function (res) {
+                    console.log(res);
+                    if (res.code === "200") {
+                        if( res.data != null ){
+                            var datas = res.data;
+                            $("#money_1").text(datas.withdraw_money);
+                            $("#money_2").text(datas.today_money);
+                            $("#money_3").text(datas.yesDay_order);
+                            $("#money_4").text(datas.toDay_order);
+                            $("#money_5").text(datas.sellCodeNums);
+                            $("#money_6").text(datas.todayCost);
+                            $("#money_7").text(datas.profitM);
+                            $("#money_8").text(datas.freeze);
+                        }
+                    } else {
+                        layer.msg(res.msg)
+                    }
+                }
+            });
+        }
+
+        // 表格右上角关闭按钮、点击关闭
+        $("#close_btn").click(function () {
+            $("#deal").hide();
+        });
+        $("#_close_btn").click(function () {
+            $("#isShow").hide();
+        });
+        $("#_close_btn_").click(function () {
+            $("#isHide").hide();
+        });
+
+
+        //公告表
+        table.render({
+            elem: '#noticeTable'
+            , url: parent.baseUrl + '/Notice/accountNotice'
+            , method:'POST'
+            , skin: 'line'
+            , limit: 5
+            , where: {
+                token: localStorage.getItem("token"),
+                status: 2
+            }
+            , cols: [[
+                {field: 'title',  title: '标题', unresize: true},
+                {field: 'create_time', title: '发布时间', unresize: true, templet : "<div>{{layui.util.toDateString(d.create_time * 1000,'yyyy-MM-dd HH:mm:ss')}}</div>"}
+            ]]
+            ,parseData: function(res){ //res 即为原始返回的数据
+                return {
+                    "code": res.code, //解析接口状态
+                    "msg": res.msg, //解析提示文本
+                    "count": res.data.count, //解析数据长度
+                    "data": res.data.res //解析数据列表
+                };
+            },
+            done: function (res) {
+                console.log(res);
+            }
+            ,page: { //支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档//自定义分页
+                layout: ['count', 'prev', 'page', 'next', 'skip'] //自定义分页布局
+                ,groups: 1 //只显示 1 个连续页码
+                ,first: false //不显示首页
+                ,last: false //不显示尾页
+            }
+        });
+        //监听行事件  点击某一行获取一行数据
+        table.on('row(dataTable)', function(obj){
+            var d = obj.data;
+            layer.alert(d.content, {
+                title: d.title + "："
+            });
+            //标注选中样式
+            obj.tr.addClass('layui-table-click').siblings().removeClass('layui-table-click');
+        });
+
+        //日志表
+        table.render({
+            elem: '#log_Tables'
+            , url: parent.baseUrl + '/loginlog/loginlog'
+            , method: 'POST'
+            , skin: 'line'
+            , limit: 5
+            , where: {
+                token: localStorage.getItem("token")
+            }
+            , cols: [[
+                {field: 'time', title: '登录时间', unresize: true},
+                {field: 'ip', title: '登录IP', unresize: true}
+            ]]
+            ,parseData: function(res){ //res 即为原始返回的数据
+                return {
+                    "code": res.code, //解析接口状态
+                    "msg": res.msg, //解析提示文本
+                    "count": res.data.count, //解析数据长度
+                    "data": res.data.list //解析数据列表
+                };
+            }
+            , done: function (res) {//成功回调
+                console.log(res);
+            }
+            , page: { //支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档//自定义分页
+                layout: ['count', 'prev', 'page', 'next', 'skip'] //自定义分页布局
+                ,groups: 1 //只显示 1 个连续页码
+                ,first: false //不显示首页
+                ,last: false //不显示尾页
+            }
+        });
+
+        //底部订单列表
+        table.render({
+            elem: '#orderTable'
+            , url: parent.baseUrl + '/order/orderList'
+            , method: 'POST'
+            // , cellMinWidth: 80 //全局定义常规单元格的最小宽度，layui 2.2.1 新增
+            , where: {
+                token: localStorage.getItem("token")
+            }
+            , cols: [[
+                  {field: 'order_num', title: '订单号', unresize: true}
+                , {field: 'pro_name', title: '商品名称', unresize: true}
+                , {field: 'price', title: '交易金额', unresize: true}
+                , {field: 'time', title: '下单时间', unresize: true}
+                , {field: 'status', title: '状态', templet: '#switchTpl', unresize: true, templet: function (data) {
+                    var statu_plus = data.status;
+                        if( statu_plus === 1 ){
+                            return '<span style="color: #ff7600;">待支付</span>'
+                        }else if( statu_plus === 2 ) {
+                            return '<span style="color: green;">支付成功</span>'
+                        }else if( statu_plus === 3 ) {
+                            return '<span>支付失败</span>'
+                        }else if( statu_plus === 4 ) {
+                            return '<span style="color: red;">投诉订单</span>'
+                        }else if( statu_plus === 5 ) {
+                            return '<span>退款</span>'
+                        }
+                    }}
+                , {field: 'pay_type', title: '支付通道', unresize: true ,templet:function (data) {
+                        var statu = data.pay_type;
+                        if( statu === 1 ){
+                            return "支付宝"
+                        }else if( statu === 2 ){
+                            return "微信"
+                        }
+                    }}
+                , {field: 'card_num', title: '卡密信息', unresize: true, templet: '#lay_dome'}
+            ]]
+            ,parseData: function(res){ //res 即为原始返回的数据
+                return {
+                    "code": res.code, //解析接口状态
+                    "msg": res.msg, //解析提示文本
+                    "count": res.data.count, //解析数据长度
+                    "data": res.data.data //解析数据列表
+                };
+            }
+            , done: function (res) {
+                console.log(res);
+            }
+            , page: { //支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档//自定义分页
+                layout: ['limit' ,'count', 'prev', 'page', 'next', 'skip'] //自定义分页布局
+                ,groups: 5 //只显示 1 个连续页码
+                ,prev:"上一页"
+                ,next:"下一页"
+            }
+        });
+
+        //查询用户所有信息
+        function get_user_info() {
+            $.ajax({
+                url: parent.baseUrl + "/users/shopInfo",//接口地址
+                dataType: 'json',
+                type: "POST",  //类型
+                data: {
+                    token: localStorage.getItem("token")
+                },
+                success: function (res) {
+                    console.log(res);
+                    if (res.code === "200") {
+                        if (res.data != null) {
+                            var datas = res.data;
+                            is_verify_ip = datas.ip_list;
+                            if( res.data.is_check_ip === 0 ){
+                                is_check = true;
+                            }
+                        }
+                    } else {
+                        layer.msg(res.msg)
+                    }
+                }
+            });
+        }
+        //获取ip地址接口
+        function get_ip_address() {
+            $.ajax({
+                url: parent.baseUrl + "/users/getPubIp",//接口地址
+                dataType: 'json',
+                type: "POST",  //类型
+                data: {
+                    token: localStorage.getItem("token")
+                },
+                success: function (res) {
+                    console.log(res);
+                    if (res.code === "200") {
+                        if (res.data != null) {
+                            // IP_address = res.data;
+                            //字符串里面是否包含某一个字符串
+                            var whether_include = new RegExp(res.data);
+                            var is_include = whether_include.test(is_verify_ip);
+                            if( is_check ){
+                                return false;
+                            }
+                            if( !is_include ){
+                                layer.open({
+                                    title: "登录ip异常请验证信息：",
+                                    area: ['350px', '310px'],
+                                    type: 2,
+                                    content: '../operation/verification_IP.html'
+                                });
+                                window.refresh = function (e) {
+                                    layer.closeAll('iframe');
+                                    layer.msg("验证成功",{icon: 6});
+                                }
+                            }
+                        }
+                    } else {
+                        layer.msg(res.msg)
+                    }
+                }
+            });
+        }
+
+        // get_two_dimension_code();
+        // function get_two_dimension_code() {
+        //     $.ajax({
+        //         url: parent.baseUrl + "/users/createErWeiMa",//接口地址
+        //         dataType: 'json',
+        //         type: "POST",  //类型
+        //         data: {
+        //             token: localStorage.getItem("token")
+        //         },
+        //         success: function (res) {
+        //             console.log(res);
+        //             if (res.code === "200") {
+        //                 if (res.data != null) {
+        //
+        //                 }
+        //             } else {
+        //                 layer.msg(res.msg);
+        //             }
+        //         }
+        //     });
+        // }
+
+    });
+</script>
+</html>

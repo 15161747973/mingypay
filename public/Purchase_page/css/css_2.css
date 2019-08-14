@@ -1,0 +1,85 @@
+﻿
+.ya_logo{width: 100%; text-align: center; height: 100px; padding: 20px 0 0; overflow: hidden;}
+.nav_list{font-size: 16px; color: #fff; height: 50px; line-height: 50px;}
+.nav_list a{width: 131px; height: 41px; line-height: 41px;  display: inline-block; margin-left: 40px; position: relative; transition: all 0.3s; color: #fff;  text-align: center;}
+.nav_list a.current{text-align: center; color: #8929ff; background: #fff; border-radius: 100px;}
+.nav_list a:hover{text-align: center; color: #8929ff; background: #fff;border-radius: 100px;}
+
+.shXinxi{width: 339px; height: 356px; background:none; border-radius: 20px; border: 1px solid #fff;  overflow: hidden; margin: 17px 0 60px;}
+.shXinxi .tit{width: 100%; text-align: center; }
+.shXinxi .cont{width: 100%; box-sizing: border-box;  overflow: hidden;}
+.shXinxi .cont .list{width:100%;padding: 26px 16px 26px 26px; overflow: hidden;height:210px; margin:0px auto 0; font-size: 18px;}
+.shXinxi .cont .list li{width: 100%; line-height: 36px; float: left;}
+.shXinxi .cont .list li span.name{width: 91px; margin-left: 15px; float: left; color: #fff;}
+.shXinxi .cont .list li p{width: calc(100% - 106px); float: left; color: #fff;}
+.lxkf{width:284px; height: 60px;  margin: 16px auto;}
+.lxkf span img{margin-right: 7px; vertical-align: middle;}
+.lxkf span{display: flex; align-items: center; justify-content: center;}
+
+
+.sjgg{width: 100%; padding: 12px; display: flex; align-items: center; box-sizing: border-box;overflow: hidden; margin: 0px 0 15px;  border: none;   margin-bottom: 20px;}
+.sjgg span.name{width: 112px; font-size: 17px; color: #210684; text-align: center; display: inline-block;  margin-right: 10px; font-weight: bold; display: flex; align-items: center;} 
+.sjgg span.name img{vertical-align: middle; margin-right: 10px;}
+.sjgg p{width: calc(100% - 132px); display: inline-block; font-size: 14px; line-height: 22px; color: #000;}
+
+
+.zz_sp{width: 764px; text-align: center;  overflow: hidden;  position: relative; z-index: 0;  }
+.zzsp_box{width: 100%; margin: 0 0 30px; position: relative; overflow: hidden; box-sizing: border-box;}
+.zzsp_box .li{width:100%; margin-bottom: 20px; float: left; color: #fff;}
+.zzsp_box .li .li_follow{width: 100%; line-height: 48px; float: left; position: relative;  display: flex;}
+.zzsp_box .li .li_follow span{width: 80px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; text-align: right;}
+.zzsp_box .li .li_follow .yuliang{position: absolute; right: 26px; top: 4px; font-size: 14px; color: #fff;}
+.zzsp_box .li .li_follow .yuliang label{color: #ffc600;}
+.zzsp_box .li .li_follow .left{color: #fff; font-size: 16px; padding-right: 10px;}
+.zzsp_box .li .li_follow  .select-wrap{
+    width: calc(100% - 90px);
+    border: 1px solid #fff;
+    border-radius: 100px;
+    overflow: hidden;
+    padding: 0 10px;
+}
+.zzsp_box .li .li_follow .input_a{width:calc(100% - 90px); height: 48px; font-size: 14px; line-height: 48px;border: 1px solid #fff; background: none; border-radius: 100px; outline: none; padding: 0 10px; box-sizing: border-box; color: #fff; float: left;}
+.zzsp_box .li .li_follow select.input_a{
+    width:100%;
+    border:none;
+}
+.zzsp_box .li .li_follow .input_a::-webkit-input-placeholder{color: #fff;}
+.zzsp_box .li .li_follow .textBox{width:calc(100% - 90px); height: 48px; background: #fff; line-height: 48px;border: 1px solid #fff; background: none; border-radius: 100px;  outline: none; padding: 0 10px; box-sizing: border-box; color: #fff; float: left; font-size: 14px;}
+.tishi{position: absolute; bottom: -31px; left: 80px; font-size: 12px; color: #ff4351}
+.li_follow .tese{text-align: center; letter-spacing: normal; margin-right: 20px; height: 48px; line-height: 48px; width: 131px; border-radius: 100px; box-sizing: border-box; border: 1px solid #fff; font-size: 14px; color: #fff;  float: left;}
+.li_follow .current{background: #fff; color: #5474ff; border: none;}
+.zzsp_box .li .youxiang{width: 100%; float: left; }
+.liBox{width: 716px;}
+.labelBox{width: 716px;}
+.kucun{font-size: 14px; color: #fff; display: inline-block; float: left;}
+.kucun label{ color: #ffc600; font-size: 20px; font-weight: bold;}
+.kucun label.sxf{color: #ffc600; font-size: 16px; margin-right: 10px;}
+.smBox{width: 100%; margin:-10px 0 21px; overflow: hidden; float: left; padding-left: 83px; box-sizing: border-box;}
+.shuoming{font-size: 14px; margin-top: 5px; color: #fff;}
+.shuoming span{color: #fff; font-weight: bold;}
+.jiesuan{width: 1200px; background: #ffffff; border-radius: 10px; margin:30px 0; box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.2); position: relative; z-index: 0;  padding:20px 40px ; box-sizing: border-box;font-size: 16px; color: #000;}
+.jiesuan label{font-size: 20px; color: #fa9608; margin-right: 5px;}
+#smallTotal1{font-size: 28px; color: #ffc600;}
+.zzsp_title{width:100%; text-align: center; margin: 30px 0;}
+.zzsp_title span{width: 100px; float: left; height: 100px; color: #fff; background: #b40100; font-size: 50px; margin-bottom: 20px; line-height: 100px; overflow: hidden; text-align: center; font-weight: normal;display: block; font-style: italic;}
+.zzsp_title p{font-size: 30px; font-weight: bold; color: #b40100;writing-mode: vertical-lr; height: 260px; margin: 0px 0 0 30px; }
+   
+.zhifu_box{width: 100%;}
+.zhifu_title{width: 100%; padding-bottom: 12px; border-bottom: 1px solid #8d0809; font-size: 18px; color: #8d0809;position: relative;}
+.zhifu_title span{width: 120px; display: flex; align-items: center; justify-content: center;}
+.zhifu_title span img{margin-right: 10px;}
+.zhifu_title span:after{width: 120px; position: absolute; bottom: -2px; left: 0; content: ''; height: 3px; background: #8d0809;}
+
+
+.zhifu_box .zhifu_list{width: 100%; margin:15px auto 24px; overflow: hidden; text-align: center;}
+.zhifu_box .zhifu_list li{width: 219px; height: 70px; display: inline-block; margin-right: 20px; position: relative;}
+.zhifu_box .zhifu_list li img{width: 219px; }
+/*.zhifu_box .zhifu_list li.current{border: 1px solid #ff8613;}*/
+.zhifu_box .zhifu_list li .zfImg{position: absolute; top: 1px; right: 2px; width: 19px; display: none;}
+.zhifu_box .zhifu_list li.current .zfImg{display: block;}
+.queren{width: 321px; height: 60px; line-height: 60px;box-shadow: 0px 3px 8px 0px rgba(0,0,0,0.2); background: #580fb1; font-size: 18px; color: #fff; border-radius: 100px; margin: 40px 0 20px; outline: none; border: none; display: block;}
+
+
+
+footer{width: 100%; padding: 60px 0;  color: #fff; line-height: 24px; text-align: center; font-size: 14px; z-index: 33;}
+footer p{text-align: center; margin-top: 5px;}

@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>商品列表</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="../../layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="../../layuiadmin/style/admin.css" media="all">
+</head>
+<body>
+<div class="layui-fluid">
+    <div class="layui-col-space15 layui-card">
+        <div class="layui-card-header">商品列表</div>
+        <form class="layui-form" lay-filter="myform" style="margin-top: 15px" id="myform">
+            <div style="width: 500px;display: inline-block">
+                <select name="categorys_name" lay-filter="my_classify" id="my_classify">
+                    <option value="">全部</option>
+                </select>
+            </div>
+            <div class="layui-inline" style="margin-left: 30px;margin-top: -3px">
+                <input onclick="parent.go_to_addGoods()" type="button" class="layui-btn  buttonStyle" value="新建商品"/>
+            </div>
+        </form>
+        <div>
+            <table class="layui-table" id="goods_list" lay-filter="goods_list"></table>
+        </div>
+    </div>
+</div>
+<script type="text/html" id="operation">
+    <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="my_link">链接</a>
+
+    {{#  if(d.status == 1){ }}
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="sold_out">下架</a>
+    {{#  }else if( d.status == 2 ){ }}
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="sold_out">上架</a>
+    {{# } }}
+
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="inventory">库存卡</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="yucca">加卡</a>
+    <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="delete">删除</a>
+</script>
+
+</body>
+
+<script src="../../layuiadmin/layui/layui.js"></script>
+<script>
+    var goods_list_id;
+    var status_plus = 0;
+    var edit_plus;
+    var select_log;
+    var product_id;
+    is_click = true;
+    layui.config({
+        base: '../../layuiadmin/' //静态资源所在路径
+    }).extend({
+        index: 'lib/index' //主入口模块
+    }).use(['index', 'form', 'table'], function () {
+        var form = layui.form
+            , table = layui.table
+            , $ = layui.$;
+
+
+
+        table.render({
+            elem: '#goods_list'
+            , url: parent.baseUrl + '/Product/listProduct'
+            , method: 'POST'
+            , limit: 10
+            , id: 'heavy_load'
+            , where: {
+                token: localStorage.getItem("token")
+            }
+            , parseData: function (res) { //res 即为原始返回的数据
+                return {
+                    "code": res.code, //解析接口状态
+                    "msg": res.msg, //解析提示文本
+                    "count": res.data.count, //解析数据长度
+                    "data": res.data.data //解析数据列表
+                };
+            }
+            , cols: [[
+                  {field: 'categorys_name', title: '所属分类', unresize: true,}
+                , {field: 'product_name', title: '商品名称', unresize: true,}
+                , {field: 'sell_price', title: '销售价格', unresize: true,}
+                , {field: 'agent_code', title: '代理授权码', unresize: true,}
+                , {field: 'visit_pass', title: '访问密码', unresize: true,}
+                , {field: 'cost_price', title: '成本价格', unresize: true,}
+                , {field: 'product_score', title: '排序', unresize: true,}
+                , {field: 'num', title: '库存卡', unresize: true,}
+                , {field: 'sale_num', title: '已卖出', unresize: true,}
+                , {field: 'status', title: '状态', unresize: true, templet: function (data) {
+                        let statu_plus = data.status;
+                        if (statu_plus === 1) {
+                            return '<span>已上架</span>'
+                        } else if (statu_plus === 2) {
+                            return '<span>已下架</span>'
+                        } else if (statu_plus === 3) {
+                            return '<span>禁用</span>'
+                        } else if (statu_plus === 4) {
+                            return '<span>销售中</span>'
+                        }
+                    }
+                }
+                , {field: 'operation',title: '操作',align: 'center',toolbar: '#operation',unresize: true,width: '25%'}
+            ]]
+            , done: function (res) {//成功回调
+                console.log(res);
+            }
+            , page: { //支持传入 laypage 组件的所有参数（某些参数除外，如：jump/elem） - 详见文档//自定义分页
+                layout: ['limit', 'count', 'prev', 'page', 'next', 'skip'] //自定义分页布局
+                , groups: 5 //只显示 1 个连续页码
+                , prev:"上一页"
+                , next:"下一页"
+            }
+        });
+
+        //获取选中数据
+        table.on('tool(goods_list)', function (obj) {
+            let datas = obj.data;
+            if (obj.event === 'my_link') {  //链接按钮操作
+                if( datas.status === 2 ){
+                    layer.msg("下架商品不能操作，请先上架商品！")
+                }else {
+                    product_id = datas.pro_id;
+                    layer.open({
+                        title: '商品连接:',
+                        area: ['500px','380px'],
+                        type: 2,
+                        content: '../operation/my_link.html'
+                    });
+                    window.close_skip = function () {
+                        layer.closeAll();
+                    };
+                }
+            } else if (obj.event === 'edit') {//编辑按钮操作
+                goods_list_id = datas.pro_id;
+                edit_plus = 0;
+                select_log = 0;
+                layer.open({
+                    title: "修改：",
+                    area: ['750px', '700px'],
+                    type: 2,
+                    content: '../operation/edit_goods_list.html'
+                });
+                window.refresh = function (e) {
+                    console.log(e);
+                    obj.update({
+                          categorys_name: e.data.categorys_name
+                        , product_name: e.data.product_name
+                        , sell_price: e.data.sell_price
+                        , cost_price: e.data.cost_price
+                        , product_score: e.data.product_score
+                        , num: e.data.num
+                        , sale_num: e.data.sale_num
+                        , status: e.data.status
+                    });
+                    layer.closeAll('iframe');
+                    layer.msg("修改成功", {icon: 6});
+                };
+            } else if (obj.event === 'sold_out') {//上/下架按钮操作
+                console.log(datas);
+                //判断表格状态如果是已上架1改变全局变量为2下架状态
+                if( obj.data.status === 1 ){
+                    status_plus = 2;
+                }else if( obj.data.status === 2 ){
+                    status_plus = 1;
+                }
+                putaway_sold_out(status_plus,datas.pro_id);
+            } else if (obj.event === 'inventory') {//库存按钮操作
+                parent.go_to_kucun();//跳转卡密列表页面
+            } else if (obj.event === 'yucca') {//加卡按钮操作
+                console.log(datas);
+                if( datas.status === 2 ){
+                    layer.msg("下架商品不能操作，请先上架商品！")
+                }else {
+                    parent.add_card_pwd_goods_name =datas.pro_id;
+                    parent.add_card_pwd_goods_classify =datas.cate_id;
+                    parent.go_to_kami();//跳转添加卡密页面
+                }
+            } else if (obj.event === 'delete') {//删除按钮操作
+                layer.confirm("确定删除词条数据吗？", {icon: 3}, function (index) {
+                    delete_goods(datas.pro_id, obj);
+                });
+            }
+        });
+        //查询分类
+        traverse_option();
+
+        function traverse_option() { //查询分类
+            $.ajax({
+                url: parent.baseUrl + "/Categorys/userCate",//接口地址
+                dataType: 'json',
+                type: "POST",  //类型
+                data: {
+                    token: localStorage.getItem("token")
+                },
+                success: function (res) {
+                    console.log(res);
+                    if (res.code === "200") {
+                        if (res.data != null) {
+                            let datas = res.data;
+                            //渲染select->option的值
+                            for (var i = 0;i < datas.length;i++){
+                                $('#my_classify').append('<option value="' + datas[i].categorys_name + '">' + datas[i].categorys_name + '</option>');
+                            }
+                            form.render('select');
+                        }
+                        if( parent.goods_id_transfer_parameters !== undefined ){
+                            form.val("myform", {
+                                "categorys_name": parent.goods_id_transfer_parameters,
+                            });
+                            form.render('select');
+                            table.reload('heavy_load', {
+                                url: parent.baseUrl + '/Product/listProduct'
+                                , where: { //设定异步数据接口的额外参数
+                                    categorys_name: parent.goods_id_transfer_parameters
+                                }
+                            });
+                        }
+                    } else {
+                        layer.msg(res.msg)
+                    }
+                }
+            });
+        }
+
+
+        //监听select发生改变
+        form.on('select(my_classify)', function (data) {//data.value得到被选中的值
+            table.reload('heavy_load', {
+                url: parent.baseUrl + '/Product/listProduct'
+                , where: { //设定异步数据接口的额外参数
+                    categorys_name: data.value
+                }
+            });
+        });
+
+        //删除表格数据方法
+        function delete_goods(ids, object) {
+            $.ajax({
+                url: parent.baseUrl + '/Product/delPro',
+                dataType: 'json',
+                type: "POST",
+                data: {
+                    id: ids,
+                    token: localStorage.getItem("token")
+                },
+                success: function (res) {
+                    console.log(res);
+                    if (res.code === "200") {
+                        object.del();
+                        layer.msg("删除成功", {icon: 1})
+                    } else {
+                        layer.msg(res.msg, {icon: 2})
+                    }
+                }
+            })
+        }
+
+
+        //上/下架接口
+        function putaway_sold_out(status,ids) {
+            $.ajax({
+                url: parent.baseUrl + '/Product/shelf',
+                dataType: 'json',
+                type: "POST",
+                data: {
+                    id: ids,
+                    status: status,
+                    token: localStorage.getItem("token")
+                },
+                success: function (res) {
+                    console.log(res);
+                    if (res.code === "200") {
+                        layer.msg("商品" + res.data, {icon: 1});
+                        setTimeout(function () {
+                            table.reload('heavy_load', {
+                                url: parent.baseUrl + '/Product/listProduct'
+                            });
+                        },1000);
+                    } else {
+                        layer.msg(res.msg, {icon: 2});
+                    }
+                }
+            })
+        }
+    });
+</script>
+</html>

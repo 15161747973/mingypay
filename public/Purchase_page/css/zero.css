@@ -1,0 +1,329 @@
+body {
+    min-width: 1300px;
+    background-image: url("../images/body_bg.png");
+    overflow: -Scroll;
+    overflow-x: hidden
+}
+
+.indexTabBar {
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    font-size: 18px;
+    margin-top: 14px;
+    color: #FFFFFF;
+}
+
+.titleBoxs {
+    height: 80px;
+    line-height: 80px;
+    width: 100%;
+    margin-left: 30px;
+}
+
+.title_image {
+    width: 100%;
+    height: 438px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.min_box {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.vendor_QQ {
+    display: flex;
+    margin-left: 15px
+}
+
+.vendor_QQ > p {
+    font-size: 16px;
+    color: #FFFFFF;
+    margin-top: 8px;
+}
+
+.Contact_seller_btn {
+    background-color: #fbd530;
+    width: 130px;
+    height: 36px;
+    text-align: center;
+    border-radius: 40px;
+    margin-left: 25px
+}
+
+.Contact_seller_btn > img {
+    width: 16px;
+    height: 18px;
+}
+
+.Contact_seller_btn > p {
+    font-size: 14px;
+    color: #FFFFFF;
+    display: inline-block;
+    line-height: 36px;
+    cursor: pointer;
+}
+
+.shop_notice {
+    display: flex;
+    height: 55px;
+    border: 1px solid #339bdf;
+    background-color: #1c90dc;
+    padding-left: 15px;
+    margin-top: 20px;
+    border-radius: 5px
+}
+
+.shop_notice > p {
+    line-height: 55px;
+    font-size: 16px;
+    color: #FFFFFF
+}
+
+.checked_goods {
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    padding-top: 40px;
+    margin-top: 40px;
+    padding-bottom: 40px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+    margin-bottom: 50px
+}
+
+.image_box {
+    width: 270px;
+    text-align: center
+}
+
+.checked_goods > img {
+    width: 190px;
+    height: 100px;
+}
+
+.border_box {
+    width: 570px;
+}
+
+.border_boxs {
+    width: 74%;
+    border-radius: 10px;
+    border: 1px solid #EEEEEE;
+    padding: 20px
+}
+
+.border_box > p {
+    border: 2px dashed #e69800;
+    padding: 13px;
+    color: #e69800;
+    height: 50px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.classification_goods {
+    display: flex;
+    height: 60px;
+    border-bottom: 1px solid #f3f3f3;
+    padding-left: 15px
+}
+
+.classification_goods > p {
+    font-size: 16px;
+    width: 120px;
+    line-height: 60px
+}
+
+.my_selects {
+    width: 100%;
+    position: relative;
+}
+
+.my_selects > input {
+    width: 100%;
+    height: 40px;
+    font-size: 15px;
+    border: none;
+    margin-top: 9px;
+    border-radius: 3px;
+    background-color: transparent;
+    padding-left: 8px
+}
+
+.my_selects > select {
+    width: 100%;
+    height: 40px;
+    font-size: 15px;
+    border: none;
+    margin-top: 9px;
+    border-radius: 3px;
+    padding-left: 8px;
+}
+
+.my_selects select:focus, .my_selects input[type=text]:focus, .my_selects input[type=number]:focus {
+    outline: 1px solid #e69800;
+    transition: linear 0.2s;
+}
+
+.repertory {
+    display: none;
+    position: absolute;
+    right: 12px;
+    top: 19px;
+    font-size: 16px;
+    color: green;
+}
+
+.my_tab {
+    display: flex;
+    padding-top: 10px
+}
+
+.my_tab :nth-child(1) {
+    margin-left: -12px
+}
+
+.my_tab :nth-child(2) {
+    margin-left: 15px
+}
+
+.my_tab label {
+    border: 1px solid #dddddd;
+    color: #999999;
+    padding: 8px 15px
+}
+
+#btn1:checked ~ .classification_goods > .list > .my_tab > .btns, #btn2:checked ~ .classification_goods > .list > .my_tab > .btn_plus {
+    border: 1px solid #e69800;
+    color: #e69800;
+}
+
+.scan_code {
+    width: 100%;
+    background: #f8f8f8;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden
+}
+
+.little_scan_code {
+    width: 195px;
+    height: 50px;
+    background-color: #e69800;
+    text-align: center
+}
+
+.little_scan_code img {
+    width: 20px;
+    height: 20px;
+    margin-top: -5px
+}
+
+.little_scan_code p {
+    font-size: 18px;
+    color: #FFFFFF;
+    display: inline-block;
+    line-height: 50px
+}
+
+.mode_payment img {
+    width: 140px;
+    height: 40px;
+}
+
+#selected:checked ~ .mode_payment > #alpay, #selected_plus:checked ~ .mode_payment > #weChat {
+    border: 1px solid #e69800;
+}
+
+.mode_payment {
+    padding: 40px 0 0 30px;
+}
+
+#weChat {
+    margin-left: 40px
+}
+
+.bottom_btn {
+    width: 180px;
+    height: 50px;
+    border: 1px solid #e69800;
+    border-radius: 40px;
+    line-height: 50px;
+    text-align: center;
+    margin: 0px auto;
+    margin-top: 60px;
+    font-size: 17px;
+    color: #e69800;
+    font-weight: 600
+}
+
+.bottom_btn:hover {
+    background-color: #e69800;
+    color: #FFFFFF;
+}
+
+/*鼠标移入悬停改变样式*/
+.top_image {
+    width: 100%;
+    height: 438px;
+    position: fixed;
+    top: 0
+}
+
+.right_box {
+    position: absolute;
+    top: 0;
+    right: 40px;
+    width: 280px;
+    height: 426px;
+    background-color: #168bd8;
+    border-radius: 0 0 15px 15px;
+    color: #FFFFFF
+}
+
+.seller_information {
+    text-align: center;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 27px 0 20px 0;
+    margin: 0 20px;
+}
+
+.info_box {
+    color: #d6ecfa;
+    height: 180px;
+    border-top: 1px solid #2e97dc;
+    margin: 0 20px;
+    border-bottom: 1px solid #2e97dc;
+    line-height: 35px
+}
+
+.image_boxs {
+    text-align: center;
+    padding: 20px
+}
+
+.er_code {
+    width: 110px;
+    height: 110px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1)
+}
+
+.skip_box > p {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/*底部声明样式*/
+.bottom_notice{
+    width: 100%;
+    height: 60px;
+    background-color: #168bd8;
+    color: #FFFFFF;
+    text-align: center;
+    line-height: 60px;
+}

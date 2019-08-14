@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>投诉信息</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+        <script src="js/jquery-3.3.1.js"></script>
+        <link rel="stylesheet" href="css/swiper.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/layer.css" />
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+        <link rel="stylesheet" href="css/animate.css">
+        <style>
+            body {
+                padding: 0;
+                margin: 0;
+                width: 100%;
+                height: 1000px;
+                min-width: 1065px;
+            }
+            @media screen and (max-width: 1000px) {
+                .titleOrder{background-color: red}
+            }
+            .mukuai img {
+                width: 100%;
+            }
+
+            .jiewei {
+                margin-top: 130px;
+                width: 100%;
+                /*height: 500px;*/
+                /*position: absolute;*/
+                /*bottom: 0;*/
+                z-index: 1111;
+            }
+
+            .navbar ul li a:after {
+                content: "";
+                width: 0;
+                height: 1px;
+                position: absolute;
+                top: 75%;
+                left: 50%;
+                transition: all .5s;
+                border-bottom: 2px solid #FFFFFF;
+            }
+
+            .navbar li a:hover:after {
+                left: 25%;
+                width: 50%;
+                text-align: center;
+            }
+
+            .collapse {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 90%;
+                height: 70px;
+            }
+
+            .my-navbar a {
+                background: transparent !important;
+                color: #fff !important;
+                font-size: 1.2em;
+            }
+
+            .my-navbar a:hover {
+                background: transparent;
+                outline: 0
+            }
+
+            .navbar-nav>li>a {
+                padding-top: 15px;
+                padding-bottom: 15px;
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+
+            .nav-left {
+                width: 300px;
+                margin-right: 400px;
+            }
+
+            .navbar2 {
+                border: 1px solid #FFFFFF;
+                position: fixed;
+                width: 100%;
+                opacity: 0;
+                transition: 0.3s all;
+                z-index: 2222;
+                background-color: #FFFFFF;
+                border-bottom: 1px solid #E5E5E5;
+            }
+
+            .my-navbar2 a {
+                background: transparent !important;
+                color: #333 !important;
+                font-size: 1.2em;
+            }
+
+            .my-navbar2 a:hover {
+                background: transparent;
+                outline: 0
+            }
+
+            .navbar2 ul li a:after {
+                content: "";
+                width: 0;
+                height: 1px;
+                position: absolute;
+                top: 75%;
+                left: 50%;
+                transition: all .5s;
+                border-bottom: 2px solid #000000;
+            }
+
+            .navbar2 li a:hover:after {
+                left: 25%;
+                width: 50%;
+                text-align: center;
+            }
+
+            .foot {
+                background-color: #F3F3F3;
+                padding-top: 30px;
+                border-top: 1px solid #E5E5E5;
+                padding-bottom: 20px;
+            }
+
+            .foot h4 {
+                font-weight: 100;
+                font-family: "Microsoft YaHei", Arial;
+                line-height: 1.34;
+                color: #000000;
+            }
+
+            .foot p {
+                color: #666;
+                font-size: 15px;
+                line-height: 35px;
+            }
+
+            .foot_con {
+                display: flex;
+                justify-content: space-between;
+                width: 70%;
+                margin: 0 auto;
+            }
+
+
+            .registerBtn {
+                border-radius: 20px;
+                width: 60%;
+                text-align: center;
+                margin-left: 10px;
+                background: linear-gradient(to right, #ffa213, #ffc50a);
+                padding: 6px 0;
+            }
+
+            .loginBtn {
+                border-radius: 20px;
+                width: 60%;
+                text-align: center;
+                margin-left: 5px;
+                background: linear-gradient(to right, #ff6a3c, #ff2953);
+                padding: 6px 0;
+            }
+
+            .loginBox {
+                margin-top: 9px;
+                display: flex;
+                color: #FFFFFF;
+                font-size: 18px;
+                width: 156px;
+                justify-content: space-between;
+                /*margin-left:5px;*/
+            }
+
+            .bgImages{
+                background-image: url("image/titleImage.png");
+                background-size: 100% 70%;
+                background-repeat: no-repeat;
+                width: 100%;
+                height:10px;
+                text-align: center;
+                padding-top: 130px;
+            }
+            .complaintsBox{display: flex}
+            .bigBox{padding: 100px 430px 30px 430px;}
+            .orderText{font-size: 35px;color: #666666;}
+            .OrderComplaintText{font-size: 35px;color: #999999;margin-left: 10px}
+            .selectBox>select{border: 0;width: 980px;font-size: 16px;height: 25px;outline: none;}
+            .inputBox>input{font-size: 16px;color: #333333;margin-left: 10px;width: 930px;border: 0;outline: none;}
+            .textField>textarea{resize: none;width: 800px;height: 180px;border: 0;outline: none;font-size: 16px;color: #333333;line-height: 30px}
+            .searchBox>input{font-size: 20px;width: 80%;border: 0;outline: none;text-align: center}
+            .searchBox>p{font-size: 18px;margin-top: 5px;background:linear-gradient(to right, #6192fd,#5274b8 );padding: 17px 30px;border-radius: 40px;color: #FFFFFF}
+            .dateBox>img{width: 45px; height: 45px;}
+            .dateBox>p{font-size: 18px;color: #333333;margin-left: 30px;margin-top: 9px;}
+            .bottomBtnBox p{width: 100%;text-align: center;color: #FFFFFF;font-size: 18px;padding: 10px 0;}
+            .littleBox{width: 65%;padding: 30px 50px;margin: 0 auto;}
+            .titleBox{display: flex;}
+            .titleBox>img{width: 60px;height: 60px;}
+            .countDownBox{margin-left: 10px}
+            .timeRemaining{font-size: 18px;color: #333333}
+            .countDown{font-size: 18px;color: #c66647;letter-spacing:2px}
+            .orderInfoBox{width: 100%;}
+            .titleText{font-size: 20px;color: #333333;font-weight: 600;margin-top: 30px}
+            .line{border-top: 1px solid #666666}
+            .orderNumberBox{font-size: 18px;color: #333333}
+            .buyer{background-color: #646dc9;border-radius: 5px;padding: 3px 8px;font-size: 16px;color: #FFFFFF}
+            .seller{background-color: #ce6065;border-radius: 5px;padding: 3px 8px;font-size: 16px;color: #FFFFFF}
+            .userInfoBox{display: flex;padding: 20px 25px 0 25px;}
+            .sendDate{font-size: 16px;color: #666666;margin-top: 3px;margin-left: 5px}
+            .message{background-color: #d3d3d3;border: 1px solid #a2a2a2;border-radius: 5px;display: inline-block;padding: 3px 8px;margin-left: 25px;line-height: 25px;font-size: 18px;}
+            #messageInput{width: 100%;resize: none;font-size: 18px;height: 200px;padding: 10px;outline: none}
+            .uploimage{text-align: right;position: relative}
+            .uploimage>p{border: 1px dashed #308cd8;width: 100px;position: absolute;right: 30px;text-align: center;font-size: 18px;padding: 5px 0;color: #308cd8;border-radius: 5px}
+            .uplodPopto{background-color: red;position: absolute;right: 30px;width: 100px;height: 36px;opacity: 0}
+            .sendBtn{background-color: #359aed;border-radius: 5px;padding: 10px 0;text-align: center;color: #FFFFFF;font-size: 18px}
+            .revocationBtn{background-color: #e0666b;border-radius: 5px;padding: 10px 0;text-align: center;color: #FFFFFF;font-size: 18px;margin-top: 25px}
+        </style>
+
+    </head>
+
+    <body>
+    <div style="position: absolute;z-index: 1113;width: 100%">
+        <nav class="navbar navbar-top my-navbar" role="navigation">
+            <div class="collapse container">
+                <div class="nav-left"><img src="image/logo.png" alt="" /></div>
+                <div class="nav-right navbar-collapse" id="example-navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="index.html">网站首页</a>
+                        </li>
+                        <li>
+                            <a href="Serve.html">公司简介</a>
+                        </li>
+                        <li>
+                            <a href="Case.html">联系我们</a>
+                        </li>
+                        <li>
+                            <a href="viewpoint.html">订单查询</a>
+                        </li>
+                        <li>
+                            <a href="">[查询投诉]</a>
+                        </li>
+                    </ul>
+                    <div class="loginBox">
+                        <p class="loginBtn" onclick="toLogin()">登录</p>
+                        <p class="registerBtn" onclick="toRegister()">注册</p>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div id="head2">
+        <nav class="navbar2 navbar-top my-navbar2" role="navigation">
+            <div class="collapse container">
+                <div class="nav-left"><img src="image/logo.png" alt="" /></div>
+                <div class="nav-right navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li>
+                            <a href="index.html">网站首页</a>
+                        </li>
+                        <li>
+                            <a href="Serve.html">公司简介</a>
+                        </li>
+                        <li>
+                            <a href="Case.html">联系我们</a>
+                        </li>
+                        <li>
+                            <a href="viewpoint.html">订单查询</a>
+                        </li>
+                        <li>
+                            <a href="">[查询投诉]</a>
+                        </li>
+                    </ul>
+                    <div class="loginBox">
+                        <p class="loginBtn" onclick="toLogin()">登录</p>
+                        <p class="registerBtn" onclick="toRegister()">注册</p>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </div>
+    <div class="bgImages"></div>
+    <div class="bigBox">
+        <div class="complaintsBox">
+            <p class="orderText">投诉信息</p>
+            <p class="OrderComplaintText">/Searchresult</p>
+        </div>
+    </div>
+    <div class="orderInfoBox">
+        <div class="littleBox">
+            <div class="titleBox">
+                <img src="image/clock.png">
+                <div class="countDownBox">
+                    <p class="timeRemaining">投诉举证期剩余时间：</p>
+                    <p class="countDown">0天23小时58分44秒</p>
+                </div>
+            </div>
+            <p class="titleText">投诉信息</p>
+            <hr class="line">
+            <div class="orderNumberBox">
+                <span>投诉订单：</span><span>A62E1A725DFC3D57</span>
+            </div>
+            <div class="orderNumberBox" style="margin-top: 12px">
+                <span>投诉类别：</span><span>其他投诉</span>
+            </div>
+            <div class="orderNumberBox" style="margin-top: 12px">
+                <span>联系方式：</span><span style="color: #0606d2;">3188888857</span>
+            </div>
+            <div class="orderNumberBox" style="margin-top: 12px">
+                <span>投诉时间：</span><span>2019-05-23&nbsp;&nbsp;17:37:49</span>
+            </div>
+            <div class="orderNumberBox" style="margin-top: 12px">
+                <span>投诉状态：</span><span>卖家处理中</span>
+            </div>
+            <div class="orderNumberBox" style="margin-top: 12px">
+                <span>投诉处理结果：</span><span>投诉处理中</span>
+            </div>
+            <div style="height: 400px;margin-top: 20px;overflow-y:scroll;border: 1px solid #333333">
+                <div class="buyerBox">
+                    <div class="userInfoBox">
+                        <p class="buyer">买家</p>
+                        <p class="sendDate">2019-05-23&nbsp;&nbsp;17:37:49</p>
+                    </div>
+                    <p class="message">asdfasdf法师打发斯蒂芬阿斯顿发撒旦法鹌神逮䂲颂楪䂲十单发烧的发烧的发烧的发烧的发烧的发烧的发烧的发烧的发烧的房撒旦发烧的发送端发送端放asdfasdf法师打发斯蒂芬阿斯顿发撒旦法鹌神逮䂲颂楪䂲十单发烧的发烧的发烧的发烧的发烧的发烧的发烧的发烧的发烧的房撒旦发烧的发送端发送端放asdfasdf法师打发斯蒂芬阿斯顿发撒旦法鹌神逮䂲颂楪䂲十单发烧的发烧的发烧的发烧的发烧的发烧的发烧的发烧的发烧的房撒旦发烧的发送端发送端放asdfasdf法师打发斯蒂芬阿斯顿发撒旦法鹌神逮䂲颂楪䂲十单发烧的发烧的发烧的发烧的发烧的发烧的发烧的发烧的发烧的房撒旦发烧的发送端发送端放asdfasdf法师打发斯蒂芬阿斯顿发撒旦法鹌神逮䂲颂楪䂲十单发烧的发烧的发烧的发烧的发烧的发烧的发烧的发烧的发烧的房撒旦发烧的发送端发送端放asdfasdf法师打发斯蒂芬阿斯顿发撒旦法鹌神逮䂲颂楪䂲十单发烧的发烧的发烧的发烧的发烧的发烧的发烧的发烧的发烧的房撒旦发烧的发送端发送端放asdfasdf法师打发斯蒂芬阿斯顿发撒旦法鹌神逮䂲颂楪䂲十单发烧的发烧的发烧的发烧的发烧的发烧的发烧的发烧的发烧的房撒旦发烧的发送端发送端放asdfasdf法师打发斯蒂芬阿斯顿发撒旦法鹌神逮䂲颂楪䂲十单发烧的发烧的发烧的发烧的发烧的发烧的发烧的发烧的发烧的房撒旦发烧的发送端发送端放asdfasdf法师打发斯蒂芬阿斯顿发撒旦法鹌神逮䂲颂楪䂲十单发烧的发烧的发烧的发烧的发烧的发烧的发烧的发烧的发烧的房撒旦发烧的发送端发送端放asdfasdf法师打发斯蒂芬阿斯顿发撒旦法鹌神逮䂲颂楪䂲十单发烧的发烧的发烧的发烧的发烧的发烧的发烧的发烧的发烧的房撒旦发烧的发送端发送端放asdfasdf法师打发斯蒂芬阿斯顿发撒旦法鹌神逮䂲颂楪䂲十单发烧的发烧的发烧的发烧的发烧的发烧的发烧的发烧的发烧的房撒旦发烧的发送端发送端放</p>
+                </div>
+                <div class="sellerBox">
+                    <div class="userInfoBox">
+                        <p class="seller">管理员</p>
+                        <p class="sendDate">2019-05-23&nbsp;&nbsp;17:37:49</p>
+                    </div>
+                    <p class="message">爱圣诞节我们已收到您的投诉请求,并通知了商家,请耐心等待我们已收到您的投诉请求,并通知了商家,请耐心等待我们已收到您的投诉请求否</p>
+                </div>
+                <div class="sellerBox">
+                    <div class="userInfoBox">
+                        <p class="seller">管理员</p>
+                        <p class="sendDate">2019-05-23&nbsp;&nbsp;17:37:49</p>
+                    </div>
+                    <p class="message">爱圣诞节我们已收到您了商家,的投诉请求否</p>
+                </div>
+                <div class="sellerBox">
+                    <div class="userInfoBox">
+                        <p class="seller">管理员</p>
+                        <p class="sendDate">2019-05-23&nbsp;&nbsp;17:37:49</p>
+                    </div>
+                    <p class="message">爱圣诞节我们已收到您的投诉请求,并通知了商家,请耐心等待我们已收到您的投诉请求,并通知了商家,请耐心等待我们已收到您的投诉请求否</p>
+                </div>
+                <div class="sellerBox">
+                    <div class="userInfoBox">
+                        <p class="seller">管理员</p>
+                        <p class="sendDate">2019-05-23&nbsp;&nbsp;17:37:49</p>
+                    </div>
+                    <p class="message">爱圣诞节我们已收到诉请求,并通知了商家,请耐心等待我们已收到您的投诉请求否</p>
+                </div>
+                <div class="sellerBox">
+                    <div class="userInfoBox">
+                        <p class="seller">管理员</p>
+                        <p class="sendDate">2019-05-23&nbsp;&nbsp;17:37:49</p>
+                    </div>
+                    <p class="message">爱圣诞节我请求,并通知了商家,请耐心等待我们已收到您的投诉请求,并通知了商家,请耐心等待我们已收到您的投诉请求否</p>
+                </div>
+            </div>
+            <div style="padding: 25px 30px">
+                <textarea id="messageInput" cols="30" rows="10" placeholder="填写投诉内容"></textarea>
+            </div>
+            <div class="uploimage">
+                <p>上传图片</p>
+                <input class="uplodPopto" type="file">
+            </div>
+            <div style="padding: 25px 30px;margin-top: 35px">
+                <p class="sendBtn">发送内容</p>
+                <p class="revocationBtn">撤销投诉</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="jiewei">
+        <div class="foot" id="foot">
+            <div class="foot_con">
+                <div>
+                    <h4>网站导航</h4>
+                    <p>
+                        首页 / 服务</br>
+                        网站设计 / 手机APP / 软件设计 / UE原型</br>
+                        工作流程 / 设计案例 / 新闻中心</br>
+                        我们观点 / 关于公司</br>
+                    </p>
+                </div>
+                <div>
+                    <h4>新闻中心</h4>
+                    <p>
+                        公司2019年会通知
+                    </p>
+                </div>
+                <div>
+                    <h4>联系方式</h4>
+                    <p>
+                        地址: 徐州市铜山万达5号楼19层 / 24层 / 28层</br>
+                        热线: 400-690-8077</br>
+                        手机: 13225262011</br>
+                    </p>
+                </div>
+                <div>
+                    <h4>关注我们</h4>
+                    <p>
+                        <img src="img/erweim.png" alt="" />
+                    </p>
+                </div>
+            </div>
+            <div class="text-center" style="color: #666;font-size: 18px;">
+                Copyright zchfa.com, All Rights Reserved. 徐州再出发信息科技有限公司
+            </div>
+        </div>
+    </div>
+    </body>
+
+    <script src="js/swiper.min.js"></script>
+    <script src="js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/important.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="layer/layer.js"></script>
+    <script type="text/javascript">
+        //上方导航栏底部横线
+        setInterval(function() {
+            var a = parseInt($(document).scrollTop());
+            /*$("#a").text(a)*/
+            if(a >= 600) {
+                $(".navbar2").css("top", "0px").css("opacity", "1");
+            } else {
+                $(".navbar2").css("top", "-50px").css("opacity", "0");
+            }
+        });
+        //页面跳转
+        $("#complaintInfo").click(function () {
+            window.location.href = 'complaintInfo.html'
+        })
+
+        //跳转登录页面
+        function toLogin(){
+            window.location.href = 'login.html'
+        }
+        //跳转注册页面
+        function toRegister(){
+            window.location.href = 'register.html'
+        }
+
+        function skipInput() {
+            layer.prompt({title: '请输入投诉密码', formType: 1}, function(pass, index){
+                layer.close(index);
+            });
+        }
+
+    </script>
+
+</html>
